@@ -218,8 +218,8 @@ GameObject:
   - component: {fileID: 1464133067}
   - component: {fileID: 1464133066}
   m_Layer: 0
-  m_Name: Square
-  m_TagString: Untagged
+  m_Name: Ground
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -372,7 +372,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5761617684740025480, guid: 991599dd536696f46b8651a4d265e4e8, type: 3}
       propertyPath: m_GravityScale
-      value: 5
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8139065574028120395, guid: 991599dd536696f46b8651a4d265e4e8, type: 3}
+      propertyPath: jumpForce
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 991599dd536696f46b8651a4d265e4e8, type: 3}
