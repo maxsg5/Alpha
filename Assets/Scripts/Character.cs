@@ -47,3 +47,4 @@ public class Character : MonoBehaviour
             rb2d.AddForce(Vector2.up * jumpForce * 10);
         }
 }
+}
