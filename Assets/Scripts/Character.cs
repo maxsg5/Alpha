@@ -8,7 +8,7 @@ using UnityEngine;
 
 
 [RequireComponent(typeof(Rigidbody2D))]
-[RequireComponent(typeof(Health))]
+//[RequireComponent(typeof(Health))]
 public class Character : MonoBehaviour
 {
 
@@ -24,10 +24,11 @@ public class Character : MonoBehaviour
     {
         //health = GetComponent<Health>(); // Get the health script
         //weapon = GetComponentInChildren<Weapon>(); // Get the weapon script from the child object
+        rb2d = GetComponent<Rigidbody2D>(); // Get the rigidbody
     }
 
     // Update is called once per frame
-    void FixedUpdate()
+    void Update()
     {
 
         //movement
@@ -44,7 +45,7 @@ public class Character : MonoBehaviour
 
         //jumping
         if (Input.GetAxis("Jump") > 0){
-            rb2d.AddForce(Vector2.up * jumpForce * 10);
+            rb2d.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse); // Add a force to the rigidbody in the up direction
         }
     }
 }
