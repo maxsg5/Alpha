@@ -46,5 +46,5 @@ public class Character : MonoBehaviour
         if (Input.GetAxis("Jump") > 0){
             rb2d.AddForce(Vector2.up * jumpForce * 10);
         }
-}
+    }
 }
