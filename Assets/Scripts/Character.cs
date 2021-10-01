@@ -15,6 +15,7 @@ public class Character : MonoBehaviour
     //private Weapon weapon; // The weapon the character is holding
     //private Health health; // Reference to the health script.
     public float speed = 10f; // The speed the character moves at.
+    public float jumpForce = 5f; // The force applied to the character when it jumps.
     private Rigidbody2D rb2d; // Reference to the players rigidbody.
 
 
@@ -32,6 +33,7 @@ public class Character : MonoBehaviour
         //movement
         HandleMovement();
 
+
         
     }
 
@@ -39,5 +41,9 @@ public class Character : MonoBehaviour
         float x = Input.GetAxis("Horizontal"); // Get the horizontal input
         Vector2 velocity = new Vector2(x, 0); // Create a new vector2 with the x value of the horizontal input
         rb2d.velocity = velocity * speed; // Set the velocity of the rigidbody to the velocity created above
-    }
+
+        //jumping
+        if (Input.GetAxis("Jump") > 0){
+            rb2d.AddForce(Vector2.up * jumpForce * 10);
+        }
 }
