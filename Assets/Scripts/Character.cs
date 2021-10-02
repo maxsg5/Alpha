@@ -44,7 +44,7 @@ public class Character : MonoBehaviour
         // Check if the character is grounded.
         isGrounded = Physics2D.OverlapCircle(groundCheck.position, checkRadius, whatIsGround); 
 
-        //movement
+        // movement
         float x = Input.GetAxis("Horizontal"); // Get the horizontal input
         Vector2 velocity = new Vector2(x, 0); // Create a new vector2 with the x value of the horizontal input
         rb2d.velocity = new Vector2(x * speed, rb2d.velocity.y);  // Set the velocity of the rigidbody to the velocity created above
