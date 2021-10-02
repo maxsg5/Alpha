@@ -11,8 +11,6 @@ using UnityEngine;
 //[RequireComponent(typeof(Health))]
 public class Character : MonoBehaviour
 {
-
-    
     public float speed = 10f; // The speed the character moves at.
     public float jumpForce = 5f; // The force applied to the character when it jumps.
     public Transform groundCheck; // The position of the ground check.
@@ -85,7 +83,10 @@ public class Character : MonoBehaviour
         
     }
 
-
+    /// <summary>
+    /// Flips the character to face the other direction.
+    /// </summary>
+    /// Author: Max Schafer
     private void Flip()
 	{
 		// Switch the way the player is labelled as facing.
