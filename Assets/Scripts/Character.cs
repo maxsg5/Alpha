@@ -24,7 +24,7 @@ public class Character : MonoBehaviour
     private Rigidbody2D rb2d; // Reference to the players rigidbody.
     private int extraJumps; // The number of extra jumps the character has.
     private bool isGrounded = false; // Whether or not the character is grounded.
-    private bool canDoubleJump = false; // Whether or not the character can double jump.
+    private bool facingRight = true;  // For determining which way the player is currently facing.
     //private Weapon weapon; // The weapon the character is holding
     //private Health health; // Reference to the health script.
 
@@ -32,7 +32,8 @@ public class Character : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        extraJumps = extraJumpsValue;
+        extraJumps = extraJumpsValue; // Set the number of extra jumps the character has.
+        //TODO: Get the weapon and health script.
         //health = GetComponent<Health>(); // Get the health script
         //weapon = GetComponentInChildren<Weapon>(); // Get the weapon script from the child object
         rb2d = GetComponent<Rigidbody2D>(); // Get the rigidbody
@@ -49,6 +50,19 @@ public class Character : MonoBehaviour
         float x = Input.GetAxis("Horizontal"); // Get the horizontal input
         Vector2 velocity = new Vector2(x, 0); // Create a new vector2 with the x value of the horizontal input
         rb2d.velocity = new Vector2(x * speed, rb2d.velocity.y);  // Set the velocity of the rigidbody to the velocity created above
+
+        // If the input is moving the player right and the player is facing left...
+        if (x > 0 && !facingRight)
+        {
+            // flip the player.
+            Flip();
+        }
+        // Otherwise if the input is moving the player left and the player is facing right...
+        else if (x < 0 && facingRight)
+        {
+            // flip the player.
+            Flip();
+        }
 
     }
     // Update is called once per frame
@@ -70,6 +84,18 @@ public class Character : MonoBehaviour
         }
         
     }
+
+
+    private void Flip()
+	{
+		// Switch the way the player is labelled as facing.
+		facingRight = !facingRight;
+
+		// Multiply the player's x local scale by -1.
+		Vector3 theScale = transform.localScale;
+		theScale.x *= -1;
+		transform.localScale = theScale;
+	}
 
    
 
