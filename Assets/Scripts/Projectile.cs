@@ -20,7 +20,7 @@ public class Projectile : MonoBehaviour
         this.gameObject.transform.Translate(this.speed * Time.deltaTime * this.direction);
     }
 
-    protected virtual void OnCollisionEnter2D(Collision2D other)
+    protected virtual void OnTriggerEnter2D(Collider2D other)
     {
 	    Destroy(this.gameObject);
     }

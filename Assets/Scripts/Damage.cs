@@ -7,7 +7,7 @@ public class Damage : MonoBehaviour
 {
 	public float damage = 10.0f;
 
-	public void OnCollisionEnter2D(Collision2D other)
+	public void OnTriggerEnter2D(Collider2D other)
     {
 	    Health other_health = other.gameObject.GetComponent<Health>();
 	    if (other_health != null) {
