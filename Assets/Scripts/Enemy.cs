@@ -2,17 +2,23 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Enemy : MonoBehaviour
+public abstract class Enemy : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public const float STRENGTH = 0.0f;
+    public const float U_SPEED = 0.5f;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    //public WeaponClass weapon;
+    //public SensorClass sensor;           
+    //public HealthClass health;
+    //public ArmorClass armor;
+    
+    public Transform[] cPoints;
+    public Interpolator interpolator;
+    public Rigidbody physics;
+
+    public float u;
+    public float speed;
+    public bool closedLoop = false;
+
+
 }
