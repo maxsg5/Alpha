@@ -7,18 +7,13 @@ public abstract class Enemy : MonoBehaviour
     public const float STRENGTH = 0.0f;
     public const float U_SPEED = 0.5f;
 
-    //public WeaponClass weapon;
-    //public SensorClass sensor;           
+    //public WeaponClass weapon;         
     //public HealthClass health;
     //public ArmorClass armor;
     
-    public Transform[] cPoints;
-    public Interpolator interpolator;
+    public PathMove movement;
+    public Transform target;
+    public Sensor sensor; 
     public Rigidbody physics;
-
-    public float u;
-    public float speed;
-    public bool closedLoop = false;
-
 
 }
