@@ -5,7 +5,7 @@ using UnityEngine;
 public class SphereSensor : Sensor
 {
 	public float radius;
-	private float radius2;
+	public float radius2;
 
 	void Start()
 	{
