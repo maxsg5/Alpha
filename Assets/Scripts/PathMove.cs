@@ -2,6 +2,21 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Allows the object to move along a set path using control points
+/// set in the world
+/// </summary>
+/// 
+/// Author: Josh Coss   (JC)
+/// 
+/// Variables
+/// cPoints         List of Transform control points
+/// closedLoop      Bool (true if closed)
+/// interpolator    Interpolator object
+/// turnSpeed       Enemy turn speed
+/// moveSpeed       Enemy move speed
+/// u               A float point somewhere from zero to the length of the control point array
+/// physics         Rigidbody object
 public class PathMove : MonoBehaviour
 {
     public Transform[] cPoints;
@@ -10,26 +25,26 @@ public class PathMove : MonoBehaviour
     private Interpolator interpolator;
     private float turnSpeed, moveSpeed, u;
     private Rigidbody physics;
-    private Material myMaterial;
-
-    public void setTurnSpeed(float tSpeed) {
-        turnSpeed = tSpeed;
-    }
-
-    public void setMoveSpeed(float mSpeed) {
-        moveSpeed = mSpeed;
-    }
     
+    /// <summary>
+    /// Gets the rigidbody, interpolator, and sets u to 0
+    /// </summary>
+    ///  
+    /// Date        Author      Description
+    /// 2021-10-13  JC          Initial Testing
     void Start () {
         physics = GetComponent<Rigidbody>();
-        //physics.velocity = new Vector3(10, 0, 10);
         interpolator = new Linear(cPoints, closedLoop);
-        //interpolator = new BSpline (cPoints, closedLoop);
-        //interpolator = new CatmullRom(cPoints, closedLoop);
         u = 0.0f;
-        myMaterial = GetComponent<Renderer>().material;
     }
 
+    /// <summary>
+    /// Updates the movement of the object the script is attached to
+    /// along the control points
+    /// </summary>
+    ///  
+    /// Date        Author      Description
+    /// 2021-10-13  JC          Initial Testing
     void Update() {
         u += Time.deltaTime * moveSpeed;
         
@@ -51,5 +66,27 @@ public class PathMove : MonoBehaviour
         transform.rotation = Quaternion.LookRotation(newDirection);
 
         physics.velocity = transform.forward * turnSpeed;
+    }
+    
+    /// <summary>
+    /// Sets the turns speed
+    /// </summary>
+    /// <param name="tSpeed">float turn speed</param>
+    ///  
+    /// Date        Author      Description
+    /// 2021-10-13  JC          Initial Testing
+    public void setTurnSpeed(float tSpeed) {
+        turnSpeed = tSpeed;
+    }
+
+    /// <summary>
+    /// Sets the movement speed
+    /// </summary>
+    /// <param name="mSpeed">float movement speed</param>
+    ///  
+    /// Date        Author      Description
+    /// 2021-10-13  JC          Initial Testing
+    public void setMoveSpeed(float mSpeed) {
+        moveSpeed = mSpeed;
     }
 }
