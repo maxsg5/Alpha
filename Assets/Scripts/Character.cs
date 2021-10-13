@@ -11,20 +11,23 @@ using UnityEngine;
 //[RequireComponent(typeof(Health))]
 public class Character : MonoBehaviour
 {
+    #region Public Variables
     public float speed = 10f; // The speed the character moves at.
     public float jumpForce = 5f; // The force applied to the character when it jumps.
     public Transform groundCheck; // The position of the ground check.
     public float checkRadius; // The radius of the ground check.
     public LayerMask whatIsGround; // The layer that is considered ground.
     public int extraJumpsValue; // The amount of extra jumps the character has.
+    #endregion
 
-
+    #region Private Variables
     private Rigidbody2D rb2d; // Reference to the players rigidbody.
     private int extraJumps; // The number of extra jumps the character has.
     private bool isGrounded = false; // Whether or not the character is grounded.
     private bool facingRight = true;  // For determining which way the player is currently facing.
     //private Weapon weapon; // The weapon the character is holding
     //private Health health; // Reference to the health script.
+    #endregion
 
 
     /// <summary>
@@ -42,7 +45,7 @@ public class Character : MonoBehaviour
 
 
     /// <summary>
-    ///FixedUpdate is used when applying forces, torques, or other physics-related functions 
+    /// FixedUpdate is used when applying forces, torques, or other physics-related functions 
     /// </summary>
     /// Author: Max Schafer
     void FixedUpdate()
