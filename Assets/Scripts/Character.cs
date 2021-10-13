@@ -27,7 +27,10 @@ public class Character : MonoBehaviour
     //private Health health; // Reference to the health script.
 
 
-    // Start is called before the first frame update
+    /// <summary>
+    /// Initialize extraJumps, rb2d, health and weapon.
+    /// </summary>
+    /// Author: Max Schafer
     void Start()
     {
         extraJumps = extraJumpsValue; // Set the number of extra jumps the character has.
@@ -38,7 +41,10 @@ public class Character : MonoBehaviour
     }
 
 
-    // FixedUpdate should be used when applying forces, torques, or other physics-related functions 
+    /// <summary>
+    ///FixedUpdate is used when applying forces, torques, or other physics-related functions 
+    /// </summary>
+    /// Author: Max Schafer
     void FixedUpdate()
     {
         // Check if the character is grounded.
@@ -63,7 +69,10 @@ public class Character : MonoBehaviour
         }
 
     }
-    // Update is called once per frame
+    /// <summary>
+    /// Update is used for handling input and animating the player
+    /// </summary>
+    /// Author: Max Schafer
     void Update()
     {
         //Jumping
