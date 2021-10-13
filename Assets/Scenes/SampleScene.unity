@@ -128,7 +128,7 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1144181651001811060, guid: 2eae57068f232be4e83d342e4cb53ee0, type: 3}
   m_PrefabInstance: {fileID: 247312315}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &156054670
+--- !u!114 &156054676
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -235,6 +235,10 @@ PrefabInstance:
       value: GroundTrooperPrefab
       objectReference: {fileID: 0}
     - target: {fileID: 4973170241031654593, guid: 2eae57068f232be4e83d342e4cb53ee0, type: 3}
+      propertyPath: closedLoop
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4973170241031654593, guid: 2eae57068f232be4e83d342e4cb53ee0, type: 3}
       propertyPath: cPoints.Array.size
       value: 2
       objectReference: {fileID: 0}
@@ -304,7 +308,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6146649177504505899, guid: 2eae57068f232be4e83d342e4cb53ee0, type: 3}
       propertyPath: m_Constraints
-      value: 80
+      value: 112
       objectReference: {fileID: 0}
     - target: {fileID: 6212344233661284401, guid: 2eae57068f232be4e83d342e4cb53ee0, type: 3}
       propertyPath: m_RootOrder
