@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1290455436853679456}
-  - component: {fileID: 8481367219193360898}
+  - component: {fileID: 2309284791275630894}
   m_Layer: 0
   m_Name: Sensor
   m_TagString: Untagged
@@ -32,7 +32,7 @@ Transform:
   m_Father: {fileID: 7711876420890315602}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &8481367219193360898
+--- !u!114 &2309284791275630894
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -41,7 +41,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2090857805033826478}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 476fe9c4fbc31c84f9981ff7020a67ef, type: 3}
+  m_Script: {fileID: 11500000, guid: 9b9bae2a12394430ea916d7049bbdcd4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   radius: 5
@@ -58,8 +58,8 @@ GameObject:
   - component: {fileID: 6227523968222756143}
   - component: {fileID: 4561500957177500179}
   - component: {fileID: 5842636081976210695}
-  - component: {fileID: 8551864205923698513}
   - component: {fileID: 4598923007633372056}
+  - component: {fileID: 4531013809360246812}
   m_Layer: 0
   m_Name: Bomber
   m_TagString: Untagged
@@ -145,24 +145,6 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &8551864205923698513
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4118177713946917103}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c667b70b57563a246a883aa3336a0b9c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  movement: {fileID: 0}
-  target: {fileID: 0}
-  sensor: {fileID: 0}
-  physics: {fileID: 0}
-  turnSpeed: 0
-  moveSpeed: 0
 --- !u!54 &4598923007633372056
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -179,6 +161,24 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 80
   m_CollisionDetection: 0
+--- !u!114 &4531013809360246812
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4118177713946917103}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be6146fc383295c408a828cd449ab213, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  movement: {fileID: 0}
+  target: {fileID: 0}
+  sensor: {fileID: 0}
+  physics: {fileID: 0}
+  turnSpeed: 0
+  moveSpeed: 0
 --- !u!1 &4871099400508791683
 GameObject:
   m_ObjectHideFlags: 0
@@ -270,7 +270,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: c5827c4f457472b4abba88ab11e37b2e, type: 2}
+  - {fileID: 2100000, guid: e6c6ee48460f1a345ba0f91413317762, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
