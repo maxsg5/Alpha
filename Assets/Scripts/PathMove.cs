@@ -10,83 +10,99 @@ using UnityEngine;
 /// Author: Josh Coss   (JC)
 /// 
 /// Variables
-/// cPoints         List of Transform control points
-/// closedLoop      Bool (true if closed)
-/// interpolator    Interpolator object
-/// turnSpeed       Enemy turn speed
-/// moveSpeed       Enemy move speed
-/// u               A float point somewhere from zero to the length of the control point array
-/// physics         Rigidbody object
+/// enemyPhysics    Rigidbody2D of enemy attached to pathmove
+/// facingRight     bool, true if object is facing right
+/// cpoints         List of transform points
+/// startPos        float, x value of first point in cPoints
+/// endPos          float, x value of last point in cPoints
+/// enemySpeed      float, speed of enemy attached to pathmove
+/// moveRight       bool, true if object is moving right
 public class PathMove : MonoBehaviour
 {
-    public Transform[] cPoints;
-    public bool closedLoop;
-
-    private Interpolator interpolator;
-    private float turnSpeed, moveSpeed, u;
-    private Rigidbody physics;
+    Rigidbody2D enemyPhysics;
     
+    public bool facingRight;
+    public Transform[] cpoints = new Transform[2];
+
+    private float startPos, endPos;
+
+    private float enemySpeed;
+    public bool moveRight = true;
+
     /// <summary>
-    /// Gets the rigidbody, interpolator, and sets u to 0
+    /// Stores the objects Rigidbody2D, startPos and endPos of cPoints, and determines
+    /// if object is facing to the right
     /// </summary>
-    ///  
+    /// 
     /// Date        Author      Description
     /// 2021-10-13  JC          Initial Testing
-    void Start () {
-        physics = GetComponent<Rigidbody>();
-        interpolator = new Linear(cPoints, closedLoop);
-        u = 0.0f;
+    /// 2021-10-14  JC          Rewrote to better take advantage of 2D and gravity
+    public void Start() {
+        enemyPhysics = GetComponent<Rigidbody2D>();
+        facingRight = transform.localScale.x > 0;
+        if (facingRight == true) {
+            startPos = cpoints[0].position.x;
+            endPos = cpoints[1].position.x;
+        } else {
+            startPos = cpoints[1].position.x;
+            endPos = cpoints[0].position.x;
+        }
     }
 
     /// <summary>
-    /// Updates the movement of the object the script is attached to
-    /// along the control points
+    /// Updates basic movement left and right. 
+    /// If moveRight is true, enemy will move to the right. If it is not 
+    /// facing right, object will flip horizontally.
+    /// If moveRight is false, enemy will move to the left. If it is not
+    /// facing left, object will flip horizontally.
     /// </summary>
-    ///  
+    /// 
     /// Date        Author      Description
     /// 2021-10-13  JC          Initial Testing
-    void Update() {
-        u += Time.deltaTime * moveSpeed;
-        
-        if (u >= interpolator.length)
-        {
-            if (interpolator.closed)
-                u -= interpolator.length;
-            else
-                u = interpolator.length;
+    /// 2021-10-14  JC          Rewrote to better take advantage of 2D and gravity
+    public void FixedUpdate() {
+        if (moveRight) {
+            enemyPhysics.position += Vector2.right * enemySpeed * Time.deltaTime;
+            if (!facingRight) {
+                flip();
+            }
         }
 
-        Vector3 targetDirection = interpolator.Heading (u);
+        if (enemyPhysics.position.x >= endPos) {
+            moveRight = false;
+        }
 
-        transform.position = interpolator.Evaluate (u);
-
-        float singleStep = turnSpeed * Time.deltaTime;
-        Vector3 newDirection = Vector3.RotateTowards(transform.forward, 
-				targetDirection, singleStep, 0.0f);
-        transform.rotation = Quaternion.LookRotation(newDirection);
-
-        physics.velocity = transform.forward * turnSpeed;
+        if (!moveRight) {
+            enemyPhysics.position += -Vector2.right * enemySpeed * Time.deltaTime;
+            if (facingRight) {
+                flip();
+            }
+        }
+        
+        if (enemyPhysics.position.x <= startPos) {
+            moveRight = true;
+        }
     }
-    
+
     /// <summary>
-    /// Sets the turns speed
+    /// Flips the object and updates facingRight 
     /// </summary>
-    /// <param name="tSpeed">float turn speed</param>
-    ///  
+    /// 
     /// Date        Author      Description
-    /// 2021-10-13  JC          Initial Testing
-    public void setTurnSpeed(float tSpeed) {
-        turnSpeed = tSpeed;
+    /// 2021-10-14  JC          Initial Testing
+    public void flip() {
+        transform.localScale = new Vector3(-transform.localScale.x, transform.localScale.y, transform.localScale.z);
+        facingRight = transform.localScale.x > 0;
     }
 
     /// <summary>
-    /// Sets the movement speed
+    /// Flips the object and updates facingRight 
     /// </summary>
-    /// <param name="mSpeed">float movement speed</param>
-    ///  
+    /// 
     /// Date        Author      Description
     /// 2021-10-13  JC          Initial Testing
     public void setMoveSpeed(float mSpeed) {
-        moveSpeed = mSpeed;
+        enemySpeed = mSpeed;
     }
+
 }

@@ -49,16 +49,20 @@ public class SectorSensor : SphereSensor
 	/// 
     /// Date        Author      Description
     /// 2021-10-13  JC          Initial Testing
+    /// 2021-10-14  JC          Updated for 2D
     override public bool CanSee(Transform target) {
         Vector3 delta = target.position - transform.position;
 
-        if (delta.sqrMagnitude <= radius2 && Vector3.Dot(transform.forward, delta.normalized) >= minCosine) 
+        if (delta.sqrMagnitude <= radius2 && Vector3.Dot(transform.forward, delta.normalized) >= minCosine)
         {
-            Vector3 fwd = transform.TransformDirection(Vector3.forward);
-            RaycastHit hit; 
-            if (Physics.Raycast(transform.position, fwd, out hit, radius))
-                return hit.transform == target;
+            RaycastHit2D hit = Physics2D.Raycast(transform.position, transform.TransformDirection(Vector3.right), radius);
+            if (hit.transform == target)
+            {
+                return true;
+            }
+            
         }
         return false;
     }
+
 }

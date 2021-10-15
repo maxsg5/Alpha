@@ -13,7 +13,7 @@ using UnityEngine;
 /// movement        PathMove object
 /// target          Enemy's target
 /// sensor          Sensor object
-/// physics         Rigidbody object
+/// physics         Rigidbody2d object
 public abstract class Enemy : MonoBehaviour
 {
     public const float STRENGTH = 0.0f;
@@ -25,6 +25,9 @@ public abstract class Enemy : MonoBehaviour
     public PathMove movement;
     public Transform target;
     public Sensor sensor; 
-    public Rigidbody physics;
+
+    /// Date        Author      Description
+    /// 2021-10-14  JC          Changed Rigidbody to Rigidbody2D
+    public Rigidbody2D physics;
 
 }
