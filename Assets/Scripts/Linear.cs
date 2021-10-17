@@ -11,15 +11,15 @@ using UnityEngine;
 public class Linear: Interpolator {
 
     /// <summary>
-    /// Gets and sets a list of Vector3 points to the control point list, and
+    /// Gets and sets a list of Vector2 points to the control point list, and
     /// gets and sets the closed variable
     /// </summary>
-    /// <param name="pts">List of Vector 3 objects</param>
+    /// <param name="pts">List of Vector2 objects</param>
     /// <param name="closed">Closed bool</param>
     /// 
     /// Date        Author      Description
     /// 2021-10-13  JC          Initial Testing
-    public Linear (Vector3[] pts, bool closed=false):base (pts, closed) {
+    public Linear (Vector2[] pts, bool closed=false):base (pts, closed) {
         SetControl (pts);
         SetClosed (closed);
     }
@@ -43,29 +43,29 @@ public class Linear: Interpolator {
     /// </summary>
     /// <param name="u">A float point somewhere from zero to the length of the
     ///                 control point array</param>
-    /// <returns>Vector3 point on interpolation curve</returns>
+    /// <returns>Vector2 point on interpolation curve</returns>
     /// 
     /// Date        Author      Description
     /// 2021-10-13  JC          Initial Testing
-    public override Vector3 Evaluate (float u) {
+    public override Vector2 Evaluate (float u) {
         float dU;
         int startIndex, finishIndex;
 
         startIndex = Mathf.FloorToInt(u);
         CalculateFactors (u, closed,
                         out dU, ref startIndex, out finishIndex);
-        return Vector3.Lerp (control[startIndex], control[finishIndex], dU);
+        return Vector2.Lerp (control[startIndex], control[finishIndex], dU);
     }
 
     /// <summary>
     /// Makes the object face the direction of travel along the interpolation curve
     /// </summary>
     /// <param name="u">The point in length along the length of the control point array</param>
-    /// <returns>Vector3 of the direction to face</returns>
+    /// <returns>Vector2 of the direction to face</returns>
     /// 
     /// Date        Author      Description
     /// 2021-10-13  JC          Initial Testing
-    public override Vector3 Heading (float u) {
+    public override Vector2 Heading (float u) {
         float dU;
         int startIndex, finishIndex;
 

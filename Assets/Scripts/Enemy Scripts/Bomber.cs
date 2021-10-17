@@ -14,8 +14,6 @@ using UnityEngine;
 /// moveSpeed       Speed at which the enemy moves
 public class Bomber : Enemy
 {
-
-    public float turnSpeed = 0.0f;
     public float moveSpeed = 0.0f;
 
     /// <summary>
@@ -25,13 +23,14 @@ public class Bomber : Enemy
     ///  
     /// Date        Author      Description
     /// 2021-10-13  JC          Initial Testing
+    /// 2021-10-14  JC          Changed Rigidbody to Rigidbody2D
     void Start()
     {
         movement = GetComponent<PathMove>();
+        //This class uses a sphere sensor
         sensor = transform.Find("Sensor").GetComponent<SphereSensor>();
-        physics = GetComponent<Rigidbody>();
+        physics = GetComponent<Rigidbody2D>();
 
-        movement.setTurnSpeed(turnSpeed);
         movement.setMoveSpeed(moveSpeed);
     }
 
