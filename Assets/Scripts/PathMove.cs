@@ -105,4 +105,8 @@ public class PathMove : MonoBehaviour
         enemySpeed = mSpeed;
     }
 
+    public void stop() {
+        enemySpeed = 0f;
+    }
+
 }

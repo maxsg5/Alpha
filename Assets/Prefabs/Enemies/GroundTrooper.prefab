@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3577442662082626159}
   - component: {fileID: 2483668746884118755}
   - component: {fileID: 4587265276687209099}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: TrooperSprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -111,7 +111,7 @@ GameObject:
   - component: {fileID: 6836029331457279057}
   - component: {fileID: 8619440893101219137}
   - component: {fileID: 8037337176999903665}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: GroundTrooper
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -167,7 +167,6 @@ MonoBehaviour:
   target: {fileID: 0}
   sensor: {fileID: 0}
   physics: {fileID: 0}
-  moveSpeed: 0
 --- !u!50 &8037337176999903665
 Rigidbody2D:
   serializedVersion: 4
@@ -198,7 +197,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 174148113424890219}
-  - component: {fileID: 7713645325264127922}
+  - component: {fileID: 5873826828771407476}
+  - component: {fileID: 2036939018092108413}
+  - component: {fileID: 4028918379915350016}
   m_Layer: 0
   m_Name: Sensor
   m_TagString: Untagged
@@ -213,14 +214,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4254096662918872229}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2827882601581925293}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7713645325264127922
+  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
+--- !u!114 &5873826828771407476
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -229,9 +230,62 @@ MonoBehaviour:
   m_GameObject: {fileID: 4254096662918872229}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8bcb6da7fcec59d46b61e03ecb9d277a, type: 3}
+  m_Script: {fileID: 11500000, guid: c2e20ee627b0f7b4cb321137b6de82a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  radius: 2
-  radius2: 0
-  angle: 45
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 0
+  radius: 8
+  losCheck: 0
+  showSensorRegion: 0
+  angle: 10
+--- !u!33 &2036939018092108413
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4254096662918872229}
+  m_Mesh: {fileID: 0}
+--- !u!23 &4028918379915350016
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4254096662918872229}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: b4dcecf79fcaf504eb7fc601b2a3c174, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}

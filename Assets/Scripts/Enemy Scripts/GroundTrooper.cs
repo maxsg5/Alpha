@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Utility.SensorSystem;
 
 /// <summary>
 /// The human Ground Trooper enemy class. Walks along the ground and shoots
@@ -10,11 +11,10 @@ using UnityEngine;
 /// Author: Josh Coss       (JC)
 /// 
 /// Variables
-/// turnSpeed       Speed at which the enemy turns
 /// moveSpeed       Speed at which the enemy moves
 public class GroundTrooper : Enemy
 {
-    public float moveSpeed = 0.0f;
+    public const float moveSpeed = 4.0f;
 
     /// <summary>
     /// Gets the movement, sensor, and rigidbody components of the enemy, as
@@ -28,10 +28,12 @@ public class GroundTrooper : Enemy
     {
         movement = GetComponent<PathMove>();
         // This class uses a sector sensor
-        sensor = transform.Find("Sensor").GetComponent<SectorSensor>();
+        sensor = transform.Find("Sensor").GetComponent<SNSSector>();
         physics = GetComponent<Rigidbody2D>();
 
         movement.setMoveSpeed(moveSpeed);
+
+        state = STATE.Move;
     }
 
     /// <summary>
@@ -42,8 +44,26 @@ public class GroundTrooper : Enemy
     /// 2021-10-13  JC          Initial Testing
     void FixedUpdate()
     {
-        if (sensor.CanSee(target)) {
-            Debug.Log("Hello Sphere");
+        switch (state) {
+            case STATE.Move:
+                if (sensor.CanSee(target)) {
+                    Debug.Log("Hello Sphere");
+                    //state = STATE.Attack;
+                }
+                break;
+            case STATE.Attack:
+                //attack();
+                break;
+            case STATE.Hurt:
+                break;
+            case STATE.Dying:
+                break;
+            case STATE.Dead:
+                break;
         }
+    }
+
+    void attack() {
+        movement.stop();
     }
 }

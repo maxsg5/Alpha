@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Utility.SensorSystem;
 
 /// <summary>
 /// The bomber class flies in the air and drops bombs on the level if it sees
@@ -10,11 +11,10 @@ using UnityEngine;
 /// Author: Josh Coss   (JC)
 /// 
 /// Variables
-/// turnSpeed       Speed at which the enemy turns
 /// moveSpeed       Speed at which the enemy moves
 public class Bomber : Enemy
 {
-    public float moveSpeed = 0.0f;
+    public const float moveSpeed = 8.0f;
 
     /// <summary>
     /// Gets the movement, sensor, and rigidbody components of the enemy, as
@@ -28,7 +28,7 @@ public class Bomber : Enemy
     {
         movement = GetComponent<PathMove>();
         //This class uses a sphere sensor
-        sensor = transform.Find("Sensor").GetComponent<SphereSensor>();
+        sensor = transform.Find("Sensor").GetComponent<SNSSphere>();
         physics = GetComponent<Rigidbody2D>();
 
         movement.setMoveSpeed(moveSpeed);
@@ -42,8 +42,22 @@ public class Bomber : Enemy
     /// 2021-10-13  JC          Initial Testing
     void Update()
     {
-        if (sensor.CanSee(target)) {
-            Debug.Log("I'm Flying");
+        switch (state) {
+            case STATE.Move:
+                if (sensor.CanSee(target)) {
+                    Debug.Log("I'm Flying");
+                    //state = STATE.Attack;
+                }
+                break;
+            case STATE.Attack:
+                //attack();
+                break;
+            case STATE.Hurt:
+                break;
+            case STATE.Dying:
+                break;
+            case STATE.Dead:
+                break;
         }
     }
 }
