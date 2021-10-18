@@ -94,7 +94,7 @@ public class Character : MonoBehaviour
         }
         
     }
-
+    
     /// <summary>
     /// Flips the character to face the other direction.
     /// </summary>
