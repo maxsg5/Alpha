@@ -23,6 +23,10 @@
       <option value="$PROJECT_DIR$/Assets/Scripts/Projectile.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Damage.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Projectile_Pass_Through.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Toggle.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Door.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Toggles/Disabler.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Toggles/Toggle.cs" />
     </changedPaths>
   </component>
   <component name="ProjectId" id="1z1ikSEWIAJLT9puI77EhNlOTyZ" />
@@ -74,6 +78,7 @@
       <updated>1633322142464</updated>
       <workItem from="1633322149449" duration="3995000" />
       <workItem from="1633330853884" duration="885000" />
+      <workItem from="1634648530653" duration="2139000" />
     </task>
     <servers />
   </component>
