@@ -21,6 +21,7 @@ public class Character : MonoBehaviour
     #endregion
 
     #region Private Variables
+    private BoxCollider2D boxCollider;
     private Rigidbody2D rb2d; // Reference to the players rigidbody.
     private int extraJumps; // The number of extra jumps the character has.
     private bool isGrounded = false; // Whether or not the character is grounded.
@@ -41,6 +42,7 @@ public class Character : MonoBehaviour
         //health = GetComponent<Health>(); // Get the health script
         //weapon = GetComponentInChildren<Weapon>(); // Get the weapon script from the child object
         rb2d = GetComponent<Rigidbody2D>(); // Get the rigidbody
+        boxCollider = GetComponent<BoxCollider2D>(); // get the boxCollider
     }
 
 
@@ -50,8 +52,8 @@ public class Character : MonoBehaviour
     /// Author: Max Schafer
     void FixedUpdate()
     {
-        // Check if the character is grounded.
-        isGrounded = Physics2D.OverlapCircle(groundCheck.position, checkRadius, whatIsGround); 
+        
+        
 
         // movement
         float x = Input.GetAxis("Horizontal"); // Get the horizontal input
@@ -79,7 +81,8 @@ public class Character : MonoBehaviour
     void Update()
     {
         //Jumping
-        if(isGrounded)
+        // Check if the character is grounded.
+        if(IsGrounded())
         { 
             extraJumps = extraJumpsValue; // Reset the extra jumps
         }
@@ -109,6 +112,28 @@ public class Character : MonoBehaviour
 		theScale.x *= -1;
 		transform.localScale = theScale;
 	}
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <returns></returns>
+    private bool IsGrounded(){
+        float extraHeight = 1f;
+        RaycastHit2D raycastHit = Physics2D.BoxCast(boxCollider.bounds.center, boxCollider.bounds.size, 0f, Vector2.down, extraHeight, whatIsGround);
+        Color rayColor;
+        if(raycastHit.collider != null){
+            rayColor = Color.green;
+        }else{
+            rayColor = Color.red;
+        }
+
+        Debug.DrawRay(boxCollider.bounds.center + new Vector3(boxCollider.bounds.extents.x, 0), Vector2.down * (boxCollider.bounds.extents.y + extraHeight), rayColor);
+        Debug.DrawRay(boxCollider.bounds.center - new Vector3(boxCollider.bounds.extents.x, 0), Vector2.down * (boxCollider.bounds.extents.y + extraHeight), rayColor);
+        Debug.DrawRay(boxCollider.bounds.center - new Vector3(boxCollider.bounds.extents.x, boxCollider.bounds.extents.y + extraHeight), Vector2.right * (boxCollider.bounds.extents.x), rayColor);
+        Debug.Log(raycastHit.collider);
+        return raycastHit.collider != null;
+
+
+    }
 
    
 
