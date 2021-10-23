@@ -13,6 +13,7 @@
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Weapon.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Damage.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Toggles/Colour_Switcher.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Health.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
@@ -26,6 +27,10 @@
       <option value="$PROJECT_DIR$/Assets/Scripts/Toggle.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Door.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Toggles/Disabler.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Sensors/SectorSensor.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Sensors/SphereSensor.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Toggles/Colour_Switcher.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Toggles/Interactable.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Toggles/Toggle.cs" />
     </changedPaths>
   </component>
@@ -78,7 +83,8 @@
       <updated>1633322142464</updated>
       <workItem from="1633322149449" duration="3995000" />
       <workItem from="1633330853884" duration="885000" />
-      <workItem from="1634648530653" duration="2139000" />
+      <workItem from="1634648530653" duration="2868000" />
+      <workItem from="1634946851746" duration="9434000" />
     </task>
     <servers />
   </component>

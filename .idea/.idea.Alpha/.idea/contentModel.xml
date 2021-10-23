@@ -19,18 +19,24 @@
           </e>
           <e p="Fill_Bar.cs" t="Include" />
           <e p="Health.cs" t="Include" />
-          <e p="Interpolator.cs" t="Include" />
-          <e p="Linear.cs" t="Include" />
+          <e p="Interpolators" t="Include">
+            <e p="Interpolator.cs" t="Include" />
+            <e p="Linear.cs" t="Include" />
+          </e>
           <e p="Mine.cs" t="Include" />
           <e p="Missile.cs" t="Include" />
           <e p="PathMove.cs" t="Include" />
           <e p="Projectile.cs" t="Include" />
           <e p="Projectile_Pass_Through.cs" t="Include" />
-          <e p="SectorSensor.cs" t="Include" />
-          <e p="Sensor.cs" t="Include" />
-          <e p="SphereSensor.cs" t="Include" />
+          <e p="Sensors" t="Include">
+            <e p="SectorSensor.cs" t="Include" />
+            <e p="Sensor.cs" t="Include" />
+            <e p="SphereSensor.cs" t="Include" />
+          </e>
           <e p="Toggles" t="Include">
+            <e p="Colour_Switcher.cs" t="Include" />
             <e p="Door.cs" t="Include" />
+            <e p="Interactable.cs" t="Include" />
             <e p="Toggle.cs" t="Include" />
           </e>
           <e p="Weapon.cs" t="Include" />

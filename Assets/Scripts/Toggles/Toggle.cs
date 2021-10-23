@@ -19,11 +19,8 @@ public class Toggle : MonoBehaviour
 		}
 	}
 
-	private void OnTriggerEnter2D(Collider2D other)
+	public void Toggle_Active()
 	{
-		// prompt player to press button to toggle
-		if (other.gameObject.CompareTag("Player")) {
-			this.Active = !this.active;
-		}
+		this.Active = !this.active;
 	}
 }
