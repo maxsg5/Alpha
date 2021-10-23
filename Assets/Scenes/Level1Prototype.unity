@@ -212,7 +212,7 @@ SpriteShapeRenderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
+  m_DynamicOccludee: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -362,7 +362,7 @@ SpriteShapeRenderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
+  m_DynamicOccludee: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -735,7 +735,7 @@ GameObject:
   - component: {fileID: 284825569}
   - component: {fileID: 284825568}
   - component: {fileID: 284825571}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Floor (14)
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -980,7 +980,7 @@ GameObject:
   - component: {fileID: 460576052}
   - component: {fileID: 460576051}
   - component: {fileID: 460576054}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Floor (4)
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -1411,7 +1411,7 @@ SpriteShapeRenderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
+  m_DynamicOccludee: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -1484,7 +1484,7 @@ GameObject:
   - component: {fileID: 748538085}
   - component: {fileID: 748538084}
   - component: {fileID: 748538087}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Floor (8)
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -1697,7 +1697,7 @@ SpriteShapeRenderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
+  m_DynamicOccludee: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -1769,7 +1769,7 @@ GameObject:
   - component: {fileID: 899932684}
   - component: {fileID: 899932683}
   - component: {fileID: 899932682}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Floor (10)
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -2069,7 +2069,7 @@ GameObject:
   - component: {fileID: 1073283716}
   - component: {fileID: 1073283715}
   - component: {fileID: 1073283714}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Floor (3)
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -2420,7 +2420,7 @@ SpriteShapeRenderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
+  m_DynamicOccludee: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -2602,7 +2602,7 @@ GameObject:
   - component: {fileID: 1316973286}
   - component: {fileID: 1316973285}
   - component: {fileID: 1316973288}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Floor (6)
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -2738,7 +2738,7 @@ GameObject:
   - component: {fileID: 1339767760}
   - component: {fileID: 1339767759}
   - component: {fileID: 1339767762}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Floor (12)
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -2998,6 +2998,27 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!1 &1455321369 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1885823169647732779, guid: 991599dd536696f46b8651a4d265e4e8, type: 3}
+  m_PrefabInstance: {fileID: 2058875323}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1455321370
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1455321369}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b66a19d3bd441b4fb73d66ab93d8e4f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  max_ammo: 0
+  ammo: 0
+  projectile_prefab: {fileID: 0}
+  ammo_type: 0
 --- !u!1 &1487645376
 GameObject:
   m_ObjectHideFlags: 0
@@ -3118,7 +3139,7 @@ GameObject:
   - component: {fileID: 1520668957}
   - component: {fileID: 1520668956}
   - component: {fileID: 1520668958}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Square (6)
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -3363,7 +3384,7 @@ GameObject:
   - component: {fileID: 1748598744}
   - component: {fileID: 1748598743}
   - component: {fileID: 1748598745}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Square (5)
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -3473,7 +3494,7 @@ GameObject:
   - component: {fileID: 1920079747}
   - component: {fileID: 1920079746}
   - component: {fileID: 1920079749}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Floor (7)
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -3822,7 +3843,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2004100694}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2094008032
 GameObject:
