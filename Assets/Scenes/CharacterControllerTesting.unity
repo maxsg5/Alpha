@@ -134,6 +134,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Character
       objectReference: {fileID: 0}
+    - target: {fileID: 1885823169647732790, guid: 991599dd536696f46b8651a4d265e4e8, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1885823169647732791, guid: 991599dd536696f46b8651a4d265e4e8, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -372,6 +376,31 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1130656794 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1885823169647732779, guid: 991599dd536696f46b8651a4d265e4e8, type: 3}
+  m_PrefabInstance: {fileID: 28463877}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1130656795
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1130656794}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 252cec686bc1c784e825178fecb483e8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 10
+  jumpForce: 5
+  checkRadius: 0
+  whatIsGround:
+    serializedVersion: 2
+    m_Bits: 0
+  extraJumpsValue: 0
+  state: 0
 --- !u!1 &1464133065
 GameObject:
   m_ObjectHideFlags: 0
