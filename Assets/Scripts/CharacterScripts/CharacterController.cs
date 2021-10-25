@@ -83,7 +83,7 @@ public class CharacterController : MonoBehaviour
         isMovingLeft = Input.GetButtonDown("MoveLeft");
         //isShooting = Input.GetButtonDown("Shoot");
         isJumping = Input.GetButtonDown("Jump");
-        
+
         // If the input is moving the player right and the player is facing left...
         if (rb2d.velocity.x > 0 && !facingRight)
         {
@@ -228,13 +228,13 @@ public class CharacterController : MonoBehaviour
     private bool IsGrounded(){
         float extraHeight = 1f;
         RaycastHit2D raycastHit = Physics2D.BoxCast(boxCollider.bounds.center, boxCollider.bounds.size, 0f, Vector2.down, extraHeight, whatIsGround);
+        // draw the ray in the scene view for debugging purposes.
         Color rayColor;
         if(raycastHit.collider != null){
             rayColor = Color.green;
         }else{
             rayColor = Color.red;
         }
-
         Debug.DrawRay(boxCollider.bounds.center + new Vector3(boxCollider.bounds.extents.x, 0), Vector2.down * (boxCollider.bounds.extents.y + extraHeight), rayColor);
         Debug.DrawRay(boxCollider.bounds.center - new Vector3(boxCollider.bounds.extents.x, 0), Vector2.down * (boxCollider.bounds.extents.y + extraHeight), rayColor);
         Debug.DrawRay(boxCollider.bounds.center - new Vector3(boxCollider.bounds.extents.x, boxCollider.bounds.extents.y + extraHeight), Vector2.right * (boxCollider.bounds.extents.x), rayColor);
