@@ -3,31 +3,37 @@ using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
-/// Enemy parent class
+/// Enemy parent abstract class
 /// </summary>
 /// 
 /// Author: Josh Coss   (JC)
 /// 
 /// VARIABLES:
 /// STRENGTH
+/// health          Health object
 /// movement        PathMove object
 /// target          Enemy's target
 /// sensor          Sensor object
 /// physics         Rigidbody2d object
-public abstract class Enemy : MonoBehaviour
+public abstract class Enemy 
 {
-    public const float STRENGTH = 0.0f;
-
-    //public WeaponClass weapon;         
-    //public HealthClass health;
+    public Health health;
     //public ArmorClass armor;
-    
+    public Transform transform;
+    public Rigidbody2D rigidbody;
+    public Weapon weapon;         
     public PathMove movement;
-    public Transform target;
-    public Sensor sensor; 
 
-    /// Date        Author      Description
-    /// 2021-10-14  JC          Changed Rigidbody to Rigidbody2D
-    public Rigidbody2D physics;
 
+    public Enemy(Transform transform, Rigidbody2D rigidbody, Weapon weapon, PathMove movement,
+            Health health){
+        this.transform = transform;
+        this.rigidbody = rigidbody;
+        this.weapon = weapon;
+        this.movement = movement;
+        this.health = health;
+    }
+
+    public abstract void MoveForward();
+    public abstract void Attack();
 }
