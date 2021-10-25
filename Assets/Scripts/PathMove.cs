@@ -19,7 +19,6 @@ using UnityEngine;
 /// moveRight       bool, true if object is moving right
 public class PathMove : MonoBehaviour
 {
-    Rigidbody2D enemyPhysics;
     
     public bool facingRight;
     public Transform[] cpoints = new Transform[2];
@@ -38,7 +37,6 @@ public class PathMove : MonoBehaviour
     /// 2021-10-13  JC          Initial Testing
     /// 2021-10-14  JC          Rewrote to better take advantage of 2D and gravity
     public void Start() {
-        enemyPhysics = GetComponent<Rigidbody2D>();
         facingRight = transform.localScale.x > 0;
         if (facingRight == true) {
             startPos = cpoints[0].position.x;
@@ -60,7 +58,7 @@ public class PathMove : MonoBehaviour
     /// Date        Author      Description
     /// 2021-10-13  JC          Initial Testing
     /// 2021-10-14  JC          Rewrote to better take advantage of 2D and gravity
-    public void FixedUpdate() {
+    public void Move(Rigidbody2D enemyPhysics) {
         if (moveRight) {
             enemyPhysics.position += Vector2.right * enemySpeed * Time.deltaTime;
             if (!facingRight) {

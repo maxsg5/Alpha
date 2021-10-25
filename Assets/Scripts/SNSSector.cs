@@ -81,20 +81,25 @@ namespace Utility.SensorSystem
         /// 
         /// 2017-10-06	BRB		Initial Testing
         /// 2017-10-08	BRB		Converted to add position offset and LOS Check
-        ///
+        /// 2021-10-25  JC      Added a check to make sure the target is not null
+        /// 
         override public bool CanSee(Transform target)
         {
-            Vector3 heading = target.position - gameObject.transform.position;
+            
+            if (target != null) {
+                Vector3 heading = target.position - gameObject.transform.position;
 
-            if (heading.sqrMagnitude <= r2 && Vector3.Dot(heading.normalized, transform.forward) >= cosine)
-            {
-                if (losCheck) { 
-                    RaycastHit hit;
-                    if (Physics.Raycast(transform.position, heading, out hit, radius))
-                        return hit.transform == target;
+                if (heading.sqrMagnitude <= r2 && Vector3.Dot(heading.normalized, transform.forward) >= cosine)
+                {
+                    if (losCheck) { 
+                        RaycastHit hit;
+                        if (Physics.Raycast(transform.position, heading, out hit, radius))
+                            return hit.transform == target;
+                    }
+                    else
+                        return true;
                 }
-                else
-                    return true;
+                return false;
             }
             return false;
         }

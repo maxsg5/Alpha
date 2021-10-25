@@ -12,9 +12,26 @@ using Utility.SensorSystem;
 /// 
 /// Variables
 /// moveSpeed       Speed at which the enemy moves
-public class Bomber : Enemy
+public class BomberController : MonoBehaviour
 {
-    public const float moveSpeed = 8.0f;
+    public enum STATE {
+        Move,
+        Attack,
+        Hurt,
+        Dying,
+        Dead
+    };
+
+    public _SNSSensor sensor;
+    public Transform target;
+    public float moveSpeed = 2.0f;
+
+    private Enemy motor;
+    private STATE state;
+    private Rigidbody2D physics;
+    private PathMove movement;
+    private Weapon weapon;
+    private Health health;
 
     /// <summary>
     /// Gets the movement, sensor, and rigidbody components of the enemy, as
@@ -30,7 +47,12 @@ public class Bomber : Enemy
         //This class uses a sphere sensor
         sensor = transform.Find("Sensor").GetComponent<SNSSphere>();
         physics = GetComponent<Rigidbody2D>();
+        weapon = GetComponent<Weapon>();
+        health = GetComponent<Health>();
 
+        motor = new BomberMotor(transform, physics, weapon, movement, health);
+
+        state = STATE.Move;
         movement.setMoveSpeed(moveSpeed);
     }
 
@@ -44,13 +66,10 @@ public class Bomber : Enemy
     {
         switch (state) {
             case STATE.Move:
-                if (sensor.CanSee(target)) {
-                    Debug.Log("I'm Flying");
-                    //state = STATE.Attack;
-                }
+                handleMove();
                 break;
             case STATE.Attack:
-                //attack();
+                handleAttack();
                 break;
             case STATE.Hurt:
                 break;
@@ -59,5 +78,18 @@ public class Bomber : Enemy
             case STATE.Dead:
                 break;
         }
+    }
+
+    void handleMove() {
+        motor.MoveForward();
+        if (sensor.CanSee(target))
+            state = STATE.Attack;
+    }
+
+    void handleAttack() {
+        motor.MoveForward();
+        motor.Attack();
+        if (!sensor.CanSee(target))
+            state = STATE.Move;
     }
 }

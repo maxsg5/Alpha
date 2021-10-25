@@ -92,7 +92,7 @@ CapsuleCollider2D:
   m_GameObject: {fileID: 486439756725484406}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 6200000, guid: d908784529786f6499309f844f4f8a34, type: 2}
+  m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -108,9 +108,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2827882601581925293}
-  - component: {fileID: 6836029331457279057}
-  - component: {fileID: 8619440893101219137}
   - component: {fileID: 8037337176999903665}
+  - component: {fileID: 1151815443669602424}
+  - component: {fileID: 7401788184500927874}
+  - component: {fileID: 6013689467734964055}
+  - component: {fileID: 4032644232677505575}
   m_Layer: 2
   m_Name: GroundTrooper
   m_TagString: Untagged
@@ -134,39 +136,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6836029331457279057
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2954425365103869459}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c5a483882377b8b4a9826c477aceb400, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  facingRight: 0
-  cpoints:
-  - {fileID: 0}
-  - {fileID: 0}
-  moveRight: 1
---- !u!114 &8619440893101219137
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2954425365103869459}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6cd45de7b715f5946abd18f8c6f26736, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  movement: {fileID: 0}
-  target: {fileID: 0}
-  sensor: {fileID: 0}
-  physics: {fileID: 0}
 --- !u!50 &8037337176999903665
 Rigidbody2D:
   serializedVersion: 4
@@ -188,6 +157,68 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &1151815443669602424
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2954425365103869459}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c5a483882377b8b4a9826c477aceb400, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  facingRight: 0
+  cpoints:
+  - {fileID: 0}
+  - {fileID: 0}
+  moveRight: 1
+--- !u!114 &7401788184500927874
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2954425365103869459}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6cd45de7b715f5946abd18f8c6f26736, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sensor: {fileID: 0}
+  target: {fileID: 0}
+  moveSpeed: 4
+--- !u!114 &6013689467734964055
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2954425365103869459}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b66a19d3bd441b4fb73d66ab93d8e4f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  max_ammo: 20
+  ammo: 20
+  projectile_prefab: {fileID: 5118499405664884827, guid: 5d053696b54d63e48b6f7ced5e6ef819, type: 3}
+  ammo_type: 0
+--- !u!114 &4032644232677505575
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2954425365103869459}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 43dca942478c3b04daf915f65104fad8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  max_health: 100
+  health: 100
 --- !u!1 &4254096662918872229
 GameObject:
   m_ObjectHideFlags: 0
