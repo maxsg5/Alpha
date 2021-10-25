@@ -230,6 +230,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1564625477745369648, guid: e2fe98f618e5e054c9d3c350d93df712, type: 3}
+      propertyPath: m_Radius
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2050213414196028248, guid: e2fe98f618e5e054c9d3c350d93df712, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -371,8 +375,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prompt: Toggle Lever
-  interaction_range: 4
   prompt_text_element: {fileID: 801258880}
+  interaction_range: 4
   interact_key: 101
   on_interact:
     m_PersistentCalls:
@@ -811,6 +815,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1564625477745369648, guid: e2fe98f618e5e054c9d3c350d93df712, type: 3}
+      propertyPath: m_Radius
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2050213414196028248, guid: e2fe98f618e5e054c9d3c350d93df712, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -951,8 +959,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prompt: Toggle Lever
-  interaction_range: 4
   prompt_text_element: {fileID: 801258880}
+  interaction_range: 4
   interact_key: 101
   on_interact:
     m_PersistentCalls:
@@ -1151,6 +1159,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1564625477745369648, guid: e2fe98f618e5e054c9d3c350d93df712, type: 3}
+      propertyPath: m_Radius
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2050213414196028248, guid: e2fe98f618e5e054c9d3c350d93df712, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -1291,8 +1303,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prompt: Flip Switch
-  interaction_range: 4
   prompt_text_element: {fileID: 801258880}
+  interaction_range: 4
   interact_key: 102
   on_interact:
     m_PersistentCalls:

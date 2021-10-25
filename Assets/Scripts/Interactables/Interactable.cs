@@ -6,6 +6,12 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
 
+
+/// <summary>
+/// Allows the triggering of unity events when the player is within
+/// interaction range by pressing a specified key. Displays a prompt
+/// when the player is in range. 
+/// </summary>
 [RequireComponent(typeof(Collider2D), typeof(SphereSensor))]
 public class Interactable : MonoBehaviour
 {
@@ -32,16 +38,24 @@ public class Interactable : MonoBehaviour
 		}
 	}
 
+	/// <summary>
+	/// Grab components, set up initial values, add suffix with interaction key
+	/// to the prompt
+	/// </summary>
 	private void Start()
 	{
 		this.sensor = this.gameObject.GetComponent<SphereSensor>();
-		this.sensor.Radius = this.interaction_range; 
+		this.sensor.Radius = this.interaction_range;
 
 		this.prompt_suffix = " (Press [" + (char) this.interact_key + "])";
 		this.Prompt = this.prompt;
 		this.prompt_text_element.gameObject.SetActive(false);
 	}
 
+	/// <summary>
+	/// Invoke the on_interact event if the player is in range of the
+	/// interactable and the interaction key is pressed
+	/// </summary>
 	private void Update()
 	{
 		if (this.player_in_range && Input.GetKeyDown(this.interact_key)) {
@@ -49,12 +63,23 @@ public class Interactable : MonoBehaviour
 		}
 	}
 
+	/// <summary>
+	/// Update prompt so that multiple interactables can share one text
+	/// element, then use sensor to determine if player is in range and
+	/// has line of sight; if these are true, display the interaction prompt 
+	/// </summary>
+	/// <param name="other">Other collider involved in the collision</param>
 	private void OnTriggerEnter2D(Collider2D other)
 	{
-		this.OnTriggerStay2D(other);
 		this.Prompt = this.prompt;
+		this.OnTriggerStay2D(other);
 	}
 
+	/// <summary>
+	/// Determines if player is in range and has line of sight; if these
+	/// are true, display the interaction prompt
+	/// </summary>
+	/// <param name="other">Other collider involved in the collision</param>
 	private void OnTriggerStay2D(Collider2D other)
 	{
 		if (!other.gameObject.CompareTag("Player")) return;
@@ -68,11 +93,15 @@ public class Interactable : MonoBehaviour
 		// this.prompt_text_element.gameObject.SetActive(this.player_in_range);
 	}
 
+	/// <summary>
+	/// Disable prompt if the player is leaving the collider
+	/// </summary>
+	/// <param name="other">Other collider involved in the collision</param>
 	private void OnTriggerExit2D(Collider2D other)
 	{
-		if (other.gameObject.CompareTag("Player")) {
-			this.player_in_range = false;
-			this.prompt_text_element.gameObject.SetActive(false);
-		}
+		if (!other.gameObject.CompareTag("Player")) return;
+		
+		this.player_in_range = false;
+		this.prompt_text_element.gameObject.SetActive(false);
 	}
 }
