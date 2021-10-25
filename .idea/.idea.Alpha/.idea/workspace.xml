@@ -35,6 +35,7 @@
       <option value="$PROJECT_DIR$/Assets/Scripts/Interactables/Toggle.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Interactables/Colour_Switcher.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Interactables/Interactable.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Enemy Scripts/Boomer.cs" />
     </changedPaths>
   </component>
   <component name="ProjectId" id="1z1ikSEWIAJLT9puI77EhNlOTyZ" />
@@ -89,6 +90,7 @@
       <workItem from="1634648530653" duration="2868000" />
       <workItem from="1634946851746" duration="9434000" />
       <workItem from="1635182023793" duration="2867000" />
+      <workItem from="1635185774671" duration="168000" />
     </task>
     <servers />
   </component>

@@ -9,15 +9,16 @@ using UnityEngine;
 /// Author: Josh Coss   (JC)
 public class Boomer : Enemy
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+	public Boomer(Transform transform, Rigidbody2D rigidbody, Weapon weapon, PathMove movement, Health health)
+		: base(transform, rigidbody, weapon, movement, health) { }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+	public override void Attack()
+	{
+		throw new System.NotImplementedException();
+	}
+
+	public override void MoveForward()
+	{
+		throw new System.NotImplementedException();
+	}
 }
