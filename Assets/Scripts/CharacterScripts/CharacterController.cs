@@ -81,6 +81,7 @@ public class CharacterController : MonoBehaviour
         //isShooting = Input.GetButtonDown("Shoot");
         jump = Input.GetAxis("Jump");
 
+        //keep this here for now until I figure out how to implement this in the motor.
         // If the input is moving the player right and the player is facing left...
         if (physics.velocity.x > 0 && !facingRight)
         {
@@ -158,9 +159,9 @@ public class CharacterController : MonoBehaviour
          //jumping
         if (jump != 0 && extraJumps > 0) // If the space key is pressed and the character has extra jumps
         {
-           motor.Jump(jumpForce); // Jump
-        extraJumps--; // Decrease the number of extra jumps
-        } else if(jump != 0 && extraJumps == 0 && motor.IsGrounded()) // If the space key is pressed and the character has no extra jumps and is grounded
+            motor.Jump(jumpForce); // Jump
+            extraJumps--; // Decrease the number of extra jumps
+        } else if(jump != 0 && extraJumps == 0 && !motor.IsGrounded()) // If the space key is pressed and the character has no extra jumps and is grounded
         {
             motor.Jump(jumpForce); // Jump
         }

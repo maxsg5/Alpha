@@ -34,7 +34,7 @@ public class CharacterMotor : MonoBehaviour
     /// Date: 2021-10-23
     /// Description: Initial Testing.
      public bool IsGrounded(){
-        float extraHeight = 1f;
+        float extraHeight = .5f;
         RaycastHit2D raycastHit = Physics2D.BoxCast(boxCollider.bounds.center, boxCollider.bounds.size, 0f, Vector2.down, extraHeight, whatIsGround);
         // draw the ray in the scene view for debugging purposes.
         Color rayColor;
