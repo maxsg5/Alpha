@@ -399,7 +399,7 @@ MonoBehaviour:
   whatIsGround:
     serializedVersion: 2
     m_Bits: 64
-  extraJumpsValue: 0
+  extraJumpsValue: 2
   state: 0
 --- !u!114 &1130656796
 MonoBehaviour:
