@@ -182,7 +182,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1885823169647732790, guid: 991599dd536696f46b8651a4d265e4e8, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 991599dd536696f46b8651a4d265e4e8, type: 3}
 --- !u!1 &410065423
 GameObject:
@@ -395,12 +396,26 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 10
   jumpForce: 5
-  checkRadius: 0
   whatIsGround:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 64
   extraJumpsValue: 0
   state: 0
+--- !u!114 &1130656796
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1130656794}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6a6671c63ad81084cb4b999402213d22, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  whatIsGround:
+    serializedVersion: 2
+    m_Bits: 64
 --- !u!1 &1464133065
 GameObject:
   m_ObjectHideFlags: 0
