@@ -19,7 +19,8 @@ using UnityEngine;
 public class Mine : MonoBehaviour
 {
     private SphereSensor sensor;
-    public Transform player;
+    public Transform target;
+    public Character player;
     public float strength = 2f;
     public bool detonated = false;
 
@@ -28,9 +29,11 @@ public class Mine : MonoBehaviour
     ///</summary>
     ///Date         Author      Description
     ///2021-10-13   BS          Intializes sensor
+    ///2021-10-27   BS          Initialize player
     void Start()
     {
         sensor = GetComponent<SphereSensor>();
+        player = GetComponent<Character>();
     }
 
     ///<summary>
@@ -39,14 +42,12 @@ public class Mine : MonoBehaviour
     ///</summary>
     ///Date         Author      Description
     ///2021-10-13   BS          Detect the player and detonate
+    ///2021-10-27   BS          Remove the health of the player
     void Update()
     {
-        if(sensor.CanSee(player)){
-            if(detonated == false){
-                //Deplete characters health by strength
-                //player.depleteHealth()
-                //Explode animation
-            }
+        if(sensor.CanSee(target)){
+            player.Take_Damage(strength);
+            Destroy(gameObject);
         } 
     }
 }
