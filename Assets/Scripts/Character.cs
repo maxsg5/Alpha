@@ -92,7 +92,7 @@ public class Character : MonoBehaviour
         { 
             extraJumps = extraJumpsValue; // Reset the extra jumps
         }
-         //jumping
+	    //jumping
         if (Input.GetKeyDown(KeyCode.Space) && extraJumps > 0) // If the space key is pressed and the character has extra jumps
         {
             rb2d.velocity = Vector2.up * jumpForce; // Add a force to the rigidbody in the up direction
@@ -100,6 +100,12 @@ public class Character : MonoBehaviour
         } else if(Input.GetKeyDown(KeyCode.Space) && extraJumps == 0 && isGrounded) // If the space key is pressed and the character has no extra jumps and is grounded
         {
             rb2d.velocity = Vector2.up * jumpForce; // Add a force to the rigidbody in the up direction
+        }
+        
+        // Addition (Declan Simkins): Add input check for shooting the held weapon
+        if (Input.GetButtonDown("Fire1"))
+        {
+	        this.weapon.Fire();
         }
     }
     
@@ -141,7 +147,7 @@ public class Character : MonoBehaviour
         Debug.DrawRay(boxCollider.bounds.center + new Vector3(boxCollider.bounds.extents.x, 0), Vector2.down * (boxCollider.bounds.extents.y + extraHeight), rayColor);
         Debug.DrawRay(boxCollider.bounds.center - new Vector3(boxCollider.bounds.extents.x, 0), Vector2.down * (boxCollider.bounds.extents.y + extraHeight), rayColor);
         Debug.DrawRay(boxCollider.bounds.center - new Vector3(boxCollider.bounds.extents.x, boxCollider.bounds.extents.y + extraHeight), Vector2.right * (boxCollider.bounds.extents.x), rayColor);
-        Debug.Log(raycastHit.collider);
+        //Debug.Log(raycastHit.collider);
         return raycastHit.collider != null;
     }
 
