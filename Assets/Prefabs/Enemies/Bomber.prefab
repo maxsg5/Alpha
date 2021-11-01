@@ -9,7 +9,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1169511733208675272}
-  - component: {fileID: 2389134389437545820}
+  - component: {fileID: 2751747327737945774}
+  - component: {fileID: 5353246920244886270}
+  - component: {fileID: 1510423706544667140}
   m_Layer: 0
   m_Name: Sensor
   m_TagString: Untagged
@@ -31,7 +33,7 @@ Transform:
   m_Father: {fileID: 4267036052415163675}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2389134389437545820
+--- !u!114 &2751747327737945774
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -40,11 +42,64 @@ MonoBehaviour:
   m_GameObject: {fileID: 2761313871400790810}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9b9bae2a12394430ea916d7049bbdcd4, type: 3}
+  m_Script: {fileID: 11500000, guid: 578bfc56be84cf349ae55b0e15abc087, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  radius: 2
-  radius2: 0
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 0
+  radius: 4
+  losCheck: 0
+  showSensorRegion: 0
+--- !u!33 &5353246920244886270
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2761313871400790810}
+  m_Mesh: {fileID: 0}
+--- !u!23 &1510423706544667140
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2761313871400790810}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: b4dcecf79fcaf504eb7fc601b2a3c174, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!1 &3566134249003375202
 GameObject:
   m_ObjectHideFlags: 0
@@ -56,7 +111,7 @@ GameObject:
   - component: {fileID: 4513990085725275700}
   - component: {fileID: 4705221188442128316}
   - component: {fileID: 9191283918093354985}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: BomberSprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -154,9 +209,11 @@ GameObject:
   m_Component:
   - component: {fileID: 4267036052415163675}
   - component: {fileID: 114964845280127989}
-  - component: {fileID: 7423511294810733561}
   - component: {fileID: 1536065354162302155}
-  m_Layer: 0
+  - component: {fileID: 2738583065436069746}
+  - component: {fileID: 2649246852711942609}
+  - component: {fileID: 2368567600036885328}
+  m_Layer: 2
   m_Name: Bomber
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -196,23 +253,6 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   moveRight: 1
---- !u!114 &7423511294810733561
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4871099400508791683}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: be6146fc383295c408a828cd449ab213, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  movement: {fileID: 0}
-  target: {fileID: 0}
-  sensor: {fileID: 0}
-  physics: {fileID: 0}
-  moveSpeed: 0
 --- !u!50 &1536065354162302155
 Rigidbody2D:
   serializedVersion: 4
@@ -234,3 +274,48 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &2738583065436069746
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4871099400508791683}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be6146fc383295c408a828cd449ab213, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sensor: {fileID: 0}
+  target: {fileID: 0}
+  moveSpeed: 2
+--- !u!114 &2649246852711942609
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4871099400508791683}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 43dca942478c3b04daf915f65104fad8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  max_health: 100
+  health: 100
+--- !u!114 &2368567600036885328
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4871099400508791683}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b66a19d3bd441b4fb73d66ab93d8e4f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  max_ammo: 10
+  ammo: 10
+  projectile_prefab: {fileID: 5118499405664884827, guid: 5d053696b54d63e48b6f7ced5e6ef819, type: 3}
+  ammo_type: 3
