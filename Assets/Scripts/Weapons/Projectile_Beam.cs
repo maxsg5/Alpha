@@ -29,13 +29,12 @@ public class Projectile_Beam : MonoBehaviour
 	private void LateUpdate()
 	{
 		this.origin_pos = this.origin_obj.transform.position;
-		this.beam_lr.SetPosition(0, this.origin_pos);
-		
 		RaycastHit2D[] hits = Physics2D.RaycastAll(
 			this.origin_pos
 			, this.origin_obj.transform.right
 		);
 		
+		// Find collision point or create one if there is no collision point
 		Vector2 collision_point;
 		List<GameObject> ignorables = new List<GameObject>()
 		{
@@ -45,15 +44,16 @@ public class Projectile_Beam : MonoBehaviour
 		};
 		int real_hit_i = this.Find_First_Hit_Index(hits, ignorables);
 		if (hits.Length == 0 || real_hit_i < 0) {
-			Vector3 mouse_screen_pos = Input.mousePosition;
-			mouse_screen_pos.z = 0;
-			Vector2 mouse_pos_2d = this.main_camera.ScreenToWorldPoint(mouse_screen_pos);
-			collision_point = (mouse_pos_2d - this.origin_pos).normalized * this.max_length;
+			Vector2 origin_right = this.origin_obj.transform.right;
+			Vector2 origin_right_scaled = origin_right * this.max_length;
+			collision_point = this.origin_pos + origin_right_scaled;
 		}
 		else {
 			collision_point = hits[real_hit_i].point;
 		}
 		
+		// Set line renderer and edge collider points
+		this.beam_lr.SetPosition(0, this.origin_pos);
 		this.beam_lr.SetPosition(1, collision_point);
 		Vector2 collider_local_origin_pos = this.origin_obj.transform.InverseTransformPoint(this.origin_pos);
 		Vector2 collider_local_collision_point = this.origin_obj.transform.InverseTransformPoint(collision_point);
