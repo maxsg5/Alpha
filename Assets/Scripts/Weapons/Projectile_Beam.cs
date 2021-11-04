@@ -12,6 +12,7 @@ public class Projectile_Beam : MonoBehaviour
 	private EdgeCollider2D beam_collider;
 	private GameObject origin_obj;
 	private Vector2 origin_pos;
+	private Camera main_camera;
 
 	[SerializeField] private float beam_width = 0.25f;
 	[SerializeField] private float max_length = 50.0f;
@@ -22,6 +23,7 @@ public class Projectile_Beam : MonoBehaviour
 		this.beam_collider = this.GetComponent<EdgeCollider2D>();
 		this.beam_lr.startWidth = this.beam_width;
 		this.beam_lr.endWidth = this.beam_width;
+		this.main_camera = Camera.main;
 	}
 
 	private void LateUpdate()
@@ -43,7 +45,10 @@ public class Projectile_Beam : MonoBehaviour
 		};
 		int real_hit_i = this.Find_First_Hit_Index(hits, ignorables);
 		if (hits.Length == 0 || real_hit_i < 0) {
-			collision_point = this.transform.right * this.max_length;
+			Vector3 mouse_screen_pos = Input.mousePosition;
+			mouse_screen_pos.z = 0;
+			Vector2 mouse_pos_2d = this.main_camera.ScreenToWorldPoint(mouse_screen_pos);
+			collision_point = (mouse_pos_2d - this.origin_pos) * this.max_length;
 		}
 		else {
 			collision_point = hits[real_hit_i].point;
