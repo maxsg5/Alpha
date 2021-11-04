@@ -48,7 +48,7 @@ public class Projectile_Beam : MonoBehaviour
 			Vector3 mouse_screen_pos = Input.mousePosition;
 			mouse_screen_pos.z = 0;
 			Vector2 mouse_pos_2d = this.main_camera.ScreenToWorldPoint(mouse_screen_pos);
-			collision_point = (mouse_pos_2d - this.origin_pos) * this.max_length;
+			collision_point = (mouse_pos_2d - this.origin_pos).normalized * this.max_length;
 		}
 		else {
 			collision_point = hits[real_hit_i].point;
