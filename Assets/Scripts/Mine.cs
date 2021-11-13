@@ -20,7 +20,7 @@ public class Mine : MonoBehaviour
 {
     private SphereSensor sensor;
     public Transform target;
-    public Character player;
+    public CharacterController player;
     public float strength = 2f;
     public bool detonated = false;
 
@@ -33,7 +33,7 @@ public class Mine : MonoBehaviour
     void Start()
     {
         sensor = GetComponent<SphereSensor>();
-        player = GetComponent<Character>();
+        player = GetComponent<CharacterController>();
     }
 
     ///<summary>

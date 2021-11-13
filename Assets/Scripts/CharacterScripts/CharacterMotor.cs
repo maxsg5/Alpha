@@ -1,26 +1,24 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+/// <summary>
+/// The character motor class is used to control the movement and physics of the character.
+/// </summary>
+/// Author: Max Schafer
+/// Date: 2021-11-12
+/// Description: Initial Testing.
 public class CharacterMotor : MonoBehaviour
 {
-    public LayerMask whatIsGround;
-    private const float CLOSE_SPEED = 0.01f;
-    private const float CLOSE_SPEED2 = CLOSE_SPEED * CLOSE_SPEED;
-    private Rigidbody2D physics;
-    //private Vector3 groundNormal = Vector3.up;
-    private Transform body;
-    //private Vector3 bodyCenter;
-    private float boxHeight;
-    private Vector2 capsuleCenter;
-
-    private BoxCollider2D boxCollider;
+    public LayerMask whatIsGround; // The layer that is considered ground.
+    private Rigidbody2D physics; // The rigidbody of the character.
+    private float boxHeight; // height of the boxCast for ground detection.
+    private bool facingRight = true;  // For determining which way the player is currently facing.
+    private BoxCollider2D boxCollider; // The boxCollider of the character.
     
 
     void Start()
     {
         physics = GetComponent<Rigidbody2D>();
-        body = transform.Find("Body");
         boxCollider = GetComponent<BoxCollider2D>();
         boxHeight = boxCollider.size.y;
     }
@@ -50,15 +48,57 @@ public class CharacterMotor : MonoBehaviour
         return raycastHit.collider != null;
     }
 
+    /// <summary>
+    /// Adds a force to the character in the up direction
+    /// </summary>
+    /// <param name="jumpForce">force of the jump</param>
+    /// Author: Max Schafer
+    /// Date: 2021-11-12
+    /// Description: Initial Testing.
     public void Jump (float jumpForce)
     {
          physics.velocity = Vector2.up * jumpForce; // Add a force to the rigidbody in the up direction
     }
 
+    /// <summary>
+    /// Handles the side to side movement of the character
+    /// </summary>
+    /// <param name="speed">speed of the movement</param>
+    /// Author: Max Schafer
+    /// Date: 2021-11-12
+    /// Description: Initial Testing.
     public void Move(float speed)
     {
         float x = Input.GetAxis("Horizontal"); // Get the horizontal input
         Vector2 velocity = new Vector2(x, 0); // Create a new vector2 with the x value of the horizontal input
         physics.velocity = new Vector2(x * speed, physics.velocity.y);  // Set the velocity of the rigidbody to the velocity created above
+        // If the input is moving the player right and the player is facing left...
+        if (x > 0 && !facingRight)
+        {
+            // flip the player.
+            Flip();
+        }
+        // Otherwise if the input is moving the player left and the player is facing right...
+        else if (x < 0 && facingRight)
+        {
+            // flip the player.
+            Flip();
+        }
     }
+
+    /// <summary>
+    /// Flips the character to face the other direction.
+    /// </summary>
+    /// Author: Max Schafer
+    /// Date: 2021-10-23
+    /// Description: Initial Testing.
+    private void Flip()
+	{
+		// Switch the way the player is labelled as facing.
+		facingRight = !facingRight;
+		// Multiply the player's x local scale by -1.
+		Vector3 theScale = transform.localScale;
+		theScale.x *= -1;
+		transform.localScale = theScale;
+	}
 }
