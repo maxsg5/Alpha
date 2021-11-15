@@ -87,7 +87,7 @@ public class CharacterController : MonoBehaviour
         //shooting
         if (Input.GetMouseButtonDown(0)) // If the left mouse button is pressed
         {
-            //weapon.Shoot(); // Shoot the weapon
+            weapon.Fire(); // Shoot the weapon
         }
     }
 
