@@ -9,6 +9,7 @@
       <e p="Assets" t="Include">
         <e p="Scripts" t="Include">
           <e p="_SNSSensor.cs" t="Include" />
+          <e p="Camera_Follow.cs" t="Include" />
           <e p="CharacterScripts" t="Include">
             <e p="CharacterController.cs" t="Include" />
             <e p="CharacterMotor.cs" t="Include" />
