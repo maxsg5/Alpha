@@ -60,6 +60,7 @@
       <option value="$PROJECT_DIR$/Assets/Scripts/Weapons/Weapon.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Damage_Continuous.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Weapons/Projectile_Beam.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Camera_Follow.cs" />
     </changedPaths>
   </component>
   <component name="ProjectId" id="1z1ikSEWIAJLT9puI77EhNlOTyZ" />
@@ -123,6 +124,7 @@
       <workItem from="1635790433817" duration="302000" />
       <workItem from="1636020354651" duration="4066000" />
       <workItem from="1636024884238" duration="4605000" />
+      <workItem from="1637184798726" duration="4628000" />
     </task>
     <servers />
   </component>
