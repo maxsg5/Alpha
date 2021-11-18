@@ -18,9 +18,9 @@ public class Interactable : MonoBehaviour
 	[Tooltip("Message to display to the player when standing in proximity of the interactable." +
 	         "Will display as \"[prompt] (Press [interact_key])\"")]
 	[SerializeField] private string prompt;
-	[SerializeField] private Text prompt_text_element;
+	[SerializeField] private TMPro.TextMeshProUGUI prompt_text_element; //Note (Max Schafer, 2021-11-17): Changed from Text to TMPro.TextMeshProUGUI. Might want to change back to Text if performance is an issue.
 	[SerializeField] private float interaction_range; // Does nothing until the sensor is turned back on
-	[SerializeField] private KeyCode interact_key;	// Should probably be a string referencing an axis or
+	[SerializeField] private KeyCode interact_key = KeyCode.E;	// Should probably be a string referencing an axis or
 													// some kind of enum
 	
 	private SphereSensor sensor;
