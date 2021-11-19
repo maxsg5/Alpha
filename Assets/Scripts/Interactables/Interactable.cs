@@ -55,11 +55,14 @@ public class Interactable : MonoBehaviour
 	/// <summary>
 	/// Invoke the on_interact event if the player is in range of the
 	/// interactable and the interaction key is pressed
+    /// Max Schafer, 2020-11-19: Added the code to remove the prompt and the script after interaction
 	/// </summary>
 	private void Update()
 	{
 		if (this.player_in_range && Input.GetKeyDown(this.interact_key)) {
 			this.on_interact.Invoke();
+			this.prompt_text_element.gameObject.SetActive(false);
+			Destroy(GetComponent<Interactable>());
 		}
 	}
 

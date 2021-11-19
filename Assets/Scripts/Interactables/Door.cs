@@ -57,4 +57,8 @@ public class Door : MonoBehaviour
 
 		return all_active;
 	}
+
+	public void AllActive(){
+        Debug.Log("all toggles are active");
+    }
 }
