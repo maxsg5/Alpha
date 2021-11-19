@@ -6,6 +6,7 @@ using UnityEngine;
 public class DoorSwitch : MonoBehaviour
 {
     private Animator animator;
+    public SlidingDoor door;
 
     //public Switch switch_object;
 
@@ -22,7 +23,8 @@ public class DoorSwitch : MonoBehaviour
     {
         
         animator.SetBool("On", true);
-        //code to move the door down here
+        door.isOpen = true;
+        
     }
     
 }

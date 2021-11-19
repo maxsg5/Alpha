@@ -11,12 +11,16 @@ public class Door : MonoBehaviour
 {
 	[SerializeField] private List<Toggle> toggles;
 	public UnityEvent on_all_toggles_active;
+    private Interactable interactable;
 
-	/// <summary>
-	/// Subscribes to Toggled events
-	/// </summary>
-	private void Awake()
+    /// <summary>
+    /// Subscribes to Toggled events
+    /// Max Schafer, 2020-11-19: Added the code to initialize the interactable
+    /// </summary>
+    private void Awake()
 	{
+		interactable = GetComponent<Interactable>();
+		interactable.enabled = false;
 		foreach (Toggle toggle in this.toggles) {
 			toggle.Toggled += this.Handle_On_Toggle;
 		}
@@ -41,7 +45,8 @@ public class Door : MonoBehaviour
 	{
 		if (this.All_Active()) {
 			this.on_all_toggles_active.Invoke();
-		}
+            interactable.enabled = true;
+        }
 	}
 
 	/// <summary>
@@ -58,7 +63,5 @@ public class Door : MonoBehaviour
 		return all_active;
 	}
 
-	public void AllActive(){
-        Debug.Log("all toggles are active");
-    }
+	
 }
