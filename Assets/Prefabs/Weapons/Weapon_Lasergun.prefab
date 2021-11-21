@@ -43,6 +43,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6549ad60d6c02549a24abc7ee3a7c8b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  name: Lasergun
   max_ammo: 150
   ammo: 150
   fire_rate: 1

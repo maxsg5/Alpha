@@ -43,6 +43,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0171b83609d4724418eefe7da9df5342, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  name: Handgun
   max_ammo: 25
   ammo: 25
   fire_rate: 4

@@ -16,7 +16,7 @@ public abstract class Weapon : MonoBehaviour
 	public delegate void On_Ammo_Changed(int new_amount);
 	public event On_Ammo_Changed Ammo_Changed;
 
-	
+	[SerializeField] private string name;
 	[SerializeField] private int max_ammo, ammo;
 	[SerializeField] private float fire_rate = 1; // shots per second
 	[SerializeField] private Collider2D character_collider;
@@ -25,7 +25,10 @@ public abstract class Weapon : MonoBehaviour
 	private Camera main_camera;
 
 	[SerializeField] protected GameObject projectile_prefab;
-	
+
+	public string Name => this.name;
+	public int Max_Ammo => this.max_ammo;
+
 	public Weapon.Ammo ammo_type;
 
 	public float Fire_Rate
@@ -46,6 +49,7 @@ public abstract class Weapon : MonoBehaviour
 		this.fire_delay = 1 / this.fire_rate; // delay between shots
 		this.last_shot_time = -10;
 		this.main_camera = GameObject.FindWithTag("MainCamera").GetComponent<Camera>();
+		this.Ammo_Changed?.Invoke(this.ammo);
 	}
 
 	protected void LateUpdate()
@@ -64,6 +68,7 @@ public abstract class Weapon : MonoBehaviour
 		}
 		this.ammo--;
 		this.last_shot_time = Time.time;
+		this.Ammo_Changed?.Invoke(this.ammo);
 
 		List<Collider2D> projectile_colliders = this.Spawn_Projectile();
 		this.Ignore_Projectile_Collisions(projectile_colliders);
