@@ -24,6 +24,7 @@
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Health.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Weapons/Weapon_Beam.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/UI_Ammo_Tracker.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Weapons/Ammo_Pickup.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <changedPaths>
@@ -60,11 +61,12 @@
       <option value="$PROJECT_DIR$/Assets/Environment_Collider_2D.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Health_Tracker.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/UI_Health_Tracker.cs" />
-      <option value="$PROJECT_DIR$/Assets/UI_Ammo_Tracker.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Weapons/Weapon.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Interactables/Interactable.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Weapons/Weapon_Beam.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Weapons/Ammo_Pickup.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/CharacterScripts/CharacterController.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Weapons/Weapon.cs" />
+      <option value="$PROJECT_DIR$/Assets/UI_Ammo_Tracker.cs" />
     </changedPaths>
   </component>
   <component name="ProjectId" id="1z1ikSEWIAJLT9puI77EhNlOTyZ" />
@@ -132,7 +134,7 @@
       <workItem from="1637276484971" duration="594000" />
       <workItem from="1637428544930" duration="1494000" />
       <workItem from="1637457044531" duration="1497000" />
-      <workItem from="1637521436394" duration="3160000" />
+      <workItem from="1637521436394" duration="4667000" />
     </task>
     <servers />
   </component>

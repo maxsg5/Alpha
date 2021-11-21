@@ -53,6 +53,7 @@
           <e p="SNSSphere.cs" t="Include" />
           <e p="UI_Health_Tracker.cs" t="Include" />
           <e p="Weapons" t="Include">
+            <e p="Ammo_Pickup.cs" t="Include" />
             <e p="Projectile.cs" t="Include" />
             <e p="Projectile_Beam.cs" t="Include" />
             <e p="Projectile_Pass_Through.cs" t="Include" />

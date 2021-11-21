@@ -28,7 +28,7 @@ public abstract class Weapon : MonoBehaviour
 
 	public string Name => this.name;
 	public int Max_Ammo => this.max_ammo;
-
+	public int Current_Ammo => this.ammo;
 	public Weapon.Ammo ammo_type;
 
 	public float Fire_Rate
@@ -107,5 +107,18 @@ public abstract class Weapon : MonoBehaviour
 		// Could play an empty mag "click" sound or pop up a UI message or
 		// make the ammo counter flash red or ...
 		Debug.Log("No Ammo!");
+	}
+
+	public void Add_Ammo(int amount)
+	{
+		this.ammo += amount;
+		if (this.ammo > this.max_ammo) {
+			this.ammo = this.max_ammo;
+		}
+
+		if (this.ammo < 0) {
+			this.ammo = 0;
+		}
+		this.Ammo_Changed?.Invoke(this.ammo);
 	}
 }
