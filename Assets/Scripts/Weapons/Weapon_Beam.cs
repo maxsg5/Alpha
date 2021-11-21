@@ -10,6 +10,8 @@ public class Weapon_Beam : Weapon
 
 	[SerializeField] private Transform beam_origin;
 
+	// TODO (Declan Simkins): Collides with triggers but should pass through them
+	
 	protected override void Start()
 	{
 		base.Start();

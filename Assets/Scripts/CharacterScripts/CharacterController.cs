@@ -7,6 +7,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 
 [RequireComponent(typeof(CharacterMotor))]
@@ -23,7 +24,9 @@ public class CharacterController : MonoBehaviour
     #region Private Variables
     private int extraJumps; // The number of extra jumps the character has.
     private bool isGrounded = false; // Whether or not the character is grounded.    
-    private Weapon weapon; // The weapon the character is holding
+    private Weapon active_weapon; // The weapon the character is holding
+    private int active_weapon_i = 0; // Index of the active weapon in the weapons list
+    private readonly List<Weapon> weapons = new List<Weapon>();
     private Health health; // Reference to the health script.
     private CharacterMotor motor; // Reference to the character motor script.
     #endregion
@@ -35,14 +38,14 @@ public class CharacterController : MonoBehaviour
     /// Author: Max Schafer
     /// Date: 2021-10-23
     /// Description: Initial Testing.
-    void Start()
+    private void Start()
     {
         extraJumps = extraJumpsValue; // Set the number of extra jumps the character has.
         //TODO: Get the weapon and health script.
         motor = GetComponent<CharacterMotor>();
         health = GetComponent<Health>(); // Get the health script
-        weapon = GetComponentInChildren<Weapon>(); // Get the weapon script from the child object
-        
+        this.active_weapon = GetComponentInChildren<Weapon>(); // Get the weapon script from the child object
+        this.weapons.Add(this.active_weapon);
     }
 
 
@@ -52,7 +55,7 @@ public class CharacterController : MonoBehaviour
     /// Author: Max Schafer
     /// Date: 2021-10-23
     /// Description: Initial Testing.
-    void FixedUpdate()
+    private void FixedUpdate()
     {
         // Movement
         motor.Move(speed);
@@ -65,7 +68,7 @@ public class CharacterController : MonoBehaviour
     /// Author: Max Schafer
     /// Date: 2021-11-12
     /// Description: Initial Testing.
-    void Update()
+    private void Update()
     {
         // Jumping
         // Check if the character is grounded.
@@ -74,7 +77,7 @@ public class CharacterController : MonoBehaviour
             // Reset the extra jumps
             extraJumps = extraJumpsValue; 
         }
-         //jumping
+		//jumping
         if (Input.GetKeyDown(KeyCode.Space) && extraJumps > 0) // If the space key is pressed and the character has extra jumps
         {
             motor.Jump(jumpForce); // Jump
@@ -87,7 +90,14 @@ public class CharacterController : MonoBehaviour
         //shooting
         if (Input.GetMouseButtonDown(0)) // If the left mouse button is pressed
         {
-            weapon.Fire(); // Shoot the weapon
+	        if (this.active_weapon != null) {
+		        this.active_weapon.Fire(); // Shoot the weapon
+	        }
+        }
+        
+        // Switch to next weapon
+        if (Input.GetKeyDown(KeyCode.Q)) {
+	        this.Set_Active_Weapon(this.active_weapon_i + 1);
         }
     }
 
@@ -111,8 +121,14 @@ public class CharacterController : MonoBehaviour
     /// Author: Max Schafer
     /// Date: 2021-11-12
     /// Description: Initial Testing.
-    void OnCollisionEnter(Collision collision)
+    private void OnCollisionEnter(Collision collision)
     {
+	    // Note (Declan Simkins): Shouldn't need this; the damage script
+	    // automatically damages anything with a health script so this
+	    // will damage the character twice
+	    // If we need the damage to be modulated by some character property
+	    // we could add a health subclass that delegates some damage
+	    // calculations to the character and then applies the damage
         Debug.Log("Collision with " + collision.gameObject.name);
         // check if character is hit by a bullet
         if(collision.gameObject.tag == "EnemyBullet"){
@@ -120,4 +136,25 @@ public class CharacterController : MonoBehaviour
         }
     }
 
+    public void Add_Weapon(GameObject weapon_obj)
+    {
+	    Weapon weapon = weapon_obj.GetComponent<Weapon>();
+	    weapon_obj.transform.parent = this.transform;
+	    // Should be the point at which the weapon needs to be held
+	    // by the character sprite which we can mark with an empty
+	    // game object
+	    weapon.transform.position = this.transform.position;
+	    this.weapons.Add(weapon);
+	    if (this.weapons.Count == 1) {
+		    this.Set_Active_Weapon(this.active_weapon_i);
+	    }
+    }
+
+    private void Set_Active_Weapon(int weapon_i)
+    {
+	    // Change weapon sprite
+	    weapon_i %= this.weapons.Count;
+	    this.active_weapon = this.weapons[weapon_i];
+	    this.active_weapon_i = weapon_i;
+    }
 }

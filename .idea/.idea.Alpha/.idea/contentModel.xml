@@ -9,13 +9,17 @@
       <e p="Assets" t="Include">
         <e p="Scripts" t="Include">
           <e p="_SNSSensor.cs" t="Include" />
-          <e p="Camera_Follow.cs" t="Include" />
+          <e p="Camera" t="Include">
+            <e p="Camera_Follow.cs" t="Include" />
+          </e>
           <e p="CharacterScripts" t="Include">
             <e p="CharacterController.cs" t="Include" />
             <e p="CharacterMotor.cs" t="Include" />
           </e>
-          <e p="Damage.cs" t="Include" />
-          <e p="Damage_Continuous.cs" t="Include" />
+          <e p="Damage" t="Include">
+            <e p="Damage.cs" t="Include" />
+            <e p="Damage_Continuous.cs" t="Include" />
+          </e>
           <e p="Enemy Scripts" t="Include">
             <e p="BasicMartianController.cs" t="Include" />
             <e p="BasicMartianMotor.cs" t="Include" />

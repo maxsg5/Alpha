@@ -104,4 +104,17 @@ public class Interactable : MonoBehaviour
 		this.player_in_range = false;
 		this.prompt_text_element.gameObject.SetActive(false);
 	}
+
+	public void Destroy_Interactable()
+	{
+		this.prompt_text_element.gameObject.SetActive(false);
+		Destroy(this.GetComponent<Interactable>());
+	}
+
+	public void Disable_Interactable()
+	{
+		this.prompt_text_element.gameObject.SetActive(false);
+		this.gameObject.GetComponent<Interactable>().enabled = false;
+		this.gameObject.GetComponent<Collider2D>().enabled = false;
+	}
 }
