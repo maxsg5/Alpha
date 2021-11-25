@@ -16,6 +16,7 @@ public class CharacterMotor : MonoBehaviour
     private bool facingRight = true;  // For determining which way the player is currently facing.
     private BoxCollider2D boxCollider; // The boxCollider of the character.
     private bool isClimbingLadder = false; // Is the character currently climbing a ladder?
+    private Animator animator; // The animator of the character.
     
 
     void Start()
@@ -23,6 +24,7 @@ public class CharacterMotor : MonoBehaviour
         physics = GetComponent<Rigidbody2D>();
         boxCollider = GetComponent<BoxCollider2D>();
         boxHeight = boxCollider.size.y;
+        animator = GetComponent<Animator>();
     }
     
     /// <summary>
@@ -125,4 +127,15 @@ public class CharacterMotor : MonoBehaviour
 		theScale.x *= -1;
 		transform.localScale = theScale;
 	}
+
+    public void HandleWalkAnimation(){
+        if(physics.velocity.x == 0){
+            animator.SetBool("walking", false);
+            animator.SetBool("idle", true);
+        }
+        if(physics.velocity.x != 0){
+            animator.SetBool("walking", true);
+            animator.SetBool("idle", false);
+        }
+    }
 }

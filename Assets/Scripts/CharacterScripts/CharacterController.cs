@@ -96,6 +96,9 @@ public class CharacterController : MonoBehaviour
             weapon.Fire(); // Shoot the weapon
             audioSource.PlayOneShot(PistolShootSound); // Play the pistol shoot sound.
         }
+
+        //animations
+        motor.HandleWalkAnimation();
     }
 
 
