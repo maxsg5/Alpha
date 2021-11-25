@@ -128,6 +128,12 @@ public class CharacterMotor : MonoBehaviour
 		transform.localScale = theScale;
 	}
 
+    /// <summary>
+    /// Handles the switching between walking and idle animations based on character velocity.
+    /// </summary>
+    /// Author: Max Schafer
+    /// Date: 2021-11-25
+    /// Description: Initial Testing.
     public void HandleWalkAnimation(){
         if(physics.velocity.x == 0){
             animator.SetBool("walking", false);
