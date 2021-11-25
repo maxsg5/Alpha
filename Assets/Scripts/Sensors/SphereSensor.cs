@@ -13,16 +13,31 @@ using UnityEngine;
 /// radius2			Radius squared
 public class SphereSensor : Sensor
 {
-	public float radius;
-	public float radius2;
+	// Note (Declan Simkins): Changed to private fields with public properties
+	// to prevent desync of radius, radius2
+	[SerializeField] private float radius;
+	private float radius2;
 
+	public float Radius
+	{
+		get => this.radius;
+		set
+		{
+			this.radius = value;
+			this.radius2 = this.radius * this.radius;
+		}
+	}
+	protected float Radius2 => this.radius2;
+
+	// Note (Declan Simkins): Changed to protected virtual so that
+	// subclasses can call this in their Start method override
 	/// <summary>
 	/// Sets the radius of the circle
 	/// </summary>
 	/// 
 	/// Date		Author		Description
 	/// 2021-10-14	JC			Initial testing
-	void Start()
+	protected virtual void Start()
 	{
 		SetRadius(radius);
 	}
@@ -52,6 +67,7 @@ public class SphereSensor : Sensor
 	public override bool CanSee(Transform target)
 	{
 		Vector3 delta = target.position - transform.position;
+		Debug.DrawRay(transform.position, delta, Color.red);
 
 		if (delta.sqrMagnitude <= radius2)
 		{

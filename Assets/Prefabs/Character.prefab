@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 1885823169647732777}
   - component: {fileID: 1885823169647732778}
   - component: {fileID: 1885823169647732790}
+  - component: {fileID: 6494931752060047904}
   m_Layer: 0
   m_Name: Character
   m_TagString: Untagged
@@ -143,17 +144,27 @@ MonoBehaviour:
   m_GameObject: {fileID: 1885823169647732779}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6fb2523f8bc98c44c8f213372b667dcc, type: 3}
+  m_Script: {fileID: 11500000, guid: 252cec686bc1c784e825178fecb483e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 10
   jumpForce: 5
-  groundCheck: {fileID: 0}
-  checkRadius: 1
+  extraJumpsValue: 1
+--- !u!114 &6494931752060047904
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1885823169647732779}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6a6671c63ad81084cb4b999402213d22, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
   whatIsGround:
     serializedVersion: 2
     m_Bits: 64
-  extraJumpsValue: 1
 --- !u!1 &3893814133247302921
 GameObject:
   m_ObjectHideFlags: 0

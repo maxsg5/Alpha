@@ -3,21 +3,22 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(Rigidbody2D))]
 public class Projectile : MonoBehaviour
 {
 	public float speed = 5.0f;
 	
 	[SerializeField] private float despawn_timer = 3.0f;
-	private Vector2 direction = Vector2.right;
+	private Vector2 direction;
 
-    void Start()
+    private void Start()
     {
         Destroy(this.gameObject, this.despawn_timer);
-    }
-
-    void Update()
-    {
-        this.gameObject.transform.Translate(this.speed * Time.deltaTime * this.direction);
+        Vector3 right = this.transform.right;
+        this.direction = new Vector2(right.x, right.y);
+        Vector3 velocity = this.direction * this.speed;
+        Rigidbody2D rb = this.GetComponent<Rigidbody2D>();
+        rb.velocity = velocity;
     }
 
     protected virtual void OnTriggerEnter2D(Collider2D other)

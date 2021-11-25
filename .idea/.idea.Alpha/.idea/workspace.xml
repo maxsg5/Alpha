@@ -10,19 +10,57 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
+  </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Weapon.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Weapons/Weapon.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Damage.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Weapons/Weapon_Single_Shot.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Health.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Weapons/Weapon_Beam.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Damage_Continuous.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <changedPaths>
       <option value="$PROJECT_DIR$/Assets/Scripts/Health.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Weapon.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Fill_Bar.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Projectile.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Damage.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Projectile_Pass_Through.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Toggle.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Door.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Toggles/Disabler.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Sensors/SectorSensor.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Sensors/SphereSensor.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Toggles/Colour_Switcher.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Toggles/Interactable.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Toggles/Toggle.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Interactables/Door.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Interactables/Toggle.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Interactables/Colour_Switcher.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Interactables/Interactable.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Enemy Scripts/Boomer.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Projectile.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Character.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Weapon.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Shotgun.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Weapons/Multi_Shot_Weapon.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Weapons/Single_Shot_Weapon.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Damage.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Weapons/Projectile.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Weapons/Beam_Weapon.cs" />
+      <option value="$PROJECT_DIR$/Assets/Projectile_Beam.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Weapons/Weapon_Beam.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Weapons/Weapon_Single_Shot.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Weapons/Weapon_Multi_Shot.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Weapons/Weapon.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Damage_Continuous.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Weapons/Projectile_Beam.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Camera_Follow.cs" />
     </changedPaths>
   </component>
   <component name="ProjectId" id="1z1ikSEWIAJLT9puI77EhNlOTyZ" />
@@ -74,6 +112,19 @@
       <updated>1633322142464</updated>
       <workItem from="1633322149449" duration="3995000" />
       <workItem from="1633330853884" duration="885000" />
+      <workItem from="1634648530653" duration="2868000" />
+      <workItem from="1634946851746" duration="9434000" />
+      <workItem from="1635182023793" duration="2867000" />
+      <workItem from="1635185774671" duration="168000" />
+      <workItem from="1635504525511" duration="10249000" />
+      <workItem from="1635622061982" duration="3682000" />
+      <workItem from="1635757921589" duration="6478000" />
+      <workItem from="1635764783030" duration="127000" />
+      <workItem from="1635787443913" duration="2066000" />
+      <workItem from="1635790433817" duration="302000" />
+      <workItem from="1636020354651" duration="4066000" />
+      <workItem from="1636024884238" duration="4605000" />
+      <workItem from="1637184798726" duration="4628000" />
     </task>
     <servers />
   </component>

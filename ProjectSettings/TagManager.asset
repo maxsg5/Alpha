@@ -40,6 +40,9 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Props
+    uniqueID: 778864965
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0

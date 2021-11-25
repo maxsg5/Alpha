@@ -16,16 +16,18 @@ public class SectorSensor : SphereSensor
     public float angle;
     private float minCosine;
 
+    // Note (Declan Simkins): Changed Start to override and call the
+    // base class's Start method
     /// <summary>
     /// Sets the radius and angle of view
     /// </summary>
     /// 
     /// Date        Author      Description
     /// 2021-10-13  JC          Initial Testing
-    void Start()
+    protected override void Start()
     {
-        SetRadius(radius);
-        SetAngle(angle);
+	    base.Start();
+	    SetAngle(angle);
     }
 
     /// <summary>
@@ -53,10 +55,10 @@ public class SectorSensor : SphereSensor
     override public bool CanSee(Transform target) {
         Vector3 heading = target.position - gameObject.transform.position;
 
-        if (heading.sqrMagnitude <= radius2 && Vector3.Dot(heading.normalized, transform.forward) >= minCosine)
+        if (heading.sqrMagnitude <= Radius2 && Vector3.Dot(heading.normalized, transform.forward) >= minCosine)
         {
             RaycastHit hit;
-            if (Physics.Raycast(transform.position, heading, out hit, radius))
+            if (Physics.Raycast(transform.position, heading, out hit, Radius))
                 return hit.transform == target;
         }
         return false;
