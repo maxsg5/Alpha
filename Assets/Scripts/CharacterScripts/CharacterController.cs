@@ -83,6 +83,8 @@ public class CharacterController : MonoBehaviour
         {
             motor.Jump(jumpForce); // Jump
         }
+        //climbing ladders
+        motor.LadderCheck();
 
         //shooting
         if (Input.GetMouseButtonDown(0)) // If the left mouse button is pressed
