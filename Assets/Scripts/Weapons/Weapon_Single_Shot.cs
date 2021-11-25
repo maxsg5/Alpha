@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class Weapon_Single_Shot : Weapon
 {
-	protected override List<Collider2D> Spawn_Projectile()
+
+    protected override List<Collider2D> Spawn_Projectile()
 	{
 		GameObject projectile = Instantiate(
 			this.projectile_prefab

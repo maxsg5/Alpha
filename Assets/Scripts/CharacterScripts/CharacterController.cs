@@ -18,6 +18,8 @@ public class CharacterController : MonoBehaviour
     public float speed = 10f; // The speed the character moves at.
     public float jumpForce = 5f; // The force applied to the character when it jumps.
     public int extraJumpsValue; // The amount of extra jumps the character has.
+    public AudioClip PistolShootSound; // The sound the character makes when it shoots the pistol.
+
     #endregion
 
     #region Private Variables
@@ -26,6 +28,7 @@ public class CharacterController : MonoBehaviour
     private Weapon weapon; // The weapon the character is holding
     private Health health; // Reference to the health script.
     private CharacterMotor motor; // Reference to the character motor script.
+    private AudioSource audioSource; // Reference to the audio source.
     #endregion
 
 
@@ -42,6 +45,7 @@ public class CharacterController : MonoBehaviour
         motor = GetComponent<CharacterMotor>();
         health = GetComponent<Health>(); // Get the health script
         weapon = GetComponentInChildren<Weapon>(); // Get the weapon script from the child object
+        audioSource = GetComponent<AudioSource>(); // Get the audio source.
         
     }
 
@@ -90,6 +94,7 @@ public class CharacterController : MonoBehaviour
         if (Input.GetMouseButtonDown(0)) // If the left mouse button is pressed
         {
             weapon.Fire(); // Shoot the weapon
+            audioSource.PlayOneShot(PistolShootSound); // Play the pistol shoot sound.
         }
     }
 
@@ -103,6 +108,7 @@ public class CharacterController : MonoBehaviour
     /// Description: Initial Testing.
     public void Take_Damage(float damage){
         //call the health class to deal the damage to the character.
+        Debug.Log("Taking Damage");
         health.Take_Damage(damage);
     }
 
@@ -124,6 +130,7 @@ public class CharacterController : MonoBehaviour
             Debug.Log("Weapon touched");
             collision.gameObject.transform.parent = this.transform;
             collision.gameObject.GetComponent<Collider2D>().enabled = false;
+            collision.gameObject.GetComponent<Weapon_Single_Shot>().enabled = true;
             weapon = collision.gameObject.GetComponent<Weapon>();
         }
     }
