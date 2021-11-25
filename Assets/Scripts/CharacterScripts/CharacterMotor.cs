@@ -46,14 +46,12 @@ public class CharacterMotor : MonoBehaviour
         Debug.DrawRay(boxCollider.bounds.center + new Vector3(boxCollider.bounds.extents.x, 0), Vector2.down * (boxCollider.bounds.extents.y + extraHeight), rayColor);
         Debug.DrawRay(boxCollider.bounds.center - new Vector3(boxCollider.bounds.extents.x, 0), Vector2.down * (boxCollider.bounds.extents.y + extraHeight), rayColor);
         Debug.DrawRay(boxCollider.bounds.center - new Vector3(boxCollider.bounds.extents.x, boxCollider.bounds.extents.y + extraHeight), Vector2.right * (boxCollider.bounds.extents.x), rayColor);
-        Debug.Log(raycastHit.collider);
         return raycastHit.collider != null;
     }
 
     public void LadderCheck(){
         RaycastHit2D ladderCast = Physics2D.Raycast(transform.position, Vector2.up, 5f, whatIsLadder);
         Debug.DrawRay(transform.position, Vector2.up * 5f, Color.green);
-        Debug.Log(ladderCast.collider);
         if(ladderCast.collider != null){
             if(Input.GetKeyDown(KeyCode.W)){
                 isClimbingLadder = true;

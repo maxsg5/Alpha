@@ -113,12 +113,18 @@ public class CharacterController : MonoBehaviour
     /// Author: Max Schafer
     /// Date: 2021-11-12
     /// Description: Initial Testing.
-    void OnCollisionEnter(Collision collision)
+    void OnCollisionEnter2D(Collision2D collision)
     {
         Debug.Log("Collision with " + collision.gameObject.name);
         // check if character is hit by a bullet
         if(collision.gameObject.tag == "EnemyBullet"){
             Take_Damage(10);
+        }
+        if(collision.gameObject.tag == "Weapon"){
+            Debug.Log("Weapon touched");
+            collision.gameObject.transform.parent = this.transform;
+            collision.gameObject.GetComponent<Collider2D>().enabled = false;
+            weapon = collision.gameObject.GetComponent<Weapon>();
         }
     }
 
