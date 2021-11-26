@@ -10,10 +10,13 @@ using UnityEngine;
 public class CharacterMotor : MonoBehaviour
 {
     public LayerMask whatIsGround; // The layer that is considered ground.
+    public LayerMask whatIsLadder; // The layer that is considered ladder.
     private Rigidbody2D physics; // The rigidbody of the character.
     private float boxHeight; // height of the boxCast for ground detection.
     private bool facingRight = true;  // For determining which way the player is currently facing.
     private BoxCollider2D boxCollider; // The boxCollider of the character.
+    private bool isClimbingLadder = false; // Is the character currently climbing a ladder?
+    private Animator animator; // The animator of the character.
     
 
     void Start()
@@ -21,6 +24,7 @@ public class CharacterMotor : MonoBehaviour
         physics = GetComponent<Rigidbody2D>();
         boxCollider = GetComponent<BoxCollider2D>();
         boxHeight = boxCollider.size.y;
+        animator = GetComponent<Animator>();
     }
     
     /// <summary>
@@ -44,8 +48,30 @@ public class CharacterMotor : MonoBehaviour
         Debug.DrawRay(boxCollider.bounds.center + new Vector3(boxCollider.bounds.extents.x, 0), Vector2.down * (boxCollider.bounds.extents.y + extraHeight), rayColor);
         Debug.DrawRay(boxCollider.bounds.center - new Vector3(boxCollider.bounds.extents.x, 0), Vector2.down * (boxCollider.bounds.extents.y + extraHeight), rayColor);
         Debug.DrawRay(boxCollider.bounds.center - new Vector3(boxCollider.bounds.extents.x, boxCollider.bounds.extents.y + extraHeight), Vector2.right * (boxCollider.bounds.extents.x), rayColor);
-        Debug.Log(raycastHit.collider);
         return raycastHit.collider != null;
+    }
+
+    public void LadderCheck(){
+        RaycastHit2D ladderCast = Physics2D.Raycast(transform.position, Vector2.up, 5f, whatIsLadder);
+        Debug.DrawRay(transform.position, Vector2.up * 5f, Color.green);
+        if(ladderCast.collider != null){
+            if(Input.GetKeyDown(KeyCode.W)){
+                isClimbingLadder = true;
+            }
+        }else{
+            isClimbingLadder = false;
+            physics.gravityScale = 1;
+        }
+        if(isClimbingLadder){
+            Climb();
+        }
+    }
+
+
+    private void Climb(){
+        float inputVerticle = Input.GetAxisRaw("Vertical");
+        physics.velocity = new Vector2(physics.velocity.x, inputVerticle * 5f);
+        physics.gravityScale = 0f;
     }
 
     /// <summary>
@@ -101,4 +127,21 @@ public class CharacterMotor : MonoBehaviour
 		theScale.x *= -1;
 		transform.localScale = theScale;
 	}
+
+    /// <summary>
+    /// Handles the switching between walking and idle animations based on character velocity.
+    /// </summary>
+    /// Author: Max Schafer
+    /// Date: 2021-11-25
+    /// Description: Initial Testing.
+    public void HandleWalkAnimation(){
+        if(physics.velocity.x == 0){
+            animator.SetBool("walking", false);
+            animator.SetBool("idle", true);
+        }
+        if(physics.velocity.x != 0){
+            animator.SetBool("walking", true);
+            animator.SetBool("idle", false);
+        }
+    }
 }

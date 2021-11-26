@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Ground
   - Target
+  - Ladder
+  - Weapon
   layers:
   - Default
   - TransparentFX
@@ -14,7 +16,7 @@ TagManager:
   - Water
   - UI
   - Ground
-  - 
+  - Ladder
   - 
   - 
   - 
@@ -45,4 +47,7 @@ TagManager:
     locked: 0
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: ForeGround
+    uniqueID: 4266957743
     locked: 0

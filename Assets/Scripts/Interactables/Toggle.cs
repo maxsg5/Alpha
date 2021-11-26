@@ -7,13 +7,21 @@ using UnityEngine;
 /// <summary>
 /// Tracks whether the toggle is active or inactive and triggers an event
 /// when the state changes
+ /// Max Schafer, 2020-11-19: Added audio source to toggle so sound effect is played on interaction
 /// </summary>
 public class Toggle : MonoBehaviour
 {
 	public delegate void On_Toggle(bool state);
 	public event On_Toggle Toggled;
-	
-	private bool active = false;
+
+    private AudioSource audio;
+
+    private bool active = false;
+
+	private void Awake()
+	{
+		audio = GetComponent<AudioSource>();
+	}
 	public bool Active
 	{
 		get => this.active;
@@ -36,5 +44,6 @@ public class Toggle : MonoBehaviour
 	public void Toggle_Active()
 	{
 		this.Active = !this.active;
+		audio.Play();
 	}
 }
