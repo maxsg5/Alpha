@@ -79,4 +79,17 @@ public class SphereSensor : Sensor
 		}
 		return false;
 	}
+
+	/// <summary>
+    /// This is used for debugging purposes to help visualise the sphere
+    /// using a wire frame in the scene view.
+    /// </summary>
+    /// Author: Max Schafer
+    /// Date: 2021-10-20
+    /// Description Initial testing
+    void OnDrawGizmos()
+    {
+        Gizmos.color = Color.white;
+        Gizmos.DrawWireSphere(transform.position, radius);
+    }
 }

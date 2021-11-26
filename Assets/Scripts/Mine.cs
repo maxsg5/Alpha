@@ -33,7 +33,6 @@ public class Mine : MonoBehaviour
     void Start()
     {
         sensor = GetComponent<SphereSensor>();
-        player = GetComponent<CharacterController>();
     }
 
     ///<summary>
