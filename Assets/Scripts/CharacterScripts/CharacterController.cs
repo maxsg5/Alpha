@@ -99,6 +99,7 @@ public class CharacterController : MonoBehaviour
 
         //animations
         motor.HandleWalkAnimation();
+        motor.HandleJumpAnimation();
     }
 
 

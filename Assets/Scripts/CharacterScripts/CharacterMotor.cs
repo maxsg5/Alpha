@@ -25,6 +25,8 @@ public class CharacterMotor : MonoBehaviour
         boxCollider = GetComponent<BoxCollider2D>();
         boxHeight = boxCollider.size.y;
         animator = GetComponent<Animator>();
+        animator.SetBool("grounded", true);
+        animator.SetBool("jumping", false);
     }
     
     /// <summary>
@@ -48,6 +50,8 @@ public class CharacterMotor : MonoBehaviour
         Debug.DrawRay(boxCollider.bounds.center + new Vector3(boxCollider.bounds.extents.x, 0), Vector2.down * (boxCollider.bounds.extents.y + extraHeight), rayColor);
         Debug.DrawRay(boxCollider.bounds.center - new Vector3(boxCollider.bounds.extents.x, 0), Vector2.down * (boxCollider.bounds.extents.y + extraHeight), rayColor);
         Debug.DrawRay(boxCollider.bounds.center - new Vector3(boxCollider.bounds.extents.x, boxCollider.bounds.extents.y + extraHeight), Vector2.right * (boxCollider.bounds.extents.x), rayColor);
+        animator.SetBool("grounded", raycastHit.collider != null);
+        
         return raycastHit.collider != null;
     }
 
@@ -61,9 +65,14 @@ public class CharacterMotor : MonoBehaviour
         }else{
             isClimbingLadder = false;
             physics.gravityScale = 1;
+            animator.SetBool("climbing", false);
         }
         if(isClimbingLadder){
             Climb();
+            animator.SetBool("climbing", true);
+            animator.SetBool("grounded", false);
+            animator.SetBool("jumping", false);
+            animator.SetBool("walking", false);
         }
     }
 
@@ -84,6 +93,7 @@ public class CharacterMotor : MonoBehaviour
     public void Jump (float jumpForce)
     {
          physics.velocity = Vector2.up * jumpForce; // Add a force to the rigidbody in the up direction
+         
     }
 
     /// <summary>
@@ -128,6 +138,13 @@ public class CharacterMotor : MonoBehaviour
 		transform.localScale = theScale;
 	}
 
+    public void HandleJumpAnimation(){
+        if(IsGrounded()){
+            animator.SetBool("jumping", false);
+        }else{
+            animator.SetBool("jumping", true);
+        }
+    }
     /// <summary>
     /// Handles the switching between walking and idle animations based on character velocity.
     /// </summary>
