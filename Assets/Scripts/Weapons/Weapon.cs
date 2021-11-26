@@ -52,7 +52,8 @@ public abstract class Weapon : MonoBehaviour
 	protected void LateUpdate()
 	{
 		if (character_collider.tag == "Enemy") {
-			this.transform.right = Vector2.right;
+			this.transform.right = Vector2.right * character_collider.transform.localScale.x;
+			
 		} else {
 			this.Rotate_To_Mouse();
 		}
