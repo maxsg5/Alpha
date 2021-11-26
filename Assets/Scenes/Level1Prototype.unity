@@ -99452,6 +99452,14 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 8300000, guid: 7e950513b9c6d734e8130770598861f3, type: 3}
     - target: {fileID: 1345889183812376921, guid: 67d8c0e71a0a44941bf621bde2af8d2a, type: 3}
+      propertyPath: ammo
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 1345889183812376921, guid: 67d8c0e71a0a44941bf621bde2af8d2a, type: 3}
+      propertyPath: max_ammo
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 1345889183812376921, guid: 67d8c0e71a0a44941bf621bde2af8d2a, type: 3}
       propertyPath: ammo_type
       value: 0
       objectReference: {fileID: 0}
