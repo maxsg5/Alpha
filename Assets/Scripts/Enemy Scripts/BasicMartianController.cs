@@ -32,6 +32,7 @@ public class BasicMartianController : MonoBehaviour
     private PathMove movement;
     private Weapon weapon;
     private Health health;
+    private Animator animator;
 
 
     /// <summary>
@@ -51,8 +52,9 @@ public class BasicMartianController : MonoBehaviour
         physics = GetComponent<Rigidbody2D>();
         weapon = GetComponent<Weapon>();
         health = GetComponent<Health>();
+        animator = GetComponent<Animator>();
         
-        motor = new BasicMartianMotor(transform, physics, weapon, movement, health);
+        motor = new BasicMartianMotor(transform, physics, weapon, movement, health, animator);
 
         state = STATE.Move;
         movement.setMoveSpeed(moveSpeed);
