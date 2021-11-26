@@ -6,8 +6,8 @@ public class BomberMotor : Enemy
 {
 
     public BomberMotor(Transform transform, Rigidbody2D rigidbody, Weapon weapon, 
-                PathMove movement, Health health):base(transform, rigidbody, weapon, 
-                movement, health) {
+                PathMove movement, Health health, Animator animator):base(transform, rigidbody, weapon, 
+                movement, health, animator) {
         
     }
 
@@ -19,5 +19,10 @@ public class BomberMotor : Enemy
     public override void Attack()
     {
         weapon.Fire();
+    }
+
+    public override void Idle()
+    {
+        throw new System.NotImplementedException();
     }
 }

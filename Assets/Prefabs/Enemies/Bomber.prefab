@@ -212,10 +212,9 @@ GameObject:
   - component: {fileID: 1536065354162302155}
   - component: {fileID: 2738583065436069746}
   - component: {fileID: 2649246852711942609}
-  - component: {fileID: 2368567600036885328}
   m_Layer: 2
   m_Name: Bomber
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -303,19 +302,3 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   max_health: 100
   health: 100
---- !u!114 &2368567600036885328
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4871099400508791683}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3b66a19d3bd441b4fb73d66ab93d8e4f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  max_ammo: 10
-  ammo: 10
-  projectile_prefab: {fileID: 5118499405664884827, guid: 5d053696b54d63e48b6f7ced5e6ef819, type: 3}
-  ammo_type: 3

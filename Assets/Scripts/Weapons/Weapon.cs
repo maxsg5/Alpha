@@ -50,7 +50,12 @@ public abstract class Weapon : MonoBehaviour
 
 	protected void LateUpdate()
 	{
-		this.Rotate_To_Mouse();
+		if (character_collider.tag == "Enemy") {
+			this.transform.right = Vector2.right;
+		} else {
+			this.Rotate_To_Mouse();
+		}
+		
 	}
 
 	public void Fire()

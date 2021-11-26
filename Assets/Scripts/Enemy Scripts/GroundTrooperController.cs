@@ -31,8 +31,9 @@ public class GroundTrooperController : MonoBehaviour
     private STATE state;
     private Rigidbody2D physics;
     private PathMove movement;
-    private Weapon weapon;
+    public Weapon weapon;
     private Health health;
+    public Animator animator;
 
 
     /// <summary>
@@ -51,10 +52,11 @@ public class GroundTrooperController : MonoBehaviour
         // This class uses a sector sensor
         sensor = transform.Find("Sensor").GetComponent<SNSSector>();
         physics = GetComponent<Rigidbody2D>();
-        weapon = GetComponent<Weapon>();
+        weapon = transform.Find("Weapon").GetComponent<Weapon_Single_Shot>();
         health = GetComponent<Health>();
+        animator = GetComponent<Animator>();
 
-        motor = new GroundTrooperMotor(transform, physics, weapon, movement, health);
+        motor = new GroundTrooperMotor(transform, physics, weapon, movement, health, animator);
 
         state = STATE.Move;
         movement.setMoveSpeed(moveSpeed);
@@ -90,11 +92,12 @@ public class GroundTrooperController : MonoBehaviour
             state = STATE.Attack;
     }
 
-    void handleAttack(){
+    void handleAttack() {
         motor.Attack();
         if (!sensor.CanSee(target))
             state = STATE.Move;
     }
+
 
 
 }

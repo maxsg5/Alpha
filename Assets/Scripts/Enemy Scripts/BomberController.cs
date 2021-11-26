@@ -32,6 +32,7 @@ public class BomberController : MonoBehaviour
     private PathMove movement;
     private Weapon weapon;
     private Health health;
+    private Animator animator;
 
     /// <summary>
     /// Gets the movement, sensor, and rigidbody components of the enemy, as
@@ -49,8 +50,9 @@ public class BomberController : MonoBehaviour
         physics = GetComponent<Rigidbody2D>();
         weapon = GetComponent<Weapon>();
         health = GetComponent<Health>();
+        animator = GetComponent<Animator>();
 
-        motor = new BomberMotor(transform, physics, weapon, movement, health);
+        motor = new BomberMotor(transform, physics, weapon, movement, health, animator);
 
         state = STATE.Move;
         movement.setMoveSpeed(moveSpeed);
