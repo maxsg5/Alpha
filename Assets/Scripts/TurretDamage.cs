@@ -29,7 +29,6 @@ public class TurretDamage : MonoBehaviour
     private int hits;
     private int MAX_HITS = 3;
 
-
     ///<summary>
     ///Initialize the hits variable
     ///</summary>
@@ -47,7 +46,7 @@ public class TurretDamage : MonoBehaviour
     ///2021-11-22   BS          Destroy the turret
     void OnCollisionEnter(Collision collision){
         hits += 1;
-        if(hits == 3){
+        if(hits == MAX_HITS){
             Destroy(gateleft);
             Destroy(gateright);
             Destroy(gatetop);
