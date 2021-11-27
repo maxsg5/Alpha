@@ -94,6 +94,7 @@ public abstract class Weapon : MonoBehaviour
 		Vector3 aim_direction = mouse_world_point - centre.position;
 		this.aim_angle = Mathf.Atan2(aim_direction.y, aim_direction.x) * Mathf.Rad2Deg;
 		centre.eulerAngles = new Vector3(0, 0, this.aim_angle);
+		
 		bool aiming_left = this.aim_angle > 90 || this.aim_angle < -90;
 		this.GetComponent<SpriteRenderer>().flipY = aiming_left;
 	}

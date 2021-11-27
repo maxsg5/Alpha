@@ -153,18 +153,26 @@ public class CharacterController : MonoBehaviour
     {
 	    Weapon weapon = weapon_obj.GetComponent<Weapon>();
 	    weapon_obj.transform.parent = this.pivot.transform;
+	    
 	    Vector3 local_scale = weapon_obj.transform.localScale;
 	    weapon_obj.transform.localScale = new Vector3(
 		    Mathf.Abs(local_scale.x)
 		    , local_scale.y
 		    , local_scale.z
 		);
-
-	    weapon.transform.position = this.holster.transform.position;
 	    
+	    weapon_obj.transform.rotation = this.pivot.transform.rotation;
+	    weapon_obj.transform.position = this.holster.transform.position;
+
 	    this.weapons.Add(weapon);
 	    if (this.weapons.Count == 1) {
 		    this.Set_Active_Weapon(this.active_weapon_i);
+		    weapon_obj.SetActive(true);
+	    }
+	    else {
+		    weapon_obj.SetActive(false);
+		    weapon_obj.transform.rotation = this.active_weapon.transform.rotation;
+		    weapon_obj.transform.position = this.active_weapon.transform.position;
 	    }
     }
 
@@ -194,6 +202,8 @@ public class CharacterController : MonoBehaviour
 	    weapon_i %= this.weapons.Count;
 	    this.active_weapon = this.weapons[weapon_i];
 	    this.active_weapon_i = weapon_i;
+	    this.active_weapon.gameObject.SetActive(true);
+
 	    this.Weapon_Changed?.Invoke(this.active_weapon);
     }
 }
