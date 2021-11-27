@@ -54,8 +54,6 @@ public class CharacterController : MonoBehaviour
         extraJumps = extraJumpsValue; // Set the number of extra jumps the character has.
         motor = GetComponent<CharacterMotor>();
         health = GetComponent<Health>(); // Get the health script
-        this.active_weapon = GetComponentInChildren<Weapon>(); // Get the weapon script from the child object
-        this.weapons.Add(this.active_weapon);
         audioSource = GetComponent<AudioSource>(); // Get the audio source.
     }
 
@@ -114,6 +112,17 @@ public class CharacterController : MonoBehaviour
 	        this.Set_Active_Weapon(this.active_weapon_i + 1);
         }
 
+        Vector3 pos = this.transform.position;
+        bool aiming_left = Utilities.Mouse.Angle_To_Mouse(pos) > 90;
+        aiming_left |= Utilities.Mouse.Angle_To_Mouse(pos) < -90;
+        if (aiming_left) 
+        {
+	        this.motor.Face_Left();
+        }
+        else {
+	        this.motor.Face_Right();
+        }
+
         //animations
         motor.HandleWalkAnimation();
         motor.HandleJumpAnimation();
@@ -131,18 +140,6 @@ public class CharacterController : MonoBehaviour
         //call the health class to deal the damage to the character.
         Debug.Log("Taking Damage");
         health.Take_Damage(damage);
-    }
-
-
-    /// <summary>
-    /// Checks for collisions
-    /// </summary>
-    /// Author: Max Schafer
-    /// Date: 2021-11-12
-    /// Description: Initial Testing.
-    void OnCollisionEnter2D(Collision2D collision)
-    {
-        Debug.Log("Collision with " + collision.gameObject.name);
     }
 
     /// <summary>
@@ -190,7 +187,10 @@ public class CharacterController : MonoBehaviour
     /// </param>
     private void Set_Active_Weapon(int weapon_i)
     {
-	    this.active_weapon.gameObject.SetActive(false);
+	    if (this.active_weapon != null) {
+		    this.active_weapon.gameObject.SetActive(false);
+	    }
+
 	    weapon_i %= this.weapons.Count;
 	    this.active_weapon = this.weapons[weapon_i];
 	    this.active_weapon_i = weapon_i;

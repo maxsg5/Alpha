@@ -7,6 +7,10 @@
       <e p="Alpha.sln" t="IncludeFlat" />
       <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
       <e p="Assets" t="Include">
+        <e p="CameraFollow.cs" t="Include" />
+        <e p="ChangeToGreen.cs" t="Include" />
+        <e p="DoorSwitch.cs" t="Include" />
+        <e p="Pistol.cs" t="Include" />
         <e p="Scripts" t="Include">
           <e p="_SNSSensor.cs" t="Include" />
           <e p="Camera" t="Include">
@@ -51,7 +55,11 @@
           </e>
           <e p="SNSSector.cs" t="Include" />
           <e p="SNSSphere.cs" t="Include" />
+          <e p="TurretDamage.cs" t="Include" />
           <e p="UI_Health_Tracker.cs" t="Include" />
+          <e p="Utilities" t="Include">
+            <e p="Mouse.cs" t="Include" />
+          </e>
           <e p="Weapons" t="Include">
             <e p="Ammo_Pickup.cs" t="Include" />
             <e p="Projectile.cs" t="Include" />
@@ -63,6 +71,7 @@
             <e p="Weapon_Single_Shot.cs" t="Include" />
           </e>
         </e>
+        <e p="SlidingDoor.cs" t="Include" />
         <e p="TextMesh Pro" t="Include">
           <e p="Examples &amp; Extras" t="Include">
             <e p="Fonts" t="Include">
