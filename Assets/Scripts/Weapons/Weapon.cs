@@ -17,17 +17,27 @@ public abstract class Weapon : MonoBehaviour
 	public delegate void On_Ammo_Changed(int new_amount);
 	public event On_Ammo_Changed Ammo_Changed;
 
-	
+	[SerializeField] private string name;
 	[SerializeField] private int max_ammo, ammo;
 	[SerializeField] private float fire_rate = 1; // shots per second
 	[SerializeField] private Collider2D character_collider;
-	
+	[SerializeField] private List<Collider2D> ignore_colliders = new List<Collider2D>();
+	[SerializeField] private Transform pivot;
+
+	private float aim_angle = 0;
 	private float fire_delay, last_shot_time;
 	private Camera main_camera;
 
+	//we might want to add public audioClips for each weapon sound and swap them out in the audioSource.
+	private AudioSource audio_source; //audio source for shooting sound
+
 	[SerializeField] protected GameObject projectile_prefab;
-	
+
+	public string Name => this.name;
+	public int Max_Ammo => this.max_ammo;
+	public int Current_Ammo => this.ammo;
 	public Weapon.Ammo ammo_type;
+	public float Aim_Angle => this.aim_angle;
 
 	public float Fire_Rate
 	{
@@ -47,6 +57,8 @@ public abstract class Weapon : MonoBehaviour
 		this.fire_delay = 1 / this.fire_rate; // delay between shots
 		this.last_shot_time = -10;
 		this.main_camera = GameObject.FindWithTag("MainCamera").GetComponent<Camera>();
+		this.Ammo_Changed?.Invoke(this.ammo);
+		this.audio_source = GetComponent<AudioSource>();//audio source for shooting sound
 	}
 
 	protected void LateUpdate()
@@ -55,7 +67,7 @@ public abstract class Weapon : MonoBehaviour
 			this.transform.right = Vector2.right * character_collider.transform.localScale.x;
 			
 		} else {
-			this.Rotate_To_Mouse();
+			this.Rotate_To_Mouse(this.pivot);
 		}
 		
 	}
@@ -71,30 +83,38 @@ public abstract class Weapon : MonoBehaviour
 		}
 		this.ammo--;
 		this.last_shot_time = Time.time;
+		this.Ammo_Changed?.Invoke(this.ammo);
 
 		List<Collider2D> projectile_colliders = this.Spawn_Projectile();
+		this.audio_source.Play();//play the shooting sound
 		this.Ignore_Projectile_Collisions(projectile_colliders);
 	}
 
-	private void Rotate_To_Mouse()
+	private void Rotate_To_Mouse(Transform centre)
 	{
 		Vector3 mouse_pos = Input.mousePosition;
 		mouse_pos.z = 0;
 		Vector3 mouse_world_point = this.main_camera.ScreenToWorldPoint(mouse_pos);
 		mouse_world_point.z = 0;
-
-		this.transform.right = mouse_world_point - this.transform.position;
+		
+		Vector3 aim_direction = mouse_world_point - centre.position;
+		this.aim_angle = Mathf.Atan2(aim_direction.y, aim_direction.x) * Mathf.Rad2Deg;
+		centre.eulerAngles = new Vector3(0, 0, this.aim_angle);
+		
+		bool aiming_left = this.aim_angle > 90 || this.aim_angle < -90;
+		this.GetComponent<SpriteRenderer>().flipY = aiming_left;
 	}
 
 	private void Ignore_Projectile_Collisions(List<Collider2D> projectile_colliders)
 	{
 		for (int i = 0; i < projectile_colliders.Count; i++) {
-			// Ignore collision with object that spawned projectiles
-			Physics2D.IgnoreCollision(this.character_collider, projectile_colliders[i]);
-
 			// Ignore collision with other projectiles spawned
 			for (int j = i + 1; j < projectile_colliders.Count; j++) {
 				Physics2D.IgnoreCollision(projectile_colliders[i], projectile_colliders[j]);
+			}
+			
+			for (int j = i; j < this.ignore_colliders.Count; j++) {
+				Physics2D.IgnoreCollision(projectile_colliders[i], this.ignore_colliders[j]);
 			}
 		}
 	}
@@ -109,5 +129,18 @@ public abstract class Weapon : MonoBehaviour
 		// Could play an empty mag "click" sound or pop up a UI message or
 		// make the ammo counter flash red or ...
 		Debug.Log("No Ammo!");
+	}
+
+	public void Add_Ammo(int amount)
+	{
+		this.ammo += amount;
+		if (this.ammo > this.max_ammo) {
+			this.ammo = this.max_ammo;
+		}
+
+		if (this.ammo < 0) {
+			this.ammo = 0;
+		}
+		this.Ammo_Changed?.Invoke(this.ammo);
 	}
 }

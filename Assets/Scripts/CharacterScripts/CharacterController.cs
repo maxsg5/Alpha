@@ -7,28 +7,39 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 
+
+// TODO: Flip the weapon sprite upside down when it rotates; flip the character based on weapon rotation
 [RequireComponent(typeof(CharacterMotor))]
 [RequireComponent(typeof(Health))]
 [RequireComponent(typeof(Weapon))]
 public class CharacterController : MonoBehaviour
 {
+	#region Delegates and Events
+	public delegate void On_Weapon_Changed(Weapon new_weapon);
+	public event On_Weapon_Changed Weapon_Changed;
+	#endregion
+	
     #region Public Variables
     public float speed = 10f; // The speed the character moves at.
     public float jumpForce = 5f; // The force applied to the character when it jumps.
     public int extraJumpsValue; // The amount of extra jumps the character has.
     public AudioClip PistolShootSound; // The sound the character makes when it shoots the pistol.
-
     #endregion
 
     #region Private Variables
     private int extraJumps; // The number of extra jumps the character has.
     private bool isGrounded = false; // Whether or not the character is grounded.    
-    private Weapon weapon; // The weapon the character is holding
+    private Weapon active_weapon; // The weapon the character is holding
+    private int active_weapon_i = 0; // Index of the active weapon in the weapons list
+    private readonly List<Weapon> weapons = new List<Weapon>(); // Weapons currently in the character's possession.
     private Health health; // Reference to the health script.
     private CharacterMotor motor; // Reference to the character motor script.
     private AudioSource audioSource; // Reference to the audio source.
+    [SerializeField] private GameObject holster;
+    [SerializeField] private GameObject pivot;
     #endregion
 
 
@@ -38,15 +49,12 @@ public class CharacterController : MonoBehaviour
     /// Author: Max Schafer
     /// Date: 2021-10-23
     /// Description: Initial Testing.
-    void Start()
+    private void Start()
     {
         extraJumps = extraJumpsValue; // Set the number of extra jumps the character has.
-        //TODO: Get the weapon and health script.
         motor = GetComponent<CharacterMotor>();
         health = GetComponent<Health>(); // Get the health script
-        weapon = GetComponentInChildren<Weapon>(); // Get the weapon script from the child object
         audioSource = GetComponent<AudioSource>(); // Get the audio source.
-        
     }
 
 
@@ -56,11 +64,10 @@ public class CharacterController : MonoBehaviour
     /// Author: Max Schafer
     /// Date: 2021-10-23
     /// Description: Initial Testing.
-    void FixedUpdate()
+    private void FixedUpdate()
     {
         // Movement
         motor.Move(speed);
-
     }
 
     /// <summary>
@@ -69,17 +76,18 @@ public class CharacterController : MonoBehaviour
     /// Author: Max Schafer
     /// Date: 2021-11-12
     /// Description: Initial Testing.
-    void Update()
+    private void Update()
     {
         // Jumping
         // Check if the character is grounded.
-         if(motor.IsGrounded())
+	    if(motor.IsGrounded())
         { 
             // Reset the extra jumps
             extraJumps = extraJumpsValue; 
         }
-         //jumping
-        if (Input.GetKeyDown(KeyCode.Space) && extraJumps > 0) // If the space key is pressed and the character has extra jumps
+	    
+		//jumping
+		if (Input.GetKeyDown(KeyCode.Space) && extraJumps > 0) // If the space key is pressed and the character has extra jumps
         {
             motor.Jump(jumpForce); // Jump
             extraJumps--; // Decrease the number of extra jumps
@@ -93,12 +101,31 @@ public class CharacterController : MonoBehaviour
         //shooting
         if (Input.GetMouseButtonDown(0)) // If the left mouse button is pressed
         {
-            weapon.Fire(); // Shoot the weapon
-            audioSource.PlayOneShot(PistolShootSound); // Play the pistol shoot sound.
+	        if (this.active_weapon != null) {
+		        this.active_weapon.Fire(); // Shoot the weapon
+            	
+	        }
+        }
+        
+        // Switch to next weapon
+        if (Input.GetKeyDown(KeyCode.Q)) {
+	        this.Set_Active_Weapon(this.active_weapon_i + 1);
+        }
+
+        Vector3 pos = this.transform.position;
+        bool aiming_left = Utilities.Mouse.Angle_To_Mouse(pos) > 90;
+        aiming_left |= Utilities.Mouse.Angle_To_Mouse(pos) < -90;
+        if (aiming_left) 
+        {
+	        this.motor.Face_Left();
+        }
+        else {
+	        this.motor.Face_Right();
         }
 
         //animations
         motor.HandleWalkAnimation();
+        motor.HandleJumpAnimation();
     }
 
 
@@ -115,27 +142,68 @@ public class CharacterController : MonoBehaviour
         health.Take_Damage(damage);
     }
 
-
     /// <summary>
-    /// Checks for collisions
+    /// Adds a new weapon the character's list of weapons
     /// </summary>
-    /// Author: Max Schafer
-    /// Date: 2021-11-12
-    /// Description: Initial Testing.
-    void OnCollisionEnter2D(Collision2D collision)
+    /// <param name="weapon_obj">
+    /// Pre-instantiated (i.e. not a prefab) weapon to be added to the
+    /// character's list of weapons
+    /// </param>
+    public void Add_Weapon(GameObject weapon_obj)
     {
-        Debug.Log("Collision with " + collision.gameObject.name);
-        // check if character is hit by a bullet
-        if(collision.gameObject.tag == "EnemyBullet"){
-            Take_Damage(10);
-        }
-        if(collision.gameObject.tag == "Weapon"){
-            Debug.Log("Weapon touched");
-            collision.gameObject.transform.parent = this.transform;
-            collision.gameObject.GetComponent<Collider2D>().enabled = false;
-            collision.gameObject.GetComponent<Weapon_Single_Shot>().enabled = true;
-            weapon = collision.gameObject.GetComponent<Weapon>();
-        }
+	    Weapon weapon = weapon_obj.GetComponent<Weapon>();
+	    weapon_obj.transform.parent = this.pivot.transform;
+	    
+	    Vector3 local_scale = weapon_obj.transform.localScale;
+	    weapon_obj.transform.localScale = new Vector3(
+		    Mathf.Abs(local_scale.x)
+		    , local_scale.y
+		    , local_scale.z
+		);
+	    
+	    weapon_obj.transform.rotation = this.pivot.transform.rotation;
+	    weapon_obj.transform.position = this.holster.transform.position;
+
+	    this.weapons.Add(weapon);
+	    if (this.weapons.Count == 1) {
+		    this.Set_Active_Weapon(this.active_weapon_i);
+		    weapon_obj.SetActive(true);
+	    }
+	    else {
+		    weapon_obj.SetActive(false);
+		    weapon_obj.transform.rotation = this.active_weapon.transform.rotation;
+		    weapon_obj.transform.position = this.active_weapon.transform.position;
+	    }
     }
 
+    public void Add_Ammo(GameObject ammo_pickup_obj)
+    {
+	    Ammo_Pickup ammo_pickup = ammo_pickup_obj.GetComponent<Ammo_Pickup>();
+	    Weapon.Ammo ammo_type = ammo_pickup.Ammo_Type;
+	    foreach (Weapon weapon in this.weapons) {
+		    if (weapon.ammo_type == ammo_type) {
+			    weapon.Add_Ammo(ammo_pickup.Ammo_Amount);
+		    }
+	    }
+    }
+
+    /// <summary>
+    /// Switches the active weapon, treating the list of weapons as circular
+    /// </summary>
+    /// <param name="weapon_i">
+    /// Index of the weapon to be set as the active weapons
+    /// </param>
+    private void Set_Active_Weapon(int weapon_i)
+    {
+	    if (this.active_weapon != null) {
+		    this.active_weapon.gameObject.SetActive(false);
+	    }
+
+	    weapon_i %= this.weapons.Count;
+	    this.active_weapon = this.weapons[weapon_i];
+	    this.active_weapon_i = weapon_i;
+	    this.active_weapon.gameObject.SetActive(true);
+
+	    this.Weapon_Changed?.Invoke(this.active_weapon);
+    }
 }
