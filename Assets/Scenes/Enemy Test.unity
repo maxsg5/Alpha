@@ -208,6 +208,11 @@ BoxCollider2D:
   m_CorrespondingSourceObject: {fileID: 1885823169647732778, guid: 991599dd536696f46b8651a4d265e4e8, type: 3}
   m_PrefabInstance: {fileID: 246400821}
   m_PrefabAsset: {fileID: 0}
+--- !u!4 &246400829 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1885823169647732791, guid: 991599dd536696f46b8651a4d265e4e8, type: 3}
+  m_PrefabInstance: {fileID: 246400821}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &466932058 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4254096662918872229, guid: 5b6ca95990562c14b8b3582a718a7a02, type: 3}
@@ -775,7 +780,7 @@ PrefabInstance:
     - target: {fileID: 7401788184500927874, guid: 5b6ca95990562c14b8b3582a718a7a02, type: 3}
       propertyPath: target
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 246400829}
     - target: {fileID: 7713645325264127922, guid: 5b6ca95990562c14b8b3582a718a7a02, type: 3}
       propertyPath: angle
       value: 45
