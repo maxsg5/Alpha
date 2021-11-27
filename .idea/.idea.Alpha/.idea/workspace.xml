@@ -66,10 +66,10 @@
       <option value="$PROJECT_DIR$/Assets/Scripts/Weapons/Weapon_Beam.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Weapons/Ammo_Pickup.cs" />
       <option value="$PROJECT_DIR$/Assets/UI_Ammo_Tracker.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Weapons/Weapon.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Utilities/Mouse_Utilities.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Utilities/Mouse.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/CharacterScripts/CharacterMotor.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Weapons/Weapon.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/CharacterScripts/CharacterController.cs" />
     </changedPaths>
   </component>
@@ -141,7 +141,8 @@
       <workItem from="1637521436394" duration="4667000" />
       <workItem from="1637604060885" duration="810000" />
       <workItem from="1637966797554" duration="4207000" />
-      <workItem from="1637981370739" duration="1248000" />
+      <workItem from="1637981370739" duration="1784000" />
+      <workItem from="1637988360145" duration="1770000" />
     </task>
     <servers />
   </component>
