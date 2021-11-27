@@ -10,6 +10,8 @@ using UnityEngine;
 using UnityEngine.UIElements;
 
 
+
+// TODO: Flip the weapon sprite upside down when it rotates; flip the character based on weapon rotation
 [RequireComponent(typeof(CharacterMotor))]
 [RequireComponent(typeof(Health))]
 [RequireComponent(typeof(Weapon))]
@@ -25,7 +27,6 @@ public class CharacterController : MonoBehaviour
     public float jumpForce = 5f; // The force applied to the character when it jumps.
     public int extraJumpsValue; // The amount of extra jumps the character has.
     public AudioClip PistolShootSound; // The sound the character makes when it shoots the pistol.
-
     #endregion
 
     #region Private Variables
@@ -37,6 +38,8 @@ public class CharacterController : MonoBehaviour
     private Health health; // Reference to the health script.
     private CharacterMotor motor; // Reference to the character motor script.
     private AudioSource audioSource; // Reference to the audio source.
+    [SerializeField] private GameObject holster;
+    [SerializeField] private GameObject pivot;
     #endregion
 
 
@@ -139,18 +142,7 @@ public class CharacterController : MonoBehaviour
     /// Description: Initial Testing.
     void OnCollisionEnter2D(Collision2D collision)
     {
-	    // Note (Declan Simkins): Shouldn't need this; the damage script
-	    // automatically damages anything with a health script so this
-	    // will damage the character twice
-	    // If we need the damage to be modulated by some character property
-	    // we could add a health subclass that delegates some damage
-	    // calculations to the character and then applies the damage
         Debug.Log("Collision with " + collision.gameObject.name);
-        // check if character is hit by a bullet
-        if(collision.gameObject.tag == "EnemyBullet"){
-            Take_Damage(10);
-        }
-        
     }
 
     /// <summary>
@@ -163,12 +155,15 @@ public class CharacterController : MonoBehaviour
     public void Add_Weapon(GameObject weapon_obj)
     {
 	    Weapon weapon = weapon_obj.GetComponent<Weapon>();
-	    weapon_obj.transform.parent = this.transform;
-	    
-	    // Should be the point at which the weapon needs to be held
-	    // by the character sprite which we can mark with an empty
-	    // game object
-	    weapon.transform.position = this.transform.position;
+	    weapon_obj.transform.parent = this.pivot.transform;
+	    Vector3 local_scale = weapon_obj.transform.localScale;
+	    weapon_obj.transform.localScale = new Vector3(
+		    Mathf.Abs(local_scale.x)
+		    , local_scale.y
+		    , local_scale.z
+		);
+
+	    weapon.transform.position = this.holster.transform.position;
 	    
 	    this.weapons.Add(weapon);
 	    if (this.weapons.Count == 1) {
@@ -195,7 +190,7 @@ public class CharacterController : MonoBehaviour
     /// </param>
     private void Set_Active_Weapon(int weapon_i)
     {
-	    // Change weapon sprite
+	    this.active_weapon.gameObject.SetActive(false);
 	    weapon_i %= this.weapons.Count;
 	    this.active_weapon = this.weapons[weapon_i];
 	    this.active_weapon_i = weapon_i;

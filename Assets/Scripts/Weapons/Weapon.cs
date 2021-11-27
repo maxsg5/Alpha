@@ -21,7 +21,10 @@ public abstract class Weapon : MonoBehaviour
 	[SerializeField] private int max_ammo, ammo;
 	[SerializeField] private float fire_rate = 1; // shots per second
 	[SerializeField] private Collider2D character_collider;
-	
+	[SerializeField] private List<Collider2D> ignore_colliders = new List<Collider2D>();
+	[SerializeField] private Transform pivot;
+
+	private float aim_angle = 0;
 	private float fire_delay, last_shot_time;
 	private Camera main_camera;
 
@@ -31,6 +34,7 @@ public abstract class Weapon : MonoBehaviour
 	public int Max_Ammo => this.max_ammo;
 	public int Current_Ammo => this.ammo;
 	public Weapon.Ammo ammo_type;
+	public float Aim_Angle => this.aim_angle;
 
 	public float Fire_Rate
 	{
@@ -58,7 +62,7 @@ public abstract class Weapon : MonoBehaviour
 		if (character_collider.tag == "Enemy") {
 			this.transform.right = Vector2.right;
 		} else {
-			this.Rotate_To_Mouse();
+			this.Rotate_To_Mouse(this.pivot);
 		}
 		
 	}
@@ -80,25 +84,28 @@ public abstract class Weapon : MonoBehaviour
 		this.Ignore_Projectile_Collisions(projectile_colliders);
 	}
 
-	private void Rotate_To_Mouse()
+	private void Rotate_To_Mouse(Transform centre)
 	{
 		Vector3 mouse_pos = Input.mousePosition;
 		mouse_pos.z = 0;
 		Vector3 mouse_world_point = this.main_camera.ScreenToWorldPoint(mouse_pos);
 		mouse_world_point.z = 0;
-
-		this.transform.right = mouse_world_point - this.transform.position;
+		
+		Vector3 aim_direction = mouse_world_point - centre.position;
+		this.aim_angle = Mathf.Atan2(aim_direction.y, aim_direction.x) * Mathf.Rad2Deg;
+		centre.eulerAngles = new Vector3(0, 0, this.aim_angle);
 	}
 
 	private void Ignore_Projectile_Collisions(List<Collider2D> projectile_colliders)
 	{
 		for (int i = 0; i < projectile_colliders.Count; i++) {
-			// Ignore collision with object that spawned projectiles
-			Physics2D.IgnoreCollision(this.character_collider, projectile_colliders[i]);
-
 			// Ignore collision with other projectiles spawned
 			for (int j = i + 1; j < projectile_colliders.Count; j++) {
 				Physics2D.IgnoreCollision(projectile_colliders[i], projectile_colliders[j]);
+			}
+			
+			for (int j = i; j < this.ignore_colliders.Count; j++) {
+				Physics2D.IgnoreCollision(projectile_colliders[i], this.ignore_colliders[j]);
 			}
 		}
 	}
