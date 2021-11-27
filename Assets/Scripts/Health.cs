@@ -36,7 +36,12 @@ public class Health : MonoBehaviour
 
     protected virtual void No_Health()
     {
-	    this.Death?.Invoke(this.gameObject);
-	    Destroy(this.gameObject);
+		if (this.gameObject.tag == "Player") {
+			this.Death?.Invoke(this.gameObject);
+			Destroy(this.gameObject);
+		} //else if (this.gameObject.tag == "Enemy") {
+		// 	this.Death?.Invoke(this.gameObject);
+		// 	Destroy(this.gameObject, 1.0f);
+		// }
     } 
 }

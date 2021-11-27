@@ -13,13 +13,13 @@ using Utility.SensorSystem;
 /// 
 /// Variables
 /// moveSpeed       Speed at which the enemy moves
+[RequireComponent(typeof(GroundTrooperMotor))]
 public class GroundTrooperController : MonoBehaviour
 {
     public enum STATE {
         Move,
         Attack,
         Hurt,
-        Dying,
         Dead
     };
 
@@ -27,13 +27,9 @@ public class GroundTrooperController : MonoBehaviour
     public Transform target;
     public float moveSpeed = 4.0f;
 
-    private Enemy motor;
-    private STATE state;
-    private Rigidbody2D physics;
-    private PathMove movement;
-    private Weapon weapon;
+    private GroundTrooperMotor motor;
+    public STATE state;
     private Health health;
-    private Animator animator;
 
     private float prevHealth;
     
@@ -51,19 +47,15 @@ public class GroundTrooperController : MonoBehaviour
     ///                         implemented a motor script
     void Start()
     {
-        movement = GetComponent<PathMove>();
         // This class uses a sector sensor
         sensor = transform.Find("Sensor").GetComponent<SNSSector>();
-        physics = GetComponent<Rigidbody2D>();
-        weapon = transform.Find("Weapon").GetComponent<Weapon_Single_Shot>();
         health = GetComponent<Health>();
-        animator = GetComponent<Animator>();
         prevHealth = health.health;
 
-        motor = new GroundTrooperMotor(transform, physics, weapon, movement, health, animator);
+        motor = GetComponent<GroundTrooperMotor>();
 
         state = STATE.Move;
-        movement.setMoveSpeed(moveSpeed);
+        motor.setSpeed(moveSpeed);
     }
 
     /// <summary>
@@ -84,9 +76,8 @@ public class GroundTrooperController : MonoBehaviour
             case STATE.Hurt:
                 handleGetHurt();
                 break;
-            case STATE.Dying:
-                break;
             case STATE.Dead:
+                handleDeath();
                 break;
         }
     }
@@ -116,17 +107,21 @@ public class GroundTrooperController : MonoBehaviour
             state = STATE.Move;
     }
 
+    void handleDeath() {
+        motor.Death();
+    }
+
     private IEnumerator HurtTimeout() {
         motor.GetHurt();
         yield return new WaitForSeconds(0.2f);
         prevHealth = health.health;
-    }
 
-    void OnTriggerEnter2D(Collider2D collision) {
-        if (collision.gameObject.tag == "Projectile") {
-            Vector2 force = collision.attachedRigidbody.velocity;
-            motor.knockback(force);
+        if (health.health <= 0) {
+            Debug.Log("Dead");
+            state = STATE.Dead;
         }
     }
+
+
 
 }

@@ -22,17 +22,15 @@ public class BomberController : MonoBehaviour
         Dead
     };
 
-    public _SNSSensor sensor;
+    private _SNSSensor sensor;
     public Transform target;
-    public float moveSpeed = 2.0f;
+    public float moveSpeed = 4.0f;
 
-    private Enemy motor;
+    private BomberMotor motor;
     private STATE state;
-    private Rigidbody2D physics;
-    private PathMove movement;
-    private Weapon weapon;
     private Health health;
-    private Animator animator;
+
+    private float prevHealth;
 
     /// <summary>
     /// Gets the movement, sensor, and rigidbody components of the enemy, as
@@ -44,18 +42,14 @@ public class BomberController : MonoBehaviour
     /// 2021-10-14  JC          Changed Rigidbody to Rigidbody2D
     void Start()
     {
-        movement = GetComponent<PathMove>();
-        //This class uses a sphere sensor
-        sensor = transform.Find("Sensor").GetComponent<SNSSphere>();
-        physics = GetComponent<Rigidbody2D>();
-        weapon = GetComponent<Weapon>();
+        sensor = transform.Find("Sensor").GetComponent<SNSSector>();
         health = GetComponent<Health>();
-        animator = GetComponent<Animator>();
+        prevHealth = health.health;
 
-        motor = new BomberMotor(transform, physics, weapon, movement, health, animator);
+        motor = GetComponent<BomberMotor>();
 
         state = STATE.Move;
-        movement.setMoveSpeed(moveSpeed);
+        motor.setMoveSpeed(moveSpeed);
     }
 
     /// <summary>

@@ -43,10 +43,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0171b83609d4724418eefe7da9df5342, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  name: 
   max_ammo: 1000
   ammo: 1000
   fire_rate: 1
   character_collider: {fileID: 3907441386026681397}
+  ignore_colliders: []
+  pivot: {fileID: 0}
   projectile_prefab: {fileID: 5118499405664884827, guid: 5d053696b54d63e48b6f7ced5e6ef819, type: 3}
   ammo_type: 0
 --- !u!1 &2954425365103869459
@@ -60,9 +63,10 @@ GameObject:
   - component: {fileID: 2827882601581925293}
   - component: {fileID: 8542605838525720672}
   - component: {fileID: 818073201203529546}
+  - component: {fileID: 7401788184500927874}
   - component: {fileID: 8037337176999903665}
   - component: {fileID: 1151815443669602424}
-  - component: {fileID: 7401788184500927874}
+  - component: {fileID: 5356779509241924595}
   - component: {fileID: 4032644232677505575}
   - component: {fileID: 3907441386026681397}
   m_Layer: 2
@@ -159,6 +163,21 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &7401788184500927874
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2954425365103869459}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6cd45de7b715f5946abd18f8c6f26736, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 0}
+  moveSpeed: 4
+  state: 0
 --- !u!50 &8037337176999903665
 Rigidbody2D:
   serializedVersion: 4
@@ -197,7 +216,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   moveRight: 1
---- !u!114 &7401788184500927874
+--- !u!114 &5356779509241924595
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -206,14 +225,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 2954425365103869459}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6cd45de7b715f5946abd18f8c6f26736, type: 3}
+  m_Script: {fileID: 11500000, guid: a5150fb18e911d042a9ac25894c47dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sensor: {fileID: 0}
-  target: {fileID: 0}
-  moveSpeed: 4
-  weapon: {fileID: 0}
-  animator: {fileID: 0}
+  deathEffect: {fileID: 3327780879637555430, guid: 601afa8f91a5d60408133eb8543d932a, type: 3}
 --- !u!114 &4032644232677505575
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -294,8 +309,8 @@ MonoBehaviour:
     m_Bits: 0
   radius: 8
   losCheck: 0
-  showSensorRegion: 0
-  angle: 10
+  showSensorRegion: 1
+  angle: 30
 --- !u!33 &2036939018092108413
 MeshFilter:
   m_ObjectHideFlags: 0

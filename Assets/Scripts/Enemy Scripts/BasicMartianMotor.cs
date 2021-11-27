@@ -2,37 +2,54 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BasicMartianMotor : Enemy
+public class BasicMartianMotor : MonoBehaviour
 {
-    
-    public BasicMartianMotor(Transform transform, Rigidbody2D rigidbody, Weapon weapon,
-                    PathMove movement, Health health, Animator animator):base(transform, rigidbody, weapon,
-                    movement, health, animator) {
 
+    private Rigidbody2D rigidbody;
+    private PathMove movement;
+    private Weapon weapon;
+    private Animator animator;
+    private ParticleSystem deathParticles;
+
+    void Awake() {
+        movement = GetComponent<PathMove>();
+        rigidbody = GetComponent<Rigidbody2D>();
+        weapon = GameObject.Find("Weapon").GetComponent<Weapon_Single_Shot>();
+        animator = GetComponent<Animator>();
+        deathParticles = GameObject.Find("DeathParticles").GetComponent<ParticleSystem>();
     }
 
-    public override void MoveForward()
+    public void MoveForward()
     {
         movement.Move(rigidbody);
     }
     
-    public override void Attack()
+    public void Attack()
     {
         weapon.Fire();
     }
 
-    public override void Idle()
+    public void Idle()
     {
         throw new System.NotImplementedException();
     }
 
-    public override void GetHurt()
+    public void GetHurt()
     {
         throw new System.NotImplementedException();
     }
 
-    public override void knockback(Vector2 force) {
+    public void knockback(Vector2 force) {
         var magnitude = 5000;
         rigidbody.AddForce(force * magnitude);
+    }
+
+    public void Death()
+    {
+        throw new System.NotImplementedException();
+    }
+
+    public void setMoveSpeed(float speed) {
+        movement.setMoveSpeed(speed);
     }
 }
