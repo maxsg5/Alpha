@@ -23,7 +23,7 @@ public class GroundTrooperController : MonoBehaviour
         Dead
     };
 
-    public _SNSSensor sensor;
+    private _SNSSensor sensor;
     public Transform target;
     public float moveSpeed = 4.0f;
 
@@ -31,9 +31,12 @@ public class GroundTrooperController : MonoBehaviour
     private STATE state;
     private Rigidbody2D physics;
     private PathMove movement;
-    public Weapon weapon;
+    private Weapon weapon;
     private Health health;
-    public Animator animator;
+    private Animator animator;
+
+    private float prevHealth;
+    
 
 
     /// <summary>
@@ -55,6 +58,7 @@ public class GroundTrooperController : MonoBehaviour
         weapon = transform.Find("Weapon").GetComponent<Weapon_Single_Shot>();
         health = GetComponent<Health>();
         animator = GetComponent<Animator>();
+        prevHealth = health.health;
 
         motor = new GroundTrooperMotor(transform, physics, weapon, movement, health, animator);
 
@@ -78,6 +82,7 @@ public class GroundTrooperController : MonoBehaviour
                 handleAttack();
                 break;
             case STATE.Hurt:
+                handleGetHurt();
                 break;
             case STATE.Dying:
                 break;
@@ -90,14 +95,38 @@ public class GroundTrooperController : MonoBehaviour
         motor.MoveForward();
         if (sensor.CanSee(target)) 
             state = STATE.Attack;
+        if (prevHealth != health.health)
+            state = STATE.Hurt;
     }
 
     void handleAttack() {
         motor.Attack();
         if (!sensor.CanSee(target))
             state = STATE.Move;
+        if (prevHealth != health.health)
+            state = STATE.Hurt;
     }
 
+    void handleGetHurt() {
+        StartCoroutine(HurtTimeout());
 
+        if (sensor.CanSee(target))
+            state = STATE.Attack;
+        else if (!sensor.CanSee(target))
+            state = STATE.Move;
+    }
+
+    private IEnumerator HurtTimeout() {
+        motor.GetHurt();
+        yield return new WaitForSeconds(0.2f);
+        prevHealth = health.health;
+    }
+
+    void OnTriggerEnter2D(Collider2D collision) {
+        if (collision.gameObject.tag == "Projectile") {
+            Vector2 force = collision.attachedRigidbody.velocity;
+            motor.knockback(force);
+        }
+    }
 
 }

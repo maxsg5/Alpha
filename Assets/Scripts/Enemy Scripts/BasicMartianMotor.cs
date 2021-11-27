@@ -25,4 +25,14 @@ public class BasicMartianMotor : Enemy
     {
         throw new System.NotImplementedException();
     }
+
+    public override void GetHurt()
+    {
+        throw new System.NotImplementedException();
+    }
+
+    public override void knockback(Vector2 force) {
+        var magnitude = 5000;
+        rigidbody.AddForce(force * magnitude);
+    }
 }

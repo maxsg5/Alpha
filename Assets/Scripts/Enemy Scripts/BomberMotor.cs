@@ -25,4 +25,13 @@ public class BomberMotor : Enemy
     {
         throw new System.NotImplementedException();
     }
+
+    public override void GetHurt()
+    {
+        throw new System.NotImplementedException();
+    }
+    
+    public override void knockback(Vector2 force) {
+        rigidbody.AddForce(force, ForceMode2D.Impulse);
+    }
 }

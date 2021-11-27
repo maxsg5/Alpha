@@ -39,4 +39,6 @@ public abstract class Enemy
     public abstract void MoveForward();
     public abstract void Attack();
     public abstract void Idle();
+    public abstract void GetHurt();
+    public abstract void knockback(Vector2 force);
 }
