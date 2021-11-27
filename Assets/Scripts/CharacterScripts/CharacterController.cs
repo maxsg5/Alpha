@@ -103,7 +103,7 @@ public class CharacterController : MonoBehaviour
         {
 	        if (this.active_weapon != null) {
 		        this.active_weapon.Fire(); // Shoot the weapon
-            	audioSource.PlayOneShot(PistolShootSound); // Play the pistol shoot sound.
+            	
 	        }
         }
         

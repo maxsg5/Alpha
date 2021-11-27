@@ -28,6 +28,9 @@ public abstract class Weapon : MonoBehaviour
 	private float fire_delay, last_shot_time;
 	private Camera main_camera;
 
+	//we might want to add public audioClips for each weapon sound and swap them out in the audioSource.
+	private AudioSource audio_source; //audio source for shooting sound
+
 	[SerializeField] protected GameObject projectile_prefab;
 
 	public string Name => this.name;
@@ -55,6 +58,7 @@ public abstract class Weapon : MonoBehaviour
 		this.last_shot_time = -10;
 		this.main_camera = GameObject.FindWithTag("MainCamera").GetComponent<Camera>();
 		this.Ammo_Changed?.Invoke(this.ammo);
+		this.audio_source = GetComponent<AudioSource>();//audio source for shooting sound
 	}
 
 	protected void LateUpdate()
@@ -81,6 +85,7 @@ public abstract class Weapon : MonoBehaviour
 		this.Ammo_Changed?.Invoke(this.ammo);
 
 		List<Collider2D> projectile_colliders = this.Spawn_Projectile();
+		this.audio_source.Play();//play the shooting sound
 		this.Ignore_Projectile_Collisions(projectile_colliders);
 	}
 

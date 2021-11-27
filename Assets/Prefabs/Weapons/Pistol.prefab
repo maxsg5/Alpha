@@ -113,10 +113,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0171b83609d4724418eefe7da9df5342, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  name: 
   max_ammo: 10
   ammo: 10
   fire_rate: 1
   character_collider: {fileID: 0}
+  ignore_colliders: []
+  pivot: {fileID: 0}
   projectile_prefab: {fileID: 5118499405664884827, guid: 5d053696b54d63e48b6f7ced5e6ef819, type: 3}
   ammo_type: 0
 --- !u!82 &-4482229207571908444
@@ -129,7 +132,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 7e950513b9c6d734e8130770598861f3, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
