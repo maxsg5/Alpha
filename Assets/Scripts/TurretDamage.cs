@@ -26,8 +26,10 @@ public class TurretDamage : MonoBehaviour
     public GameObject gateright;
     public GameObject gatetop;
     public GameObject glass;
-    private int hits;
-    private int MAX_HITS = 3;
+    private int hits; // this is no longer needed
+    private int MAX_HITS = 3; // this is no longer needed
+
+    private Health health;
 
 
     ///<summary>
@@ -37,15 +39,29 @@ public class TurretDamage : MonoBehaviour
     ///2021-11-22   BS          Intializes hits
     void Start()
     {
-        hits = 0;
+        hits = 0; // this is no longer needed 
+        health = GetComponent<Health>();
     }
 
+    void Update()
+    {
+        if (health.health <= 0)
+        {
+            Destroy(glass);
+            Destroy(gateleft);
+            Destroy(gateright);
+            Destroy(gatetop);
+        }
+    }
+
+    // This code is no longer needed.
     ///<summary>
     ///Update the number of hits and destory the turret
     ///</summary>
     ///Date         Author      Description
     ///2021-11-22   BS          Destroy the turret
-    void OnCollisionEnter(Collision collision){
+    void OnCollisionEnter2D(Collision2D collision){
+        Debug.Log("Collision detected");
         hits += 1;
         if(hits == 3){
             Destroy(gateleft);
