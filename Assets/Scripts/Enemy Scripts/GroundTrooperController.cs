@@ -13,27 +13,26 @@ using Utility.SensorSystem;
 /// 
 /// Variables
 /// moveSpeed       Speed at which the enemy moves
+[RequireComponent(typeof(GroundTrooperMotor))]
 public class GroundTrooperController : MonoBehaviour
 {
     public enum STATE {
         Move,
         Attack,
         Hurt,
-        Dying,
         Dead
     };
 
-    public _SNSSensor sensor;
+    private _SNSSensor sensor;
     public Transform target;
     public float moveSpeed = 4.0f;
 
-    private Enemy motor;
-    private STATE state;
-    private Rigidbody2D physics;
-    private PathMove movement;
-    public Weapon weapon;
+    private GroundTrooperMotor motor;
+    public STATE state;
     private Health health;
-    public Animator animator;
+
+    private float prevHealth;
+    
 
 
     /// <summary>
@@ -48,18 +47,15 @@ public class GroundTrooperController : MonoBehaviour
     ///                         implemented a motor script
     void Start()
     {
-        movement = GetComponent<PathMove>();
         // This class uses a sector sensor
         sensor = transform.Find("Sensor").GetComponent<SNSSector>();
-        physics = GetComponent<Rigidbody2D>();
-        weapon = transform.Find("Weapon").GetComponent<Weapon_Single_Shot>();
         health = GetComponent<Health>();
-        animator = GetComponent<Animator>();
+        prevHealth = health.health;
 
-        motor = new GroundTrooperMotor(transform, physics, weapon, movement, health, animator);
+        motor = GetComponent<GroundTrooperMotor>();
 
         state = STATE.Move;
-        movement.setMoveSpeed(moveSpeed);
+        motor.setSpeed(moveSpeed);
     }
 
     /// <summary>
@@ -78,10 +74,10 @@ public class GroundTrooperController : MonoBehaviour
                 handleAttack();
                 break;
             case STATE.Hurt:
-                break;
-            case STATE.Dying:
+                handleGetHurt();
                 break;
             case STATE.Dead:
+                handleDeath();
                 break;
         }
     }
@@ -90,12 +86,40 @@ public class GroundTrooperController : MonoBehaviour
         motor.MoveForward();
         if (sensor.CanSee(target)) 
             state = STATE.Attack;
+        if (prevHealth != health.health)
+            state = STATE.Hurt;
     }
 
     void handleAttack() {
         motor.Attack();
         if (!sensor.CanSee(target))
             state = STATE.Move;
+        if (prevHealth != health.health)
+            state = STATE.Hurt;
+    }
+
+    void handleGetHurt() {
+        StartCoroutine(HurtTimeout());
+
+        if (sensor.CanSee(target))
+            state = STATE.Attack;
+        else if (!sensor.CanSee(target))
+            state = STATE.Move;
+    }
+
+    void handleDeath() {
+        motor.Death();
+    }
+
+    private IEnumerator HurtTimeout() {
+        motor.GetHurt();
+        yield return new WaitForSeconds(0.2f);
+        prevHealth = health.health;
+
+        if (health.health <= 0) {
+            Debug.Log("Dead");
+            state = STATE.Dead;
+        }
     }
 
 

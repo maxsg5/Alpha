@@ -12,27 +12,27 @@ using Utility.SensorSystem;
 /// 
 /// Variables
 /// moveSpeed       Speed at which the enemy moves
+[RequireComponent(typeof(BasicMartianMotor))]
 public class BasicMartianController : MonoBehaviour
 {
     public enum STATE {
         Move,
+        Run,
         Attack,
         Hurt,
         Dying,
         Dead
     };
 
-    public _SNSSensor sensor;
+    private _SNSSensor sensor;
     public Transform target;
-    public float moveSpeed = 6.0f;
+    public float moveSpeed = 3.0f;
 
-    private Enemy motor;
+    private BasicMartianMotor motor;
     private STATE state;
-    private Rigidbody2D physics;
-    private PathMove movement;
-    private Weapon weapon;
     private Health health;
-    private Animator animator;
+
+    private float prevHealth;
 
 
     /// <summary>
@@ -46,18 +46,14 @@ public class BasicMartianController : MonoBehaviour
     ///                         implemented a motor script
     void Start()
     {
-        movement = GetComponent<PathMove>();
-        // This class uses a sector sensor
         sensor = transform.Find("Sensor").GetComponent<SNSSector>();
-        physics = GetComponent<Rigidbody2D>();
-        weapon = GetComponent<Weapon>();
         health = GetComponent<Health>();
-        animator = GetComponent<Animator>();
-        
-        motor = new BasicMartianMotor(transform, physics, weapon, movement, health, animator);
+        prevHealth = health.health;
+
+        motor = GetComponent<BasicMartianMotor>();
 
         state = STATE.Move;
-        movement.setMoveSpeed(moveSpeed);
+        motor.setMoveSpeed(moveSpeed);
     }
 
     /// <summary>
@@ -71,6 +67,9 @@ public class BasicMartianController : MonoBehaviour
         switch (state) {
             case STATE.Move:
                 handleMove();
+                break;
+            case STATE.Run:
+                handleRun();
                 break;
             case STATE.Attack:
                 handleAttack();
@@ -87,12 +86,26 @@ public class BasicMartianController : MonoBehaviour
     void handleMove() {
         motor.MoveForward();
         if (sensor.CanSee(target)) 
-            state = STATE.Attack;
+            state = STATE.Run;
+    }
+
+    void handleRun() {
+        motor.setMoveSpeed(moveSpeed * 1.5f);
+        motor.RunForward();
+        if (!sensor.CanSee(target))
+            state = STATE.Move;
     }
 
     void handleAttack(){
         motor.Attack();
         if (!sensor.CanSee(target))
             state = STATE.Move;
+    }
+
+    void OnTriggerEnter2D(Collider2D other) {
+        Debug.Log("Collided with " + other.name);
+        if (other.gameObject.tag == "Player") {
+            state = STATE.Attack;
+        }
     }
 }

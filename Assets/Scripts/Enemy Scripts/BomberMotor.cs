@@ -2,27 +2,53 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BomberMotor : Enemy
+public class BomberMotor : MonoBehaviour
 {
 
-    public BomberMotor(Transform transform, Rigidbody2D rigidbody, Weapon weapon, 
-                PathMove movement, Health health, Animator animator):base(transform, rigidbody, weapon, 
-                movement, health, animator) {
-        
+    private Rigidbody2D rigidbody;
+    private PathMove movement;
+    private Weapon weapon;
+    private Animator animator;
+    private ParticleSystem deathParticles;
+
+    void Awake() {
+        movement = GetComponent<PathMove>();
+        rigidbody = GetComponent<Rigidbody2D>();
+        weapon = GameObject.Find("Weapon").GetComponent<Weapon_Single_Shot>();
+        animator = GetComponent<Animator>();
+        deathParticles = GameObject.Find("DeathParticles").GetComponent<ParticleSystem>();
     }
 
-    public override void MoveForward()
+    public void MoveForward()
     {
         movement.Move(rigidbody);
     }
 
-    public override void Attack()
+    public void Attack()
     {
         weapon.Fire();
     }
 
-    public override void Idle()
+    public void Idle()
     {
         throw new System.NotImplementedException();
+    }
+
+    public void GetHurt()
+    {
+        throw new System.NotImplementedException();
+    }
+    
+    public void knockback(Vector2 force) {
+        rigidbody.AddForce(force, ForceMode2D.Impulse);
+    }
+
+    public void Death()
+    {
+        throw new System.NotImplementedException();
+    }
+
+    public void setMoveSpeed(float speed) {
+        movement.setMoveSpeed(speed);
     }
 }
