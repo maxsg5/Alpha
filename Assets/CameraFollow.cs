@@ -8,13 +8,22 @@ using UnityEngine;
 /// Date: 2021-11-28
 public class CameraFollow : MonoBehaviour
 {
+    #region Public Variables
     public Transform target; //the target we want to follow
     public Transform zoomOut; //the camera will zoom out past this point
     public Transform zoomIn; //the camera will zoom in past this point
+
+    #endregion
+
+    #region Private Variables
     private Camera cam; //main camera of the game
     private float xOffset; //the x offset of the camera
     private float yOffset; //the y offset of the camera
     private bool inDesert; //whether or not the player is in the desert
+
+    #endregion
+
+    #region Methods
 
     /// <summary>
     /// initialize the camera
@@ -67,4 +76,6 @@ public class CameraFollow : MonoBehaviour
         }
        
     }
+    
+    #endregion
 }
