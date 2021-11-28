@@ -12,10 +12,12 @@ using Utility.SensorSystem;
 /// 
 /// Variables
 /// moveSpeed       Speed at which the enemy moves
+[RequireComponent(typeof(BasicMartianMotor))]
 public class BasicMartianController : MonoBehaviour
 {
     public enum STATE {
         Move,
+        Run,
         Attack,
         Hurt,
         Dying,
@@ -24,7 +26,7 @@ public class BasicMartianController : MonoBehaviour
 
     private _SNSSensor sensor;
     public Transform target;
-    public float moveSpeed = 4.0f;
+    public float moveSpeed = 3.0f;
 
     private BasicMartianMotor motor;
     private STATE state;
@@ -66,6 +68,9 @@ public class BasicMartianController : MonoBehaviour
             case STATE.Move:
                 handleMove();
                 break;
+            case STATE.Run:
+                handleRun();
+                break;
             case STATE.Attack:
                 handleAttack();
                 break;
@@ -81,12 +86,26 @@ public class BasicMartianController : MonoBehaviour
     void handleMove() {
         motor.MoveForward();
         if (sensor.CanSee(target)) 
-            state = STATE.Attack;
+            state = STATE.Run;
+    }
+
+    void handleRun() {
+        motor.setMoveSpeed(moveSpeed * 1.5f);
+        motor.RunForward();
+        if (!sensor.CanSee(target))
+            state = STATE.Move;
     }
 
     void handleAttack(){
         motor.Attack();
         if (!sensor.CanSee(target))
             state = STATE.Move;
+    }
+
+    void OnTriggerEnter2D(Collider2D other) {
+        Debug.Log("Collided with " + other.name);
+        if (other.gameObject.tag == "Player") {
+            state = STATE.Attack;
+        }
     }
 }

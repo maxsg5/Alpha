@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(Rigidbody2D))]
+[RequireComponent(typeof(Collider2D))]
 public class BasicMartianMotor : MonoBehaviour
 {
 
@@ -9,24 +11,35 @@ public class BasicMartianMotor : MonoBehaviour
     private PathMove movement;
     private Weapon weapon;
     private Animator animator;
-    private ParticleSystem deathParticles;
+    public GameObject deathEffect;
 
     void Awake() {
         movement = GetComponent<PathMove>();
         rigidbody = GetComponent<Rigidbody2D>();
         weapon = GameObject.Find("Weapon").GetComponent<Weapon_Single_Shot>();
-        animator = GetComponent<Animator>();
-        deathParticles = GameObject.Find("DeathParticles").GetComponent<ParticleSystem>();
+        animator = GetComponentInChildren<Animator>();
+        
     }
 
     public void MoveForward()
     {
+        animator.SetBool("hurt", false);
+        animator.SetFloat("speed", 3.0f);
+        movement.Move(rigidbody);
+    }
+
+    public void RunForward() {
+        animator.SetBool("hurt", false);
+        animator.SetBool("run", true);
+        animator.SetFloat("speed", 3.0f);
         movement.Move(rigidbody);
     }
     
     public void Attack()
     {
-        weapon.Fire();
+        animator.SetFloat("speed", 0.0f);
+        animator.SetBool("run", false);
+        animator.SetBool("attack", true);
     }
 
     public void Idle()
