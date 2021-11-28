@@ -2260,6 +2260,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5725255094224835608, guid: d3f44f7279b0c44a3bef6d0cf8d7ab79, type: 3}
+      propertyPath: m_SortingOrder
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5982820280061219191, guid: d3f44f7279b0c44a3bef6d0cf8d7ab79, type: 3}
       propertyPath: m_Name
       value: Gate1 (1)
@@ -30039,6 +30043,10 @@ PrefabInstance:
     - target: {fileID: 3871795524372463972, guid: 220361ac7d39e41189248f664213ac6a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3871795524372463973, guid: 220361ac7d39e41189248f664213ac6a, type: 3}
+      propertyPath: m_SortingOrder
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3871795524372463974, guid: 220361ac7d39e41189248f664213ac6a, type: 3}
       propertyPath: m_Name
@@ -60675,6 +60683,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5725255094224835608, guid: d3f44f7279b0c44a3bef6d0cf8d7ab79, type: 3}
+      propertyPath: m_SortingOrder
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5982820280061219191, guid: d3f44f7279b0c44a3bef6d0cf8d7ab79, type: 3}
       propertyPath: m_Name
       value: Gate1
@@ -83761,6 +83773,10 @@ PrefabInstance:
     - target: {fileID: 661522103526791275, guid: d3f44f7279b0c44a3bef6d0cf8d7ab79, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5725255094224835608, guid: d3f44f7279b0c44a3bef6d0cf8d7ab79, type: 3}
+      propertyPath: m_SortingOrder
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5982820280061219191, guid: d3f44f7279b0c44a3bef6d0cf8d7ab79, type: 3}
       propertyPath: m_Name
