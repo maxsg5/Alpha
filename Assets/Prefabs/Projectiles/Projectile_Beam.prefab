@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 6497016021151378506}
   - component: {fileID: -827560859516838651}
   - component: {fileID: -1883504409426202619}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Projectile_Beam
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -181,3 +181,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   beam_width: 0.25
+  max_length: 50
