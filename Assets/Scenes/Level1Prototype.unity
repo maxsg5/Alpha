@@ -52601,7 +52601,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6549ad60d6c02549a24abc7ee3a7c8b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  name: 
+  name: Laser Gun
   max_ammo: 1000
   ammo: 1000
   fire_rate: 1
@@ -107961,6 +107961,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3783756818601569771, guid: c5936508cf04ec344acf2e8ff8b0f9d0, type: 3}
+      propertyPath: target_health
+      value: 
+      objectReference: {fileID: 1455321376}
+    - target: {fileID: 3783756819577678957, guid: c5936508cf04ec344acf2e8ff8b0f9d0, type: 3}
+      propertyPath: target_character
+      value: 
+      objectReference: {fileID: 2058875324}
     - target: {fileID: 3783756819816455385, guid: c5936508cf04ec344acf2e8ff8b0f9d0, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -115543,6 +115551,10 @@ PrefabInstance:
       value: Shotgun
       objectReference: {fileID: 0}
     - target: {fileID: 2657736040084993877, guid: c70813583a13a1d4d97f444e587e0db2, type: 3}
+      propertyPath: name
+      value: Shotgun
+      objectReference: {fileID: 0}
+    - target: {fileID: 2657736040084993877, guid: c70813583a13a1d4d97f444e587e0db2, type: 3}
       propertyPath: pivot
       value: 
       objectReference: {fileID: 1936589593}
@@ -115603,6 +115615,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 647656527}
     m_Modifications:
+    - target: {fileID: 3613055590994722448, guid: ecc62116a7422d546bb0c778d33fe61f, type: 3}
+      propertyPath: name
+      value: Grenade Launcher
+      objectReference: {fileID: 0}
     - target: {fileID: 3613055590994722448, guid: ecc62116a7422d546bb0c778d33fe61f, type: 3}
       propertyPath: pivot
       value: 
