@@ -16,7 +16,7 @@ public class GroundTrooperMotor : MonoBehaviour
     void Awake() {
         movement = GetComponent<PathMove>();
         rigidbody = GetComponent<Rigidbody2D>();
-        weapon = GameObject.Find("Weapon").GetComponent<Weapon_Single_Shot>();
+        weapon = GetComponentInChildren<Weapon_Single_Shot>();
         animator = GetComponent<Animator>();
         
     }
