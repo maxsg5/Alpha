@@ -69,7 +69,7 @@ GameObject:
   - component: {fileID: 5356779509241924595}
   - component: {fileID: 4032644232677505575}
   - component: {fileID: 3907441386026681397}
-  m_Layer: 2
+  m_Layer: 8
   m_Name: GroundTrooper
   m_TagString: Enemy
   m_Icon: {fileID: 0}
