@@ -23,6 +23,9 @@ public class Projectile : MonoBehaviour
 
     protected virtual void OnTriggerEnter2D(Collider2D other)
     {
+	    if (other.isTrigger) {
+		    return;
+	    }
 	    Destroy(this.gameObject);
     }
 }

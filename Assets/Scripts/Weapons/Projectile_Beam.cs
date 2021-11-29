@@ -66,7 +66,7 @@ public class Projectile_Beam : MonoBehaviour
 		bool ignorable_hit;
 		for (hit_i = 0, ignorable_hit = true; ignorable_hit && hit_i < hits.Length; hit_i++) {
 			GameObject hit_obj = hits[hit_i].transform.gameObject;
-			ignorable_hit = ignorable_objs.Contains(hit_obj);
+			ignorable_hit = ignorable_objs.Contains(hit_obj) || hit_obj.GetComponent<Collider2D>().isTrigger;
 		}
 
 		if (ignorable_hit) {
