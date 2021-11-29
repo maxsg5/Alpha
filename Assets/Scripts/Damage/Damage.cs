@@ -14,4 +14,11 @@ public class Damage : MonoBehaviour
 		    other_health.Take_Damage(this.damage);
 	    }
     }
+
+	public void doDamage(Collider2D other) {
+		Health other_health = other.gameObject.GetComponent<Health>();
+		if (other_health != null) {
+			other_health.Take_Damage(this.damage);
+		}
+	}
 }

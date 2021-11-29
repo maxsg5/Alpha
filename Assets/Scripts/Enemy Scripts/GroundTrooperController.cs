@@ -45,7 +45,7 @@ public class GroundTrooperController : MonoBehaviour
     /// 2021-10-14  JC          Changed Rigidbody to Rigidbody2D
     /// 2021-10-25  JC          Added movement, weapon, and health, as well as
     ///                         implemented a motor script
-    void Start()
+    private void Start()
     {
         // This class uses a sector sensor
         sensor = transform.Find("Sensor").GetComponent<SNSSector>();
@@ -64,7 +64,7 @@ public class GroundTrooperController : MonoBehaviour
     /// 
     /// Date        Author      Description
     /// 2021-10-13  JC          Initial Testing
-    void Update()
+    private void Update()
     {
         switch (state) {
             case STATE.Move:
@@ -82,7 +82,7 @@ public class GroundTrooperController : MonoBehaviour
         }
     }
 
-    void handleMove() {
+    private void handleMove() {
         motor.MoveForward();
         if (sensor.CanSee(target)) 
             state = STATE.Attack;
@@ -90,7 +90,7 @@ public class GroundTrooperController : MonoBehaviour
             state = STATE.Hurt;
     }
 
-    void handleAttack() {
+    private void handleAttack() {
         motor.Attack();
         if (!sensor.CanSee(target))
             state = STATE.Move;
@@ -98,7 +98,7 @@ public class GroundTrooperController : MonoBehaviour
             state = STATE.Hurt;
     }
 
-    void handleGetHurt() {
+    private void handleGetHurt() {
         StartCoroutine(HurtTimeout());
 
         if (sensor.CanSee(target))
@@ -107,7 +107,7 @@ public class GroundTrooperController : MonoBehaviour
             state = STATE.Move;
     }
 
-    void handleDeath() {
+    private void handleDeath() {
         motor.Death();
     }
 
@@ -117,7 +117,6 @@ public class GroundTrooperController : MonoBehaviour
         prevHealth = health.health;
 
         if (health.health <= 0) {
-            Debug.Log("Dead");
             state = STATE.Dead;
         }
     }

@@ -39,6 +39,7 @@ public class Health : MonoBehaviour
 		if (this.gameObject.tag == "Player") {
 			this.Death?.Invoke(this.gameObject);
 			Destroy(this.gameObject);
+
 		}else if (this.gameObject.tag == "Destructable")
         {
 			Destroy(this.gameObject);

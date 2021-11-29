@@ -20,10 +20,10 @@ TagManager:
   - UI
   - Ground
   - Ladder
-  - 
-  - 
-  - 
-  - 
+  - Player
+  - Sensor
+  - Trigger
+  - Projectile
   - 
   - 
   - 

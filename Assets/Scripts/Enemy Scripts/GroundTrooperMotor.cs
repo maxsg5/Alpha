@@ -35,10 +35,6 @@ public class GroundTrooperMotor : MonoBehaviour
         weapon.Fire();
     }
 
-    public void Idle() {
-        animator.SetFloat("speed", 0.0f);
-    }
-
     public void GetHurt() {
         animator.SetFloat("speed", 0.0f);
         animator.SetBool("hurt", true);
