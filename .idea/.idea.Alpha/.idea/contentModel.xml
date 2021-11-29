@@ -7,7 +7,20 @@
       <e p="Alpha.sln" t="IncludeFlat" />
       <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
       <e p="Assets" t="Include">
+        <e p="2D Zombie" t="Include">
+          <e p="ReadMe.txt" t="Include" />
+          <e p="Shader" t="Include">
+            <e p="Spine-Skeleton.shader" t="Include" />
+          </e>
+          <e p="Spine2D Animations Exports" t="Include">
+            <e p="Zombie_Normal.atlas.txt" t="Include" />
+          </e>
+          <e p="Unity Native Animations" t="Include">
+            <e p="Zombie_Normal.atlas.txt" t="Include" />
+          </e>
+        </e>
         <e p="CameraFollow.cs" t="Include" />
+        <e p="CameraSoundTrigger.cs" t="Include" />
         <e p="ChangeToGreen.cs" t="Include" />
         <e p="DoorSwitch.cs" t="Include" />
         <e p="Pistol.cs" t="Include" />
@@ -30,7 +43,6 @@
             <e p="BomberController.cs" t="Include" />
             <e p="BomberMotor.cs" t="Include" />
             <e p="Boomer.cs" t="Include" />
-            <e p="Enemy.cs" t="Include" />
             <e p="GroundTrooperController.cs" t="Include" />
             <e p="GroundTrooperMotor.cs" t="Include" />
           </e>
@@ -62,6 +74,7 @@
           </e>
           <e p="Weapons" t="Include">
             <e p="Ammo_Pickup.cs" t="Include" />
+            <e p="Melee.cs" t="Include" />
             <e p="Projectile.cs" t="Include" />
             <e p="Projectile_Beam.cs" t="Include" />
             <e p="Projectile_Pass_Through.cs" t="Include" />
