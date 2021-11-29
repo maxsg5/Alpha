@@ -30,20 +30,20 @@ public class BasicMartianMotor : MonoBehaviour
     {
         animator.SetBool("attack", false);
         animator.SetBool("hurt", false);
-        animator.SetFloat("speed", 3.0f);
+        animator.SetFloat("speed", 2.9f);
         movement.Move(rigidbody);
     }
 
     public void RunForward() {
         animator.SetBool("attack", false);
         animator.SetBool("hurt", false);
-        animator.SetBool("run", true);
-        animator.SetFloat("speed", 3.0f);
+        animator.SetFloat("speed", 3.1f);
         movement.Move(rigidbody);
     }
     
     public void Attack(Collider2D player_collider)
     {
+        animator.SetBool("run", false);
         animator.SetBool("attack", true);
         animator.SetFloat("speed", 0.0f);
         melee.doDamage(player_collider);

@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class AttackTrigger : MonoBehaviour
 {
-    private bool inRange;
-    private Collider2D player_collider;
+    public bool inRange;
+    public Collider2D player_collider;
 
     public bool isInRange()
     {

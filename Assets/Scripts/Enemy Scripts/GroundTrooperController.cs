@@ -48,7 +48,7 @@ public class GroundTrooperController : MonoBehaviour
     private void Start()
     {
         // This class uses a sector sensor
-        sensor = transform.Find("Sensor").GetComponent<SNSSector>();
+        sensor = GetComponentInChildren<SNSSector>();
         health = GetComponent<Health>();
         prevHealth = health.health;
 

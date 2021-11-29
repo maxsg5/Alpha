@@ -28,7 +28,7 @@ public class BasicMartianController : MonoBehaviour
     private _SNSSensor sector_sensor;
     public Transform target;
     public float moveSpeed = 3.0f;
-    public float timer = 84.0f / 60.0f;
+    private float timer = 84.0f / 60.0f;
     private bool attackMode;
     private bool cooling;
     private float intTimer;
@@ -53,7 +53,7 @@ public class BasicMartianController : MonoBehaviour
     ///                         implemented a motor script
     private void Start()
     {
-        sector_sensor = transform.Find("SectorSensor").GetComponent<SNSSector>();
+        sector_sensor = GetComponentInChildren<SNSSector>();
         health = GetComponent<Health>();
         prevHealth = health.health;
         attack_trigger = GetComponentInChildren<AttackTrigger>();
@@ -99,18 +99,23 @@ public class BasicMartianController : MonoBehaviour
     }
 
     private void handleMove() {
+        motor.setMoveSpeed(moveSpeed);
         motor.MoveForward();
-        if (sector_sensor.CanSee(target)) {
+        if (sector_sensor.CanSee(target)) 
             state = STATE.Run;
-        }
+        else if (attack_trigger.isInRange()) 
+            state = STATE.Attack;
+        
         if (prevHealth != health.health)
             state = STATE.Hurt;
+
         
     }
 
     private void handleRun() {
         motor.setMoveSpeed(moveSpeed * 1.5f);
         motor.RunForward();
+
         if (!sector_sensor.CanSee(target))
             state = STATE.Move;
         if (attack_trigger.isInRange()) {
@@ -120,6 +125,7 @@ public class BasicMartianController : MonoBehaviour
     }
 
     private void handleAttack(){
+        motor.setMoveSpeed(0);
         motor.Attack(attack_trigger.getPlayerCollider());
         cooling = true;
 
