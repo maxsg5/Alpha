@@ -19,6 +19,8 @@
             <e p="Zombie_Normal.atlas.txt" t="Include" />
           </e>
         </e>
+        <e p="AudioManager.cs" t="Include" />
+        <e p="AudioSwap.cs" t="Include" />
         <e p="CameraFollow.cs" t="Include" />
         <e p="CameraSoundTrigger.cs" t="Include" />
         <e p="ChangeToGreen.cs" t="Include" />
@@ -38,6 +40,7 @@
             <e p="Damage_Continuous.cs" t="Include" />
           </e>
           <e p="Enemy Scripts" t="Include">
+            <e p="AttackTrigger.cs" t="Include" />
             <e p="BasicMartianController.cs" t="Include" />
             <e p="BasicMartianMotor.cs" t="Include" />
             <e p="BomberController.cs" t="Include" />
@@ -74,7 +77,6 @@
           </e>
           <e p="Weapons" t="Include">
             <e p="Ammo_Pickup.cs" t="Include" />
-            <e p="Melee.cs" t="Include" />
             <e p="Projectile.cs" t="Include" />
             <e p="Projectile_Beam.cs" t="Include" />
             <e p="Projectile_Pass_Through.cs" t="Include" />
@@ -159,6 +161,7 @@
             <e p="EmojiOne Attribution.txt" t="Include" />
           </e>
         </e>
+        <e p="UFO.cs" t="Include" />
         <e p="UI_Ammo_Tracker.cs" t="Include" />
       </e>
       <e p="obj" t="ExcludeRecursive" />
