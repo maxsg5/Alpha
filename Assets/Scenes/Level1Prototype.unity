@@ -91721,6 +91721,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3750689398677935752, guid: 07263f880f911477b8b7c8273fffbf48, type: 3}
+      propertyPath: m_FlipX
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3750689398677935752, guid: 07263f880f911477b8b7c8273fffbf48, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 3566057522778786173, guid: b2934b23585dd4f45be92d226a7827b4, type: 3}
+    - target: {fileID: 3750689398677935752, guid: 07263f880f911477b8b7c8273fffbf48, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3750689398677935752, guid: 07263f880f911477b8b7c8273fffbf48, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3750689398677935752, guid: 07263f880f911477b8b7c8273fffbf48, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3750689398677935753, guid: 07263f880f911477b8b7c8273fffbf48, type: 3}
       propertyPath: m_Name
       value: Tank
@@ -91743,7 +91763,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3750689398677935767, guid: 07263f880f911477b8b7c8273fffbf48, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -11.9
+      value: -13
       objectReference: {fileID: 0}
     - target: {fileID: 3750689398677935767, guid: 07263f880f911477b8b7c8273fffbf48, type: 3}
       propertyPath: m_LocalPosition.z
@@ -115716,7 +115736,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2068407915}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 448.1, y: -13.5, z: -1}
+  m_LocalPosition: {x: 526.16, y: -9.6, z: -1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
