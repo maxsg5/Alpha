@@ -20,7 +20,17 @@ public class Health : MonoBehaviour
 		this.Health_Changed?.Invoke(this.max_health);
 	}
 
-	public virtual void Take_Damage(float damage)
+    public void Add_Health(float amount)
+    {
+        this.health += amount;
+        if (this.health > this.max_health)
+        {
+            this.health = this.max_health;
+        }
+		this.Health_Changed?.Invoke(this.health);
+    }
+
+    public virtual void Take_Damage(float damage)
 	{
 		this.health -= damage;
 		this.Health_Changed?.Invoke(this.health);
