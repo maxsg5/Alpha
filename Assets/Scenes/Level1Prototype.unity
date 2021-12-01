@@ -13241,6 +13241,7 @@ MonoBehaviour:
   prompt_text_element: {fileID: 1792061357}
   interaction_range: 4
   interact_key: 101
+  interact_on_collision: 0
   on_interact:
     m_PersistentCalls:
       m_Calls:
@@ -38311,6 +38312,7 @@ MonoBehaviour:
   prompt_text_element: {fileID: 258623709}
   interaction_range: 4
   interact_key: 101
+  interact_on_collision: 0
   on_interact:
     m_PersistentCalls:
       m_Calls:
@@ -55297,6 +55299,7 @@ MonoBehaviour:
   prompt_text_element: {fileID: 1730830695}
   interaction_range: 4
   interact_key: 101
+  interact_on_collision: 0
   on_interact:
     m_PersistentCalls:
       m_Calls:
@@ -85153,6 +85156,7 @@ MonoBehaviour:
   prompt_text_element: {fileID: 905969971}
   interaction_range: 1.44
   interact_key: 101
+  interact_on_collision: 0
   on_interact:
     m_PersistentCalls:
       m_Calls:
@@ -102775,6 +102779,26 @@ PrefabInstance:
       propertyPath: m_SpriteTilingProperty.oldSize.y
       value: 3.11
       objectReference: {fileID: 0}
+    - target: {fileID: 7052856112917164744, guid: 5be92dd84ea8105428f2acea571691c1, type: 3}
+      propertyPath: prompt_text_element
+      value: 
+      objectReference: {fileID: 628782698}
+    - target: {fileID: 7052856112917164744, guid: 5be92dd84ea8105428f2acea571691c1, type: 3}
+      propertyPath: interact_on_collision
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7052856112917164744, guid: 5be92dd84ea8105428f2acea571691c1, type: 3}
+      propertyPath: on_interact.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 2058875324}
+    - target: {fileID: 7052856112917164744, guid: 5be92dd84ea8105428f2acea571691c1, type: 3}
+      propertyPath: on_interact.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Add_Ammo
+      objectReference: {fileID: 0}
+    - target: {fileID: 7052856112917164745, guid: 5be92dd84ea8105428f2acea571691c1, type: 3}
+      propertyPath: ammo_type
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 7052856112917164746, guid: 5be92dd84ea8105428f2acea571691c1, type: 3}
       propertyPath: m_Name
       value: Ammo Pickup - Shotgun
@@ -115387,11 +115411,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1885823169647732791, guid: 991599dd536696f46b8651a4d265e4e8, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 297.4
+      value: 65.57
       objectReference: {fileID: 0}
     - target: {fileID: 1885823169647732791, guid: 991599dd536696f46b8651a4d265e4e8, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -7.8
+      value: -12.76
       objectReference: {fileID: 0}
     - target: {fileID: 1885823169647732791, guid: 991599dd536696f46b8651a4d265e4e8, type: 3}
       propertyPath: m_LocalPosition.z

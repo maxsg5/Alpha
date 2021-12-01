@@ -134,6 +134,7 @@ public abstract class Weapon : MonoBehaviour
 
 	public void Add_Ammo(int amount)
 	{
+		Debug.Log("[Weapon] Adding " + amount + " ammo to " + this.name);
 		this.ammo += amount;
 		if (this.ammo > this.max_ammo) {
 			this.ammo = this.max_ammo;

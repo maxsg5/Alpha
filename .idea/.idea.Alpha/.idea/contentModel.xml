@@ -19,6 +19,7 @@
             <e p="Zombie_Normal.atlas.txt" t="Include" />
           </e>
         </e>
+        <e p="AmmoPack.cs" t="Include" />
         <e p="AudioManager.cs" t="Include" />
         <e p="AudioSwap.cs" t="Include" />
         <e p="CameraFollow.cs" t="Include" />
@@ -31,6 +32,27 @@
         <e p="Pistol.cs" t="Include" />
         <e p="Scripts" t="Include">
           <e p="_SNSSensor.cs" t="Include" />
+          <e p="Assignment 4 Scripts" t="Include">
+            <e p="Controllers" t="Include">
+              <e p="Controller.cs" t="Include" />
+              <e p="Controller_SQ.cs" t="Include" />
+            </e>
+            <e p="Motors" t="Include">
+              <e p="Motor.cs" t="Include" />
+              <e p="Motor_SQ.cs" t="Include" />
+            </e>
+            <e p="States" t="Include">
+              <e p="State.cs" t="Include" />
+              <e p="State_Null.cs" t="Include" />
+              <e p="State_SQ.cs" t="Include" />
+              <e p="State_SQ_Attacking.cs" t="Include" />
+              <e p="State_SQ_Die.cs" t="Include" />
+              <e p="State_SQ_Jumping.cs" t="Include" />
+              <e p="State_SQ_Patrolling.cs" t="Include" />
+              <e p="State_SQ_Take_Damage.cs" t="Include" />
+              <e p="State_SQ_Tracking.cs" t="Include" />
+            </e>
+          </e>
           <e p="Camera" t="Include">
             <e p="Camera_Follow.cs" t="Include" />
           </e>

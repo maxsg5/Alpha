@@ -181,7 +181,8 @@ public class CharacterController : MonoBehaviour
 	    Ammo_Pickup ammo_pickup = ammo_pickup_obj.GetComponent<Ammo_Pickup>();
 	    Weapon.Ammo ammo_type = ammo_pickup.Ammo_Type;
 	    foreach (Weapon weapon in this.weapons) {
-		    if (weapon.ammo_type == ammo_type || weapon.ammo_type == Weapon.Ammo.ALL) {
+		    Debug.Log("Add " + ammo_pickup.Ammo_Amount + " ammo to: " + weapon.name);
+		    if (weapon.ammo_type == ammo_type || ammo_type == Weapon.Ammo.ALL) {
 			    weapon.Add_Ammo(ammo_pickup.Ammo_Amount);
 		    }
 	    }

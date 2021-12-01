@@ -77,7 +77,7 @@ public class Interactable : MonoBehaviour
 	{
 		if (this.interact_on_collision) {
 			this.on_interact.Invoke();
-			Destroy(this);
+			Destroy(this.gameObject);
 		}
 		
 		this.Prompt = this.prompt;

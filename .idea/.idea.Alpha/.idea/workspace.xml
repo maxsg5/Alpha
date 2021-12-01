@@ -60,18 +60,18 @@
       <option value="$PROJECT_DIR$/Assets/Environment_Collider_2D.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Health_Tracker.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/UI_Health_Tracker.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Interactables/Interactable.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Weapons/Weapon_Beam.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Weapons/Ammo_Pickup.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Utilities/Mouse_Utilities.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Utilities/Mouse.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/CharacterScripts/CharacterMotor.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Weapons/Weapon.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/CharacterScripts/CharacterController.cs" />
       <option value="$PROJECT_DIR$/Assets/UI_Ammo_Tracker.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Enemy Scripts/BomberMotor.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Weapons/Projectile.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Weapons/Projectile_Beam.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Weapons/Ammo_Pickup.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Weapons/Weapon.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/CharacterScripts/CharacterController.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Interactables/Interactable.cs" />
     </changedPaths>
   </component>
   <component name="ProjectId" id="1z1ikSEWIAJLT9puI77EhNlOTyZ" />
@@ -146,6 +146,7 @@
       <workItem from="1637988360145" duration="1770000" />
       <workItem from="1638147719788" duration="426000" />
       <workItem from="1638209618160" duration="2082000" />
+      <workItem from="1638399345444" duration="1128000" />
     </task>
     <servers />
   </component>
