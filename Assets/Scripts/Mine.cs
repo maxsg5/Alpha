@@ -15,6 +15,8 @@ using UnityEngine;
 ///strength How much health the mine depletes from the character
 ///
 ///detonated    Determines if the mine has been detonated or not
+///
+///explosion    Explosion particles
 
 public class Mine : MonoBehaviour
 {
@@ -23,6 +25,7 @@ public class Mine : MonoBehaviour
     public CharacterController player;
     public float strength = 2f;
     public bool detonated = false;
+    public GameObject explosion;
 
     ///<summary>
     ///Initialize the sensor
@@ -42,9 +45,11 @@ public class Mine : MonoBehaviour
     ///Date         Author      Description
     ///2021-10-13   BS          Detect the player and detonate
     ///2021-10-27   BS          Remove the health of the player
+    ///2021-12-01   BS          Explosion added
     void Update()
     {
         if(sensor.CanSee(target)){
+            Instantiate(explosion, transform.position + new Vector3(0.0f, 0.25f, 0.0f), transform.rotation);
             player.Take_Damage(strength);
             Destroy(gameObject);
         } 
