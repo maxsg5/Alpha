@@ -8,10 +8,11 @@ public abstract class Weapon : MonoBehaviour
 	
 	public enum Ammo
 	{
-		Basic,
-		Shotgun,
-		Beam,
-		Grenade
+		BASIC,
+		SHOTGUN,
+		BEAM,
+		GRENADE,
+		ALL
 	}
 
 	public delegate void On_Ammo_Changed(int new_amount);

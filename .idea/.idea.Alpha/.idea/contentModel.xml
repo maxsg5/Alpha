@@ -24,7 +24,10 @@
         <e p="CameraFollow.cs" t="Include" />
         <e p="CameraSoundTrigger.cs" t="Include" />
         <e p="ChangeToGreen.cs" t="Include" />
+        <e p="DoorSlideUp.cs" t="Include" />
         <e p="DoorSwitch.cs" t="Include" />
+        <e p="HealthPack.cs" t="Include" />
+        <e p="HiddenWall.cs" t="Include" />
         <e p="Pistol.cs" t="Include" />
         <e p="Scripts" t="Include">
           <e p="_SNSSensor.cs" t="Include" />
