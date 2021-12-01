@@ -31843,6 +31843,10 @@ PrefabInstance:
       propertyPath: strength
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 1522991482946112594, guid: 85713d4a553494b8f83d44f1f5e115e9, type: 3}
+      propertyPath: explosion
+      value: 
+      objectReference: {fileID: 3327780879637555430, guid: 601afa8f91a5d60408133eb8543d932a, type: 3}
     - target: {fileID: 1522991482946112595, guid: 85713d4a553494b8f83d44f1f5e115e9, type: 3}
       propertyPath: m_RootOrder
       value: 22
@@ -65438,6 +65442,10 @@ PrefabInstance:
       propertyPath: strength
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 4979908099956200518, guid: 7b5c5a54112a24c969666b6742262f2c, type: 3}
+      propertyPath: explosion
+      value: 
+      objectReference: {fileID: 3327780879637555430, guid: 601afa8f91a5d60408133eb8543d932a, type: 3}
     - target: {fileID: 4979908099956200519, guid: 7b5c5a54112a24c969666b6742262f2c, type: 3}
       propertyPath: m_RootOrder
       value: 24
@@ -67424,6 +67432,10 @@ PrefabInstance:
       propertyPath: strength
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 1367788461880068739, guid: 7db161d7ff0cc4f7cbf962932d2738a4, type: 3}
+      propertyPath: explosion
+      value: 
+      objectReference: {fileID: 3327780879637555430, guid: 601afa8f91a5d60408133eb8543d932a, type: 3}
     - target: {fileID: 1367788461880068796, guid: 7db161d7ff0cc4f7cbf962932d2738a4, type: 3}
       propertyPath: m_Name
       value: Landmine4
@@ -101981,6 +101993,10 @@ PrefabInstance:
       propertyPath: strength
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 9217986931979852626, guid: a6a1c3f03dc5044c9b1308d4a7c68d78, type: 3}
+      propertyPath: explosion
+      value: 
+      objectReference: {fileID: 3327780879637555430, guid: 601afa8f91a5d60408133eb8543d932a, type: 3}
     - target: {fileID: 9217986931979852627, guid: a6a1c3f03dc5044c9b1308d4a7c68d78, type: 3}
       propertyPath: m_RootOrder
       value: 23
@@ -111941,6 +111957,10 @@ PrefabInstance:
       propertyPath: strength
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 364073043341346500, guid: 34771b66f218742fea592a11b544af0d, type: 3}
+      propertyPath: explosion
+      value: 
+      objectReference: {fileID: 3327780879637555430, guid: 601afa8f91a5d60408133eb8543d932a, type: 3}
     - target: {fileID: 364073043341346501, guid: 34771b66f218742fea592a11b544af0d, type: 3}
       propertyPath: m_RootOrder
       value: 18
