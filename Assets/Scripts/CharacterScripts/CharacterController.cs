@@ -24,7 +24,7 @@ public class CharacterController : MonoBehaviour
 	
     #region Public Variables
     public float speed = 10f; // The speed the character moves at.
-    public float jumpForce = 5f; // The force applied to the character when it jumps.
+    public float jumpForce = 10f; // The force applied to the character when it jumps.
     public int extraJumpsValue; // The amount of extra jumps the character has.
     public AudioClip PistolShootSound; // The sound the character makes when it shoots the pistol.
     #endregion

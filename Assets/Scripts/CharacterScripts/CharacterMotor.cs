@@ -57,9 +57,16 @@ public class CharacterMotor : MonoBehaviour
         return raycastHit.collider != null;
     }
 
+    /// <summary>
+    /// Method to determine if the character can start climbing a ladder or not.
+    /// </summary>
+    /// Author: Max Schafer
+    /// Date: 2021-12-01
     public void LadderCheck(){
+        //Cast a ray upwards to see if there is a ladder.
         RaycastHit2D ladderCast = Physics2D.Raycast(transform.position, Vector2.up, 5f, whatIsLadder);
         Debug.DrawRay(transform.position, Vector2.up * 5f, Color.green);
+        //If there is a ladder, allow player to start climbing by pressing W and. set the animator to climbing.
         if(ladderCast.collider != null){
             if(Input.GetKeyDown(KeyCode.W)){
                 isClimbingLadder = true;
@@ -78,7 +85,12 @@ public class CharacterMotor : MonoBehaviour
         }
     }
 
-
+    /// <summary>
+    /// Called when player is climbing the ladder
+    /// moves the player up and down the ladder using Vertial input.
+    /// </summary>
+    /// Author: Max Schafer
+    /// Date: 2021-12-01
     private void Climb(){
         float inputVerticle = Input.GetAxisRaw("Vertical");
         physics.velocity = new Vector2(physics.velocity.x, inputVerticle * 5f);
