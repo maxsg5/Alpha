@@ -54179,7 +54179,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6549ad60d6c02549a24abc7ee3a7c8b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animator: {fileID: 0}
   name: Laser Gun
   max_ammo: 1000
   ammo: 1000
@@ -108706,25 +108705,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1345889183812376926, guid: 67d8c0e71a0a44941bf621bde2af8d2a, type: 3}
   m_PrefabInstance: {fileID: 1345889182407059213}
   m_PrefabAsset: {fileID: 0}
---- !u!95 &1885154438
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1885154437}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 40a10bccad58830418849d5f5f3a3ad9, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!114 &1885154439
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -114134,11 +114114,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1885823169647732791, guid: 991599dd536696f46b8651a4d265e4e8, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 424.2
+      value: -3.82
       objectReference: {fileID: 0}
     - target: {fileID: 1885823169647732791, guid: 991599dd536696f46b8651a4d265e4e8, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -12.9
+      value: -3.49
       objectReference: {fileID: 0}
     - target: {fileID: 1885823169647732791, guid: 991599dd536696f46b8651a4d265e4e8, type: 3}
       propertyPath: m_LocalPosition.z
@@ -118098,6 +118078,10 @@ PrefabInstance:
       propertyPath: pivot
       value: 
       objectReference: {fileID: 1936589593}
+    - target: {fileID: 1345889183812376921, guid: 67d8c0e71a0a44941bf621bde2af8d2a, type: 3}
+      propertyPath: animator
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 1345889183812376921, guid: 67d8c0e71a0a44941bf621bde2af8d2a, type: 3}
       propertyPath: max_ammo
       value: 100
