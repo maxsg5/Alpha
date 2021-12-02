@@ -22,7 +22,7 @@ public class Tank : MonoBehaviour
         if(isMoving)
         {
             MoveLeft();
-            if(transform.position.x <= 530)
+            if(transform.position.x <= 529)
             {
                 isMoving = false;
                 audioSource.Stop();
