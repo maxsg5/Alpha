@@ -136,6 +136,17 @@ public class CharacterMotor : MonoBehaviour
             Flip();
         }*/
     }
+    /// <summary>
+    /// Stops the movement of the character
+    /// </summary>
+    /// Author: Max Schafer
+    /// Date: 2021-11-12
+    /// Description: Initial Testing.
+    public void StopMoving(){
+        physics.velocity = new Vector2(0, physics.velocity.y);
+        animator.SetBool("walking", false);
+        animator.SetBool("idle", true);
+    }
 
     /// <summary>
     /// Flips the character to face the other direction.

@@ -27,6 +27,7 @@ public class CharacterController : MonoBehaviour
     public float jumpForce = 10f; // The force applied to the character when it jumps.
     public int extraJumpsValue; // The amount of extra jumps the character has.
     public AudioClip PistolShootSound; // The sound the character makes when it shoots the pistol.
+    public bool disableMovement = false; // Whether or not the character can move.
     #endregion
 
     #region Private Variables
@@ -66,6 +67,13 @@ public class CharacterController : MonoBehaviour
     /// Description: Initial Testing.
     private void FixedUpdate()
     {
+        //if movement is disabled, return
+        if(disableMovement)
+        {
+            motor.StopMoving();
+            return;
+        }
+            
         // Movement
         motor.Move(speed);
     }
@@ -78,6 +86,14 @@ public class CharacterController : MonoBehaviour
     /// Description: Initial Testing.
     private void Update()
     {
+        //if movement is disabled, return
+        if(disableMovement)
+        {
+            motor.StopMoving();
+            return;
+        }
+            
+        
         // Jumping
         // Check if the character is grounded.
 	    if(motor.IsGrounded())
