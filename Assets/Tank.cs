@@ -11,9 +11,12 @@ public class Tank : MonoBehaviour
 
     public AudioClip hatchSound; //reference to the audio clip of the tank hatch sound.
 
+    private ParticleSystem smokeTrail; //reference to the particle system of the tank.
+
     void Start()
     {
         animator = GetComponentInChildren<Animator>();
+        smokeTrail = GetComponent<ParticleSystem>();
     }
 
     // Update is called once per frame
@@ -25,6 +28,7 @@ public class Tank : MonoBehaviour
             if(transform.position.x <= 529)
             {
                 isMoving = false;
+                smokeTrail.Stop();
                 audioSource.Stop();
                 animator.SetTrigger("popUp");
                 audioSource.PlayOneShot(hatchSound);
