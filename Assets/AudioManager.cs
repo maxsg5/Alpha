@@ -36,6 +36,8 @@ public class AudioManager : MonoBehaviour
     {
         audioSource1 = gameObject.AddComponent<AudioSource>();
         audioSource2 = gameObject.AddComponent<AudioSource>();
+        audioSource1.loop = true;
+        audioSource2.loop = true;
         isPlayingClip1 = true;
         isPlayingClip2 = false;
         //call SwapTrack with main theme to start playing the main theme.
