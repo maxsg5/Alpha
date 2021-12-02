@@ -64,7 +64,7 @@ public class CameraFollow : MonoBehaviour
         {
             inDesert = false;
             yOffset = 0;
-            cam.orthographicSize = Mathf.Lerp(cam.orthographicSize, 6, Time.deltaTime);
+            cam.orthographicSize = Mathf.Lerp(cam.orthographicSize, 7, Time.deltaTime);
             
         }
         //zoom camera in
@@ -72,7 +72,7 @@ public class CameraFollow : MonoBehaviour
         {
             inDesert = false;
             yOffset = 0;
-            cam.orthographicSize = Mathf.Lerp(cam.orthographicSize, 6, Time.deltaTime);
+            cam.orthographicSize = Mathf.Lerp(cam.orthographicSize, 7, Time.deltaTime);
         }
        
     }
