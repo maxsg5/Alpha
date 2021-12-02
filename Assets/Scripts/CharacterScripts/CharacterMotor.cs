@@ -145,6 +145,8 @@ public class CharacterMotor : MonoBehaviour
     public void StopMoving(){
         physics.velocity = new Vector2(0, physics.velocity.y);
         animator.SetBool("walking", false);
+        animator.SetBool("jumping", false);
+        animator.SetBool("grounded", true);
         animator.SetBool("idle", true);
     }
 
