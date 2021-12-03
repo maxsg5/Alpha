@@ -34,4 +34,14 @@ public class MenuManager : MonoBehaviour
     {
         SceneManager.LoadScene(1);
     }
+
+    public void ShowCredits()
+    {
+        mainMenu.SetActive(false);
+        creditsMenu.SetActive(true);
+    }
+    public void QuitGame()
+    {
+        Application.Quit();
+    }
 }
