@@ -32,6 +32,7 @@ public class Tank : MonoBehaviour
                 audioSource.Stop();
                 animator.SetTrigger("popUp");
                 audioSource.PlayOneShot(hatchSound);
+                //start final boss sequence here
             }
         }
 

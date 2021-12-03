@@ -25,6 +25,7 @@ public class TankTrigger : MonoBehaviour
             other.gameObject.GetComponent<CharacterController>().disableMovement = true;
             tank.GetComponent<Tank>().isMoving = true;
             audioSource.Play();
+            Destroy(gameObject, audioSource.clip.length);
         }
     }
 }
