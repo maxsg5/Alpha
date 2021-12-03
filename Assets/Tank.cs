@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class Tank : MonoBehaviour
 {
+	public delegate void Sequence_Done_Handler();
+	public event Sequence_Done_Handler Sequence_Done;
+	
     public float speed = 10f;
     public bool isMoving = false;
     private Animator animator; // Reference to the animator component that's on the child object.
@@ -33,6 +36,7 @@ public class Tank : MonoBehaviour
                 animator.SetTrigger("popUp");
                 audioSource.PlayOneShot(hatchSound);
                 //start final boss sequence here
+                this.Sequence_Done?.Invoke();
             }
         }
 

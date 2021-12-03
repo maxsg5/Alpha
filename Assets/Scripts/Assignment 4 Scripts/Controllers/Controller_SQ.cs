@@ -42,10 +42,8 @@ namespace Controllers
 		[SerializeField] private Transform[] control_points;
 		[SerializeField] private SectorSensor spider_eye;
 		[SerializeField] private Transform target;
-		
-		private Motor_SQ motor;
-		private Rigidbody rb;
-		private Animator animator;
+
+		private Motor_SQ motor_sq;
 
 		public float Speed => this.speed;
 		public float Patrol_Point_Range => this.patrol_point_range;
@@ -113,9 +111,8 @@ namespace Controllers
 			this.Jump_Range = this.jump_range;
 			this.jump_speed = this.jump_range / (this.jump_time * 1.5f);
 
-			this.rb = this.GetComponent<Rigidbody>();
-			this.animator = this.GetComponent<Animator>();
-			
+			this.motor_sq = this.motor as Motor_SQ;
+
 			Motor.Data motor_data = new Motor.Data()
 			{
 				maxForward = 4f,
@@ -136,42 +133,42 @@ namespace Controllers
 		/// <summary>
 		/// Preloads all of the spider queen's states
 		/// </summary>
-		private void Initialise_States()
+		protected override void Initialise_States()
 		{
 			this.state_patrolling = new State_SQ_Patrolling(
 				Controller.null_state
 				, this
-				, this.motor
+				, this.motor_sq
 			);
 
 			this.state_tracking = new State_SQ_Tracking(
 				Controller.null_state
 				, this
-				, this.motor
+				, this.motor_sq
 			);
 
 			this.state_jumping = new State_SQ_Jumping(
 				Controller.null_state
 				, this
-				, this.motor
+				, this.motor_sq
 			);
 
 			this.state_attacking = new State_SQ_Attacking(
 				Controller.null_state
 				, this
-				, this.motor
+				, this.motor_sq
 			);
 
 			this.state_taking_damage = new State_SQ_Take_Damage(
 				Controller.null_state
 				, this
-				, this.motor
+				, this.motor_sq
 			);
 
 			this.state_dying = new State_SQ_Die(
 				Controller.null_state
 				, this
-				, this.motor
+				, this.motor_sq
 			);
 		}
 

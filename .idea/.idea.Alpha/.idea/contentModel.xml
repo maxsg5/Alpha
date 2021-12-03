@@ -35,22 +35,34 @@
           <e p="Assignment 4 Scripts" t="Include">
             <e p="Controllers" t="Include">
               <e p="Controller.cs" t="Include" />
+              <e p="Controller_Boss.cs" t="Include" />
               <e p="Controller_SQ.cs" t="Include" />
             </e>
             <e p="Motors" t="Include">
               <e p="Motor.cs" t="Include" />
+              <e p="Motor_Boss.cs" t="Include" />
               <e p="Motor_SQ.cs" t="Include" />
             </e>
             <e p="States" t="Include">
+              <e p="Boss" t="Include">
+                <e p="State_Boss.cs" t="Include" />
+                <e p="State_Boss_Attacking.cs" t="Include" />
+                <e p="State_Boss_Following.cs" t="Include" />
+                <e p="State_Boss_Intro.cs" t="Include" />
+                <e p="State_Boss_Jumping.cs" t="Include" />
+                <e p="State_Boss_Taking_Damage.cs" t="Include" />
+              </e>
+              <e p="Spider Queen" t="Include">
+                <e p="State_SQ.cs" t="Include" />
+                <e p="State_SQ_Attacking.cs" t="Include" />
+                <e p="State_SQ_Die.cs" t="Include" />
+                <e p="State_SQ_Jumping.cs" t="Include" />
+                <e p="State_SQ_Patrolling.cs" t="Include" />
+                <e p="State_SQ_Take_Damage.cs" t="Include" />
+                <e p="State_SQ_Tracking.cs" t="Include" />
+              </e>
               <e p="State.cs" t="Include" />
               <e p="State_Null.cs" t="Include" />
-              <e p="State_SQ.cs" t="Include" />
-              <e p="State_SQ_Attacking.cs" t="Include" />
-              <e p="State_SQ_Die.cs" t="Include" />
-              <e p="State_SQ_Jumping.cs" t="Include" />
-              <e p="State_SQ_Patrolling.cs" t="Include" />
-              <e p="State_SQ_Take_Damage.cs" t="Include" />
-              <e p="State_SQ_Tracking.cs" t="Include" />
             </e>
           </e>
           <e p="Camera" t="Include">
@@ -112,6 +124,8 @@
           </e>
         </e>
         <e p="SlidingDoor.cs" t="Include" />
+        <e p="Tank.cs" t="Include" />
+        <e p="TankTrigger.cs" t="Include" />
         <e p="TextMesh Pro" t="Include">
           <e p="Examples &amp; Extras" t="Include">
             <e p="Fonts" t="Include">
