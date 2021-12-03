@@ -6409,7 +6409,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ba8719a3141cd449b1875a87ff63804, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  main_theme: {fileID: 8300000, guid: a80b08dc0122e3f4b95cb197646814d3, type: 3}
+  main_theme: {fileID: 8300000, guid: 71e6598a203ca7d4d81a2ce0df4768a6, type: 3}
 --- !u!4 &177600213
 Transform:
   m_ObjectHideFlags: 0
