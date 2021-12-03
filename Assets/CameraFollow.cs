@@ -12,6 +12,7 @@ public class CameraFollow : MonoBehaviour
     public Transform target; //the target we want to follow
     public Transform zoomOut; //the camera will zoom out past this point
     public Transform zoomIn; //the camera will zoom in past this point
+    public Transform bossArea; //the camera will zoom out past this point
 
     #endregion
 
@@ -73,6 +74,13 @@ public class CameraFollow : MonoBehaviour
             inDesert = false;
             yOffset = 0;
             cam.orthographicSize = Mathf.Lerp(cam.orthographicSize, 7, Time.deltaTime);
+        }
+
+        //zoom camera out.
+        if(transform.position.x > bossArea.position.x)
+        {
+            
+            cam.orthographicSize = Mathf.Lerp(cam.orthographicSize, 17, Time.deltaTime);
         }
        
     }
