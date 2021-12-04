@@ -5,12 +5,14 @@ using UnityEngine;
 
 public class Motor_Boss : Motor
 {
+	private static readonly int animator_die = Animator.StringToHash("Die");
 	private static readonly int animator_walking = Animator.StringToHash("Walking");
 	private static readonly int animator_jumping = Animator.StringToHash("Jumping");
 	private static readonly int animator_attacking = Animator.StringToHash("Attacking");
-	private static readonly int animator_taking_damage = Animator.StringToHash("Taking Damage");
-	
-	public Motor_Boss(Transform transform, Rigidbody rigidbody, Animator animator, Data motorData) : base(transform, rigidbody, animator, motorData) { }
+	private static readonly int animator_taking_damage = Animator.StringToHash("Take Damage");
+
+	public Motor_Boss(Transform transform, Rigidbody2D rigidbody, Animator animator)
+		: base(transform, rigidbody, animator) { }
 
 	public void Start_Jump()
 	{
@@ -57,15 +59,16 @@ public class Motor_Boss : Motor
 		
 		this.rigidbody.AddForce(force);
 	}
+
+	public void Die()
+	{
+		this.animator.SetTrigger(animator_die);
+	}
 	
 	public override void MoveForward(Vector3 target_pos, float speed)
 	{
 		Vector2 target = new Vector2(target_pos.x, target_pos.y);
-		
-	}
-
-	public override void MoveBackward(Vector3 targetPos, float speed)
-	{
-		throw new System.NotImplementedException();
+		Vector2 velocity = new Vector2(target_pos.x >= this.transform.position.x ? speed : -speed, 0);
+		this.rigidbody.velocity = velocity;
 	}
 }

@@ -32,45 +32,16 @@
         <e p="Pistol.cs" t="Include" />
         <e p="Scripts" t="Include">
           <e p="_SNSSensor.cs" t="Include" />
-          <e p="Assignment 4 Scripts" t="Include">
-            <e p="Controllers" t="Include">
-              <e p="Controller.cs" t="Include" />
-              <e p="Controller_Boss.cs" t="Include" />
-              <e p="Controller_SQ.cs" t="Include" />
-            </e>
-            <e p="Motors" t="Include">
-              <e p="Motor.cs" t="Include" />
-              <e p="Motor_Boss.cs" t="Include" />
-              <e p="Motor_SQ.cs" t="Include" />
-            </e>
-            <e p="States" t="Include">
-              <e p="Boss" t="Include">
-                <e p="State_Boss.cs" t="Include" />
-                <e p="State_Boss_Attacking.cs" t="Include" />
-                <e p="State_Boss_Following.cs" t="Include" />
-                <e p="State_Boss_Intro.cs" t="Include" />
-                <e p="State_Boss_Jumping.cs" t="Include" />
-                <e p="State_Boss_Taking_Damage.cs" t="Include" />
-              </e>
-              <e p="Spider Queen" t="Include">
-                <e p="State_SQ.cs" t="Include" />
-                <e p="State_SQ_Attacking.cs" t="Include" />
-                <e p="State_SQ_Die.cs" t="Include" />
-                <e p="State_SQ_Jumping.cs" t="Include" />
-                <e p="State_SQ_Patrolling.cs" t="Include" />
-                <e p="State_SQ_Take_Damage.cs" t="Include" />
-                <e p="State_SQ_Tracking.cs" t="Include" />
-              </e>
-              <e p="State.cs" t="Include" />
-              <e p="State_Null.cs" t="Include" />
-            </e>
-          </e>
           <e p="Camera" t="Include">
             <e p="Camera_Follow.cs" t="Include" />
           </e>
           <e p="CharacterScripts" t="Include">
             <e p="CharacterController.cs" t="Include" />
             <e p="CharacterMotor.cs" t="Include" />
+          </e>
+          <e p="Controllers" t="Include">
+            <e p="Controller.cs" t="Include" />
+            <e p="Controller_Boss.cs" t="Include" />
           </e>
           <e p="Damage" t="Include">
             <e p="Damage.cs" t="Include" />
@@ -99,6 +70,10 @@
           </e>
           <e p="Mine.cs" t="Include" />
           <e p="Missile.cs" t="Include" />
+          <e p="Motors" t="Include">
+            <e p="Motor.cs" t="Include" />
+            <e p="Motor_Boss.cs" t="Include" />
+          </e>
           <e p="PathMove.cs" t="Include" />
           <e p="Sensors" t="Include">
             <e p="SectorSensor.cs" t="Include" />
@@ -107,6 +82,19 @@
           </e>
           <e p="SNSSector.cs" t="Include" />
           <e p="SNSSphere.cs" t="Include" />
+          <e p="States" t="Include">
+            <e p="Boss" t="Include">
+              <e p="State_Boss.cs" t="Include" />
+              <e p="State_Boss_Attacking.cs" t="Include" />
+              <e p="State_Boss_Dying.cs" t="Include" />
+              <e p="State_Boss_Following.cs" t="Include" />
+              <e p="State_Boss_Intro.cs" t="Include" />
+              <e p="State_Boss_Jumping.cs" t="Include" />
+              <e p="State_Boss_Taking_Damage.cs" t="Include" />
+            </e>
+            <e p="State.cs" t="Include" />
+            <e p="State_Null.cs" t="Include" />
+          </e>
           <e p="TurretDamage.cs" t="Include" />
           <e p="UI_Health_Tracker.cs" t="Include" />
           <e p="Utilities" t="Include">

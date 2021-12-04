@@ -26,7 +26,7 @@ namespace States
 
 		public override void Exit()
 		{
-			throw new System.NotImplementedException();
+			return;
 		}
 	}
 }

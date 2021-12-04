@@ -42,10 +42,11 @@ namespace Controllers
 		protected virtual void Awake()
 		{
 			this.behaviour_state = Controller.null_state;
-			this.Initialise_States();
-			
 			this.rb = this.GetComponent<Rigidbody2D>();
 			this.animator = this.GetComponent<Animator>();
+			this.motor = new Motor_Boss(this.transform, this.rb, this.animator);
+			
+			this.Initialise_States();
 		}
 
 		/// <summary>
