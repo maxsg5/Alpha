@@ -120,6 +120,15 @@ public class Interactable : MonoBehaviour
 		Destroy(this.GetComponent<Interactable>());
 	}
 
+	public void Destroy_Object(GameObject obj)
+	{
+		if (this.gameObject == obj) {
+			this.prompt_text_element.gameObject.SetActive(false);
+		}
+
+		Destroy(obj);
+	}
+
 	public void Disable_Interactable()
 	{
 		this.prompt_text_element.gameObject.SetActive(false);

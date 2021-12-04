@@ -31,8 +31,6 @@
   </component>
   <component name="IdeDocumentHistory">
     <changedPaths>
-      <option value="$PROJECT_DIR$/Assets/Scripts/Interactables/Toggle.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Interactables/Colour_Switcher.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Enemy Scripts/Boomer.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Projectile.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Character.cs" />
@@ -54,16 +52,12 @@
       <option value="$PROJECT_DIR$/Assets/Scripts/Weapons/Weapon_Beam.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Utilities/Mouse_Utilities.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Utilities/Mouse.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/CharacterScripts/CharacterMotor.cs" />
       <option value="$PROJECT_DIR$/Assets/UI_Ammo_Tracker.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Enemy Scripts/BomberMotor.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Weapons/Projectile.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Weapons/Projectile_Beam.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Weapons/Ammo_Pickup.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Weapons/Weapon.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/CharacterScripts/CharacterController.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Interactables/Interactable.cs" />
-      <option value="$PROJECT_DIR$/Assets/Tank.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Assignment 4 Scripts/Controllers/Controller_SQ.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Assignment 4 Scripts/Motors/Motor.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Assignment 4 Scripts/Controllers/Controller.cs" />
@@ -77,11 +71,17 @@
       <option value="$PROJECT_DIR$/Assets/Scripts/Assignment 4 Scripts/States/Boss/State_Boss_Following.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Assignment 4 Scripts/Controllers/Controller_Boss.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/States/Boss/State_Boss_Dying.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Motors/Motor.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Motors/Motor_Boss.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Controllers/Controller.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Controllers/Controller_Boss.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/States/Boss/State_Boss_Attacking.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Motors/Motor.cs" />
+      <option value="$PROJECT_DIR$/Assets/Tank.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Interactables/Interactable.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/CharacterScripts/CharacterMotor.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/States/Boss/State_Boss_Intro.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/CharacterScripts/CharacterController.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Controllers/Controller_Boss.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/States/Boss/State_Boss_Jumping.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Motors/Motor_Boss.cs" />
     </changedPaths>
   </component>
   <component name="ProjectId" id="1z1ikSEWIAJLT9puI77EhNlOTyZ" />
@@ -159,6 +159,7 @@
       <workItem from="1638399345444" duration="1128000" />
       <workItem from="1638568094804" duration="7329000" />
       <workItem from="1638577230613" duration="958000" />
+      <workItem from="1638619302616" duration="7262000" />
     </task>
     <servers />
   </component>

@@ -11,17 +11,20 @@ public class State_Boss_Jumping : State_Boss
 	
 	public override void Tick()
 	{
-		// if is grounded
-		this.controller.Switch_States(this.controller.State_Following);
+		if (this.controller.Grounded) {
+			this.controller.Switch_States(this.controller.State_Following);
+		}
 	}
 
 	public override void Enter()
 	{
+		Debug.Log("Start Jump");
 		this.motor.Start_Jump();
 	}
 
 	public override void Exit()
 	{
+		Debug.Log("End Jump");
 		this.motor.End_Jump();
 	}
 }

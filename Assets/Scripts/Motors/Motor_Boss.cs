@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using Motors;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 public class Motor_Boss : Motor
@@ -65,10 +66,11 @@ public class Motor_Boss : Motor
 		this.animator.SetTrigger(animator_die);
 	}
 	
-	public override void MoveForward(Vector3 target_pos, float speed)
+	public override void Move(Vector3 target_pos, float speed)
 	{
-		Vector2 target = new Vector2(target_pos.x, target_pos.y);
-		Vector2 velocity = new Vector2(target_pos.x >= this.transform.position.x ? speed : -speed, 0);
+		bool player_to_the_right = target_pos.x >= this.transform.position.x;
+		Vector2 velocity = new Vector2(player_to_the_right? speed : -speed, this.rigidbody.velocity.y);
+		this.sprite_renderer.flipX = player_to_the_right;
 		this.rigidbody.velocity = velocity;
 	}
 }

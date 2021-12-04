@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -39,15 +40,16 @@ public class Tank : MonoBehaviour
                 this.Sequence_Done?.Invoke();
             }
         }
-
-        
     }
 
     private void MoveLeft()
     {
-        transform.position += Vector3.left * Time.deltaTime;
-        
+        transform.position += Vector3.left * (Time.deltaTime * this.speed);
     }
 
-
+    private void OnCollisionEnter2D(Collision2D other)
+    {
+	    // TODO: Play explosion
+	    Destroy(this.gameObject);
+    }
 }

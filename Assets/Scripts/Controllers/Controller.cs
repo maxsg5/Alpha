@@ -1,5 +1,6 @@
 // Author: Declan Simkins
 
+using System.Collections.Generic;
 using Motors;
 using UnityEngine;
 
@@ -44,8 +45,8 @@ namespace Controllers
 			this.behaviour_state = Controller.null_state;
 			this.rb = this.GetComponent<Rigidbody2D>();
 			this.animator = this.GetComponent<Animator>();
-			this.motor = new Motor_Boss(this.transform, this.rb, this.animator);
 			
+			this.Initialise_Motor();
 			this.Initialise_States();
 		}
 
@@ -58,6 +59,7 @@ namespace Controllers
 			this.behaviour_state.Tick();
 		}
 
+		protected abstract void Initialise_Motor();
 		protected abstract void Initialise_States();
 
 		/// <summary>

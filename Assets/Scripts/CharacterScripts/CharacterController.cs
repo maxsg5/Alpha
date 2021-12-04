@@ -4,6 +4,8 @@
 /// Author: Max Schafer
 /// Date: 2021-10-23
 /// Description: Initial Testing.
+
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -222,5 +224,10 @@ public class CharacterController : MonoBehaviour
 	    this.active_weapon.gameObject.SetActive(true);
 
 	    this.Weapon_Changed?.Invoke(this.active_weapon);
+    }
+
+    public void Enable_Movement()
+    {
+	    this.disableMovement = false;
     }
 }

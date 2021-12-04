@@ -14,19 +14,25 @@ namespace States
 		
 		public override void Tick()
 		{
-			throw new System.NotImplementedException();
+			return;
 		}
 
 		public override void Enter()
 		{
-			this.controller.RB.gravityScale = Physics.gravity.y;
-			this.controller.gameObject.GetComponent<Health>().enabled = true;
-			this.controller.Switch_States(this.controller.State_Jumping);
+			this.controller.StartCoroutine(this.Delayed_Intro());
 		}
 
 		public override void Exit()
 		{
 			return;
+		}
+
+		private IEnumerator Delayed_Intro()
+		{
+			yield return new WaitForSeconds(1.5f);
+			this.controller.RB.gravityScale = 1;
+			this.controller.gameObject.GetComponent<Health>().enabled = true;
+			this.controller.Switch_States(this.controller.State_Jumping);
 		}
 	}
 }

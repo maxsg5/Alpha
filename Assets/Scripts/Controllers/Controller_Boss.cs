@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Controllers;
@@ -13,6 +14,7 @@ public class Controller_Boss : Controllers.Controller
 
 	private Motor_Boss motor_boss;
 	private Health health;
+	private bool grounded;
 	
 	private State state_intro;
 	private State state_jumping;
@@ -28,6 +30,7 @@ public class Controller_Boss : Controllers.Controller
 
 	public float Attack_Range => this.attack_range;
 	public float Speed => this.speed;
+	public bool Grounded => this.grounded;
 
 	protected override void Awake()
 	{
@@ -38,42 +41,48 @@ public class Controller_Boss : Controllers.Controller
 		this.health.Health_Changed += this.On_Health_Changed;
 	}
 
+	protected override void Initialise_Motor()
+	{
+		this.motor = new Motor_Boss(this.transform, this.rb, this.animator);
+		this.motor_boss = this.motor as Motor_Boss;
+	}
+
 	protected override void Initialise_States()
 	{
 		this.state_intro = new State_Boss_Intro(
 			Controller.null_state,
 			this,
-			this.motor as Motor_Boss
+			this.motor_boss
 		);
 
 		this.state_jumping = new State_Boss_Jumping(
 			Controller.null_state,
 			this,
-			this.motor as Motor_Boss
+			this.motor_boss
 		);
 		
 		this.state_following = new State_Boss_Following(
 			Controller.null_state,
 			this,
-			this.motor as Motor_Boss
+			this.motor_boss
 		);
 		
 		this.state_attacking = new State_Boss_Attacking(
 			Controller.null_state,
 			this,
-			this.motor as Motor_Boss
+			this.motor_boss
 		);
 		
 		this.state_taking_damage = new State_Boss_Taking_Damage(
 			Controller.null_state,
 			this,
-			this.motor as Motor_Boss
+			this.motor_boss
 		);
 		
 		this.state_dying = new State_Boss_Dying(
 			Controller.null_state,
 			this,
-			this.motor as Motor_Boss
+			this.motor_boss
 		);
 	}
 
@@ -89,6 +98,20 @@ public class Controller_Boss : Controllers.Controller
 		}
 		else {
 			this.Switch_States(this.state_taking_damage, false);
+		}
+	}
+	
+	public void OnCollisionEnter2D(Collision2D other)
+	{
+		if (other.gameObject.layer == LayerMask.NameToLayer("Ground")) {
+			this.grounded = true;
+		}
+	}
+
+	public void OnCollisionExit2D(Collision2D other)
+	{
+		if (other.gameObject.layer ==  LayerMask.NameToLayer("Ground")) {
+			this.grounded = false;
 		}
 	}
 }

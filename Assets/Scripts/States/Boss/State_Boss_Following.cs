@@ -16,7 +16,7 @@ public class State_Boss_Following : State_Boss
 			this.controller.Switch_States(this.controller.State_Attacking);
 		}
 		else {
-			this.motor.MoveForward(this.player.transform.position, this.controller.Speed);
+			this.motor.Move(this.player.transform.position, this.controller.Speed);
 		}
 	}
 
