@@ -8,11 +8,15 @@ using UnityEngine;
 /// Date: 2021-12-05
 public class PauseManager : MonoBehaviour
 {
+    #region Public Variables
     public GameObject pauseMenu; // The pause menu
+    #endregion
 
+    #region Private Variables
     private bool isPaused = false; // Is the game paused?
-
+    #endregion
     
+    #region Methods
 
     /// <summary>
     /// checks if the game is paused or not
@@ -53,4 +57,5 @@ public class PauseManager : MonoBehaviour
     {
         Application.Quit();
     }
+    #endregion
 }
