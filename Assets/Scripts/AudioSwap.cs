@@ -8,8 +8,11 @@ using UnityEngine;
 /// Date: 2021-12-01
 public class AudioSwap : MonoBehaviour
 {
+    #region Public Variables
     public AudioClip newTrack; // the new audio track to play
+    #endregion
 
+    #region Methods
     /// <summary>
     /// Once the player enters the trigger area, we swap the audio track.
     /// </summary>
@@ -23,4 +26,5 @@ public class AudioSwap : MonoBehaviour
             AudioManager.instance.SwapTrack(newTrack);
         }
     }
+    #endregion
 }

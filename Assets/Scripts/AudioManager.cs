@@ -8,11 +8,17 @@ using UnityEngine;
 /// Date: 2021-12-01
 public class AudioManager : MonoBehaviour
 {
+    #region Public Variables
     public AudioClip main_theme; // The main theme of the game
     public static AudioManager instance; // Singleton since we only want one instance at a time.
+    #endregion
+
+    #region Private Variables
     private AudioSource audioSource1, audioSource2; // Audio sources for the two songs.
     private bool isPlayingClip1, isPlayingClip2; // Bools for checking if the clips are playing.
+    #endregion
     
+    #region Methods
 
     /// <summary>
     /// Awake is responsible for initializing the singleton.
@@ -48,6 +54,8 @@ public class AudioManager : MonoBehaviour
     /// Responsible for swapping the audio clip in the audio sources. using a fade out and fade in.
     /// </summary>
     /// <param name="newTrack">Audio Clip you want to play next.</param>
+    /// Author: Max Schafer
+    /// Date: 2021-12-01
     public void SwapTrack(AudioClip newTrack)
     {
         //we need to stop all ongoing fade outs if we are swapping tracks.
@@ -92,18 +100,20 @@ public class AudioManager : MonoBehaviour
     {
         float fadeTime = 5.25f; // time it takes to fade out.
         float timeElasped = 0.0f; // time elapsed.
+        //first check if we are playing clip1.
         if (!isPlayingClip1)
         {
+            //If not we can set up clip2 to fade in.
             audioSource2.clip = newTrack;
             audioSource2.Play();
             while(timeElasped < fadeTime)
             {
-                audioSource2.volume = Mathf.Lerp(0,1,timeElasped/fadeTime);
-                audioSource1.volume = Mathf.Lerp(1,0,timeElasped/fadeTime);
+                audioSource2.volume = Mathf.Lerp(0,1,timeElasped/fadeTime); //raise the volume of track 2
+                audioSource1.volume = Mathf.Lerp(1,0,timeElasped/fadeTime); //lower the volume of track 1
                 timeElasped += Time.deltaTime;
                 yield return null;
             }
-            audioSource1.Stop();
+            audioSource1.Stop(); //stop track 1.
         }
         else
         {
@@ -111,13 +121,16 @@ public class AudioManager : MonoBehaviour
             audioSource1.Play();
             while(timeElasped < fadeTime)
             {
-                audioSource1.volume = Mathf.Lerp(0,1,timeElasped/fadeTime);
-                audioSource2.volume = Mathf.Lerp(1,0,timeElasped/fadeTime);
+                audioSource1.volume = Mathf.Lerp(0,1,timeElasped/fadeTime); //raise the volume of track 1
+                audioSource2.volume = Mathf.Lerp(1,0,timeElasped/fadeTime); //lower the volume of track 2
                 timeElasped += Time.deltaTime;
                 yield return null;
             }
-            audioSource2.Stop();
+            audioSource2.Stop(); //stop track 2.
         }
+        //flip the bool.
         isPlayingClip1 = !isPlayingClip1;
     }
+
+    #endregion
 }

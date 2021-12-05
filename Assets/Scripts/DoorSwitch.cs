@@ -11,15 +11,22 @@ using UnityEngine;
 [RequireComponent(typeof(Animator))]
 public class DoorSwitch : MonoBehaviour
 {
-    private Animator animator; // Reference to the animator component.
+    #region Public Variables
     public SlidingDoor door; // The door to control
-
+    #endregion
+    
+    #region Private Variables
+    private Animator animator; // Reference to the animator component.
     private AudioSource audio; // AudioSource component
-
-
+    #endregion
+    
+    #region Methods
     /// <summary>
     /// Initialization of the Animator and AudioSource components.
     /// </summary>
+    /// Author: Max Schafer
+    /// Date: 2021-11-19
+    /// Description: Initial testing
     void Start()
     {
         animator = GetComponent<Animator>();
@@ -55,5 +62,6 @@ public class DoorSwitch : MonoBehaviour
         audio.Play();
         audio.SetScheduledEndTime(AudioSettings.dspTime+(toSeconds-fromSeconds));
     }
-    
+
+    #endregion
 }

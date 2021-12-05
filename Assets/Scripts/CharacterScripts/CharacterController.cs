@@ -9,8 +9,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UIElements;
 
-
-
 // TODO: Flip the weapon sprite upside down when it rotates; flip the character based on weapon rotation
 [RequireComponent(typeof(CharacterMotor))]
 [RequireComponent(typeof(Health))]
@@ -43,7 +41,7 @@ public class CharacterController : MonoBehaviour
     [SerializeField] private GameObject pivot;
     #endregion
 
-
+    #region Methods
     /// <summary>
     /// Initialize character controller, health and weapon.
     /// </summary>
@@ -223,4 +221,6 @@ public class CharacterController : MonoBehaviour
 
 	    this.Weapon_Changed?.Invoke(this.active_weapon);
     }
+
+    #endregion
 }

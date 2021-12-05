@@ -8,8 +8,15 @@ using UnityEngine;
 /// Date: 2021-12-01
 public class HiddenWall : MonoBehaviour
 {
+    #region Public Variables
     public GameObject wall; // The wall that slides upwards
-     private AudioSource audio; // The audio source for the wall sliding sound
+    #endregion
+   
+    #region Private Variables
+    private AudioSource audio; // The audio source for the wall sliding sound
+    #endregion
+   
+    #region Methods
 
     /// <summary>
     /// Initialize the audio source
@@ -25,6 +32,9 @@ public class HiddenWall : MonoBehaviour
     /// Destroy the collider so we can't trigger the slide any more.
     /// </summary>
     /// <param name="other">Collider2D</param>
+    /// Author: Max Schafer
+    /// Date: 2021-11-19
+    /// Description: Initial testing
     private void OnTriggerEnter2D(Collider2D other)
     {
         
@@ -48,4 +58,6 @@ public class HiddenWall : MonoBehaviour
         audio.Play();
         audio.SetScheduledEndTime(AudioSettings.dspTime+(toSeconds-fromSeconds));
     }
+
+    #endregion
 }

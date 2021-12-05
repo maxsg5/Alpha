@@ -12,6 +12,8 @@ public class HealthPack : MonoBehaviour
     /// When the player collides with the health pack, the player's health is restored.
     /// </summary>
     /// <param name="collision">Collision2D</param>
+    /// Author: Max Schafer
+    /// Date: 2021-12-01
     void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.tag == "Player")
