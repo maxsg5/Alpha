@@ -26,6 +26,7 @@ public class CharacterController : MonoBehaviour
     public int extraJumpsValue; // The amount of extra jumps the character has.
     public AudioClip PistolShootSound; // The sound the character makes when it shoots the pistol.
     public bool disableMovement = false; // Whether or not the character can move.
+    public PauseManager pauseManager; // The pause manager.
     #endregion
 
     #region Private Variables
@@ -84,6 +85,12 @@ public class CharacterController : MonoBehaviour
     /// Description: Initial Testing.
     private void Update()
     {
+        //Check if the game is to be paused.
+        if(Input.GetKeyDown(KeyCode.Escape))
+        {
+            pauseManager.Pause();
+        }
+
         //if movement is disabled, return
         if(disableMovement)
         {
