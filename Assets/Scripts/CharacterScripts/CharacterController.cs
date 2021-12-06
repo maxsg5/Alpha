@@ -11,8 +11,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UIElements;
 
-
-
 // TODO: Flip the weapon sprite upside down when it rotates; flip the character based on weapon rotation
 [RequireComponent(typeof(CharacterMotor))]
 [RequireComponent(typeof(Health))]
@@ -30,6 +28,7 @@ public class CharacterController : MonoBehaviour
     public int extraJumpsValue; // The amount of extra jumps the character has.
     public AudioClip PistolShootSound; // The sound the character makes when it shoots the pistol.
     public bool disableMovement = false; // Whether or not the character can move.
+    public PauseManager pauseManager; // The pause manager.
     #endregion
 
     #region Private Variables
@@ -46,7 +45,7 @@ public class CharacterController : MonoBehaviour
     [SerializeField] private GameObject pivot;
     #endregion
 
-
+    #region Methods
     /// <summary>
     /// Initialize character controller, health and weapon.
     /// </summary>
@@ -97,6 +96,12 @@ public class CharacterController : MonoBehaviour
     /// Description: Initial Testing.
     private void Update()
     {
+        //Check if the game is to be paused.
+        if(Input.GetKeyDown(KeyCode.Escape))
+        {
+            pauseManager.Pause();
+        }
+
         //if movement is disabled, return
         if(disableMovement)
         {
@@ -238,4 +243,5 @@ public class CharacterController : MonoBehaviour
     {
 	    this.disableMovement = false;
     }
+    #endregion
 }
