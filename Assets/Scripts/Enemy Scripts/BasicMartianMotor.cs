@@ -43,7 +43,6 @@ public class BasicMartianMotor : MonoBehaviour
     
     public void Attack(Collider2D player_collider)
     {
-        animator.SetBool("run", false);
         animator.SetBool("attack", true);
         animator.SetFloat("speed", 0.0f);
         melee.doDamage(player_collider);
