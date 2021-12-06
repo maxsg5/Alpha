@@ -15,6 +15,7 @@ public class CharacterMotor : MonoBehaviour
 	[SerializeField] private float max_speed = 5;
 	[SerializeField] private float aerial_max_acceleration = 0.25f;
 	
+	
     #region Public Variables
     public LayerMask whatIsGround; // The layer that is considered ground.
     public LayerMask whatIsLadder; // The layer that is considered ladder.
@@ -31,8 +32,8 @@ public class CharacterMotor : MonoBehaviour
 
     private bool grounded;
     private Vector2 acceleration;
-
     #endregion
+
 
     #region Methods
     /// <summary>
@@ -183,9 +184,8 @@ public class CharacterMotor : MonoBehaviour
     /// Description: Initial Testing.
     public void Move(float speed)
     {
-        float x = Input.GetAxis("Horizontal"); // Get the horizontal input
-        Vector2 velocity = new Vector2(x * this.acceleration_rate, 0); // Create a new vector2 with the x value of the horizontal input
-        //physics.velocity = new Vector2(Mathf.Clamp(this.physics.velocity.x + (x * speed), -speed, speed), physics.velocity.y);  // Set the velocity of the rigidbody to the velocity created above
+        float x = Input.GetAxis("Horizontal");
+        Vector2 velocity = new Vector2(x * this.acceleration_rate, 0);
         this.acceleration = velocity;
     }
 
