@@ -19,22 +19,25 @@
             <e p="Zombie_Normal.atlas.txt" t="Include" />
           </e>
         </e>
-        <e p="AmmoPack.cs" t="Include" />
-        <e p="AudioManager.cs" t="Include" />
-        <e p="AudioSwap.cs" t="Include" />
-        <e p="CameraFollow.cs" t="Include" />
-        <e p="CameraSoundTrigger.cs" t="Include" />
-        <e p="ChangeToGreen.cs" t="Include" />
-        <e p="DoorSlideUp.cs" t="Include" />
-        <e p="DoorSwitch.cs" t="Include" />
-        <e p="HealthPack.cs" t="Include" />
-        <e p="HiddenWall.cs" t="Include" />
-        <e p="Pistol.cs" t="Include" />
+        <e p="PauseManager.cs" t="Include" />
+        <e p="Sci-Fi UI" t="Include">
+          <e p="Demo_Assets" t="Include">
+            <e p="Scripts" t="Include">
+              <e p="GUI_Demo.cs" t="Include" />
+            </e>
+          </e>
+        </e>
         <e p="Scripts" t="Include">
           <e p="_SNSSensor.cs" t="Include" />
+          <e p="AmmoPack.cs" t="Include" />
+          <e p="AudioManager.cs" t="Include" />
+          <e p="AudioSwap.cs" t="Include" />
           <e p="Camera" t="Include">
             <e p="Camera_Follow.cs" t="Include" />
           </e>
+          <e p="CameraFollow.cs" t="Include" />
+          <e p="CameraPan.cs" t="Include" />
+          <e p="ChangeToGreen.cs" t="Include" />
           <e p="CharacterScripts" t="Include">
             <e p="CharacterController.cs" t="Include" />
             <e p="CharacterMotor.cs" t="Include" />
@@ -47,6 +50,8 @@
             <e p="Damage.cs" t="Include" />
             <e p="Damage_Continuous.cs" t="Include" />
           </e>
+          <e p="DoorSlideUp.cs" t="Include" />
+          <e p="DoorSwitch.cs" t="Include" />
           <e p="Enemy Scripts" t="Include">
             <e p="AttackTrigger.cs" t="Include" />
             <e p="BasicMartianController.cs" t="Include" />
@@ -58,6 +63,8 @@
             <e p="GroundTrooperMotor.cs" t="Include" />
           </e>
           <e p="Health.cs" t="Include" />
+          <e p="HealthPack.cs" t="Include" />
+          <e p="HiddenWall.cs" t="Include" />
           <e p="Interactables" t="Include">
             <e p="Colour_Switcher.cs" t="Include" />
             <e p="Door.cs" t="Include" />
@@ -68,6 +75,7 @@
             <e p="Interpolator.cs" t="Include" />
             <e p="Linear.cs" t="Include" />
           </e>
+          <e p="MenuManager.cs" t="Include" />
           <e p="Mine.cs" t="Include" />
           <e p="Missile.cs" t="Include" />
           <e p="Motors" t="Include">
@@ -80,6 +88,7 @@
             <e p="Sensor.cs" t="Include" />
             <e p="SphereSensor.cs" t="Include" />
           </e>
+          <e p="SlidingDoor.cs" t="Include" />
           <e p="SNSSector.cs" t="Include" />
           <e p="SNSSphere.cs" t="Include" />
           <e p="States" t="Include">
@@ -95,7 +104,11 @@
             <e p="State.cs" t="Include" />
             <e p="State_Null.cs" t="Include" />
           </e>
+          <e p="Tank.cs" t="Include" />
+          <e p="TankTrigger.cs" t="Include" />
           <e p="TurretDamage.cs" t="Include" />
+          <e p="UFO.cs" t="Include" />
+          <e p="UI_Ammo_Tracker.cs" t="Include" />
           <e p="UI_Health_Tracker.cs" t="Include" />
           <e p="Utilities" t="Include">
             <e p="Mouse.cs" t="Include" />
@@ -111,9 +124,6 @@
             <e p="Weapon_Single_Shot.cs" t="Include" />
           </e>
         </e>
-        <e p="SlidingDoor.cs" t="Include" />
-        <e p="Tank.cs" t="Include" />
-        <e p="TankTrigger.cs" t="Include" />
         <e p="TextMesh Pro" t="Include">
           <e p="Examples &amp; Extras" t="Include">
             <e p="Fonts" t="Include">
@@ -188,8 +198,6 @@
             <e p="EmojiOne Attribution.txt" t="Include" />
           </e>
         </e>
-        <e p="UFO.cs" t="Include" />
-        <e p="UI_Ammo_Tracker.cs" t="Include" />
       </e>
       <e p="obj" t="ExcludeRecursive" />
       <e p="Packages" t="ExcludeRecursive" />

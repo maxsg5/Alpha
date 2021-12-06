@@ -10,11 +10,11 @@ using UnityEngine;
 /// Description: Initial Testing.
 public class CharacterMotor : MonoBehaviour
 {
-    #region Public Variables
 	[SerializeField] private float acceleration_rate = 1;
 	[SerializeField] private float deceleration_rate = 0.5f;
 	[SerializeField] private float max_speed = 5;
 	[SerializeField] private float aerial_max_acceleration = 0.25f;
+	
 	
     #region Public Variables
     public LayerMask whatIsGround; // The layer that is considered ground.

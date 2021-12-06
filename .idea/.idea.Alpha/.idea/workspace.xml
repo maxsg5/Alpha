@@ -27,7 +27,6 @@
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Weapons/Ammo_Pickup.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Health.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Weapons/Weapon_Beam.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/UI_Ammo_Tracker.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <changedPaths>
@@ -80,8 +79,8 @@
       <option value="$PROJECT_DIR$/Assets/Scripts/Controllers/Controller_Boss.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Damage/Damage_Continuous.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/CharacterScripts/CharacterController.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/CharacterScripts/CharacterMotor.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Damage/Damage.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/CharacterScripts/CharacterMotor.cs" />
     </changedPaths>
   </component>
   <component name="ProjectId" id="1z1ikSEWIAJLT9puI77EhNlOTyZ" />
@@ -161,6 +160,7 @@
       <workItem from="1638577230613" duration="958000" />
       <workItem from="1638619302616" duration="8019000" />
       <workItem from="1638813260326" duration="8305000" />
+      <workItem from="1638826930083" duration="26000" />
     </task>
     <servers />
   </component>
