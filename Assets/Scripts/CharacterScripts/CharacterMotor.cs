@@ -16,6 +16,7 @@ public class CharacterMotor : MonoBehaviour
 	[SerializeField] private float max_speed = 5;
 	[SerializeField] private float aerial_max_acceleration = 0.25f;
 	
+    #region Public Variables
     public LayerMask whatIsGround; // The layer that is considered ground.
     public LayerMask whatIsLadder; // The layer that is considered ladder.
     #endregion
@@ -28,6 +29,7 @@ public class CharacterMotor : MonoBehaviour
     private bool isClimbingLadder = false; // Is the character currently climbing a ladder?
     private Animator animator; // The animator of the character.
     private SpriteRenderer spriteRenderer; // The spriteRenderer of the character.
+
     private bool grounded;
     private Vector2 acceleration;
     #endregion

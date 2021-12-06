@@ -239,6 +239,7 @@ public class CharacterController : MonoBehaviour
 	    this.Weapon_Changed?.Invoke(this.active_weapon);
     }
 	
+
     public void Enable_Movement()
     {
 	    this.disableMovement = false;
