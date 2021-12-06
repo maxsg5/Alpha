@@ -150,6 +150,10 @@ MonoBehaviour:
   speed: 10
   jumpForce: 5
   extraJumpsValue: 1
+  PistolShootSound: {fileID: 0}
+  disableMovement: 0
+  holster: {fileID: 0}
+  pivot: {fileID: 0}
 --- !u!114 &6494931752060047904
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -162,9 +166,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a6671c63ad81084cb4b999402213d22, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  acceleration_rate: 1
+  deceleration_rate: 0.5
+  max_speed: 5
+  aerial_max_acceleration: 0.25
+  feet: {fileID: 0}
   whatIsGround:
     serializedVersion: 2
     m_Bits: 64
+  whatIsLadder:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!1 &3893814133247302921
 GameObject:
   m_ObjectHideFlags: 0
