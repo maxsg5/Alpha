@@ -187,19 +187,6 @@ public class CharacterMotor : MonoBehaviour
         Vector2 velocity = new Vector2(x * this.acceleration_rate, 0); // Create a new vector2 with the x value of the horizontal input
         //physics.velocity = new Vector2(Mathf.Clamp(this.physics.velocity.x + (x * speed), -speed, speed), physics.velocity.y);  // Set the velocity of the rigidbody to the velocity created above
         this.acceleration = velocity;
-
-        /*// If the input is moving the player right and the player is facing left...
-        if (x > 0 && !facingRight)
-        {
-            // flip the player.
-            Flip();
-        }
-        // Otherwise if the input is moving the player left and the player is facing right...
-        else if (x < 0 && facingRight)
-        {
-            // flip the player.
-            Flip();
-        }*/
     }
 
     /// <summary>

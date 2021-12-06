@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class State_Boss_Attacking : State_Boss
 {
+	public float attackRate = 1.0f; // The time between attacks
+	private float lastAttack = 0f; // The time of the last attack
 	private GameObject player;
 	
 	public State_Boss_Attacking(State prev_state, Controller_Boss controller, Motor_Boss motor) : base(prev_state, controller, motor) { }
@@ -19,7 +21,13 @@ public class State_Boss_Attacking : State_Boss
 
 	public override void Enter()
 	{
-		this.motor.Start_Attack();
+		//only attack if the fireRate has passed
+		if (Time.time > attackRate + lastAttack)
+		{
+			this.motor.Start_Attack();
+			lastAttack = Time.time;
+		}
+		
 		this.player = GameObject.FindWithTag("Player");
 	}
 
