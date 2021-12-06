@@ -5,17 +5,27 @@ using UnityEngine;
 
 public class Tank : MonoBehaviour
 {
+    #region Delegates and Events
 	public delegate void Sequence_Done_Handler();
 	public event Sequence_Done_Handler Sequence_Done;
-	
+	#endregion
+
+    #region Public Variables
 	public float speed = 10f;
 	public bool isMoving = false;
-	private Animator animator; // Reference to the animator component that's on the child object.
-	public AudioSource audioSource; //reference to the audio source of the trigger.
-
+    public AudioSource audioSource; //reference to the audio source of the trigger.
 	public AudioClip hatchSound; //reference to the audio clip of the tank hatch sound.
+    public GameObject explosion; //reference to the explosion prefab.
+    public AudioSource tankExplosion; //reference to the tank explosion audio source.
+    #endregion
 
+    #region Private Variables
+	private Animator animator; // Reference to the animator component that's on the child object.
 	private ParticleSystem smokeTrail; //reference to the particle system of the tank.
+
+    #endregion
+
+    #region Methods
 
 	void Start()
 	{
@@ -47,9 +57,18 @@ public class Tank : MonoBehaviour
 		transform.position += Vector3.left * (Time.deltaTime * this.speed);
 	}
 
-	private void OnCollisionEnter2D(Collision2D other)
-	{
-		// TODO: Play explosion
-		Destroy(this.gameObject);
-	}
+
+    /// <summary>
+    /// Called before the object is destroyed.
+    /// Instantiate the explosion particles and play the explosion sound effect.
+    /// </summary>
+    /// Author: Max Schafer
+    /// Date: 2021-12-06
+    private void OnDestroy()
+    {
+        Instantiate(explosion, transform.position , transform.rotation);
+        tankExplosion.Play();
+    }
+
+    #endregion
 }
