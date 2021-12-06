@@ -180,6 +180,7 @@ public class CharacterController : MonoBehaviour
     /// Pre-instantiated (i.e. not a prefab) weapon to be added to the
     /// character's list of weapons
     /// </param>
+    /// Author: Declan Simkins
     public void Add_Weapon(GameObject weapon_obj)
     {
 	    Weapon weapon = weapon_obj.GetComponent<Weapon>();
@@ -206,7 +207,10 @@ public class CharacterController : MonoBehaviour
 		    weapon_obj.transform.position = this.active_weapon.transform.position;
 	    }
     }
-
+    /// <summary>
+    /// Sets the active weapon to the weapon at the given index
+    /// </summary>
+    /// Author: Declan Simkins
     public void Add_Ammo(GameObject ammo_pickup_obj)
     {
 	    Ammo_Pickup ammo_pickup = ammo_pickup_obj.GetComponent<Ammo_Pickup>();
@@ -225,6 +229,7 @@ public class CharacterController : MonoBehaviour
     /// <param name="weapon_i">
     /// Index of the weapon to be set as the active weapons
     /// </param>
+    /// Author: Declan Simkins
     private void Set_Active_Weapon(int weapon_i)
     {
 	    if (this.active_weapon != null) {
@@ -240,6 +245,11 @@ public class CharacterController : MonoBehaviour
     }
 	
 
+    /// <summary>
+    /// Turns on or off the character's movement.
+    /// </summary>
+    /// Author: Max Schafer
+    /// Date: 2021-12-05
     public void Enable_Movement()
     {
 	    this.disableMovement = false;

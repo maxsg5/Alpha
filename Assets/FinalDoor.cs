@@ -1,14 +1,22 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+/// <summary>
+/// This script is attached to the FinalDoor object. and opens when the player defeats the boss.
+/// </summary>
+/// Author: Max Schafer
+/// Date: 2021-12-06
 public class FinalDoor : MonoBehaviour
 {
 
-    public GameObject boss;
+    public GameObject boss; // reference to the boss object
     
 
-    // Update is called once per frame
+    /// <summary>
+    /// Check if the boss's health is at 0. If it is, open the door.
+    /// </summary>
+    /// Author: Max Schafer
+    /// Date: 2021-12-06
     void Update()
     {
         if(boss.GetComponent<Health>().health <= 0)

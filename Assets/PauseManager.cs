@@ -59,6 +59,11 @@ public class PauseManager : MonoBehaviour
         Application.Quit();
     }
 
+    /// <summary>
+    /// Changes the scene to the main menu.
+    /// </summary>
+    /// Author: Max Schafer
+    /// Date: 2021-12-06
     public void MainMenu()
     {
         SceneManager.LoadScene(0);

@@ -6,13 +6,13 @@ using UnityEngine;
 public class Tank : MonoBehaviour
 {
     #region Delegates and Events
-	public delegate void Sequence_Done_Handler();
-	public event Sequence_Done_Handler Sequence_Done;
+	public delegate void Sequence_Done_Handler(); // Delegate for the event
+	public event Sequence_Done_Handler Sequence_Done; // Event
 	#endregion
 
     #region Public Variables
-	public float speed = 10f;
-	public bool isMoving = false;
+	public float speed = 10f; // Speed of the tank
+	public bool isMoving = false; // Is the tank moving?
     public AudioSource audioSource; //reference to the audio source of the trigger.
 	public AudioClip hatchSound; //reference to the audio clip of the tank hatch sound.
     public GameObject explosion; //reference to the explosion prefab.
@@ -29,13 +29,23 @@ public class Tank : MonoBehaviour
 
     #region Methods
 
+    /// <summary>
+    /// initializes the animator and particle system.
+    /// </summary>
+    /// Author: Max Schafer
+    /// Date: 2021-12-06
 	void Start()
 	{
 		animator = GetComponentInChildren<Animator>();
 		smokeTrail = GetComponent<ParticleSystem>();
 	}
 
-	// Update is called once per frame
+	/// <summary>
+    /// if the tank is moving, it will move the tank left until it reaches a specified position.
+    /// once the tank reaches the position, it will stop moving and trigger the boss sequence.
+    /// </summary>
+    /// Author: Max Schafer
+    /// Date: 2021-12-06
 	void Update()
 	{
 		if(isMoving)
@@ -56,6 +66,10 @@ public class Tank : MonoBehaviour
 		}
 	}
 
+    /// <summary>
+    /// Moves the tank left at the speed specified.
+    /// </summary>
+    /// Author: Max Schafer
 	private void MoveLeft()
 	{
 		transform.position += Vector3.left * (Time.deltaTime * this.speed);
@@ -83,11 +97,10 @@ public class Tank : MonoBehaviour
     /// Author: Max Schafer
     /// Date: 2021-12-06
     IEnumerator PlaySoundAfterDelay(float time)
- {
-     yield return new WaitForSeconds(time);
- 
-     bossScream.Play();
- }
+    {
+        yield return new WaitForSeconds(time);
+        bossScream.Play();
+    }
 
     #endregion
 }
