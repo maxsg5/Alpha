@@ -17,6 +17,7 @@ public class Tank : MonoBehaviour
 	public AudioClip hatchSound; //reference to the audio clip of the tank hatch sound.
     public GameObject explosion; //reference to the explosion prefab.
     public AudioSource tankExplosion; //reference to the tank explosion audio source.
+    public AudioSource wilhelmScream; //reference to the wilhelm scream audio source.
     public AudioSource bossScream; //reference to the boss scream audio source.
     #endregion
 
@@ -71,6 +72,7 @@ public class Tank : MonoBehaviour
     {
         Instantiate(explosion, transform.position , transform.rotation);
         tankExplosion.Play();
+        wilhelmScream.Play();
         
     }
 

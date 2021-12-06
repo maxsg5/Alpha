@@ -63,6 +63,7 @@ public class Motor_Boss : Motor
 
 	public void Die()
 	{
+		GameObject.Find("BossScream2").GetComponent<AudioSource>().Play(); //added by Max Schafer: 2021-12-06
 		this.animator.SetTrigger(animator_die);
 	}
 	

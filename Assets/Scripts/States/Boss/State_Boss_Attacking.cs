@@ -7,6 +7,8 @@ public class State_Boss_Attacking : State_Boss
 {
 	public float attackRate = 1.0f; // The time between attacks
 	private float lastAttack = 0f; // The time of the last attack
+
+	public AudioSource attackSound; // The sound played when the boss attacks //added by Max Schafer: 2021-12-06
 	private GameObject player;
 	
 	public State_Boss_Attacking(State prev_state, Controller_Boss controller, Motor_Boss motor) : base(prev_state, controller, motor) { }
@@ -21,10 +23,16 @@ public class State_Boss_Attacking : State_Boss
 
 	public override void Enter()
 	{
-		//only attack if the fireRate has passed
+		//added by Max Schafer: 2021-12-06
+		//find the gameobject with the name "BossScream1Looped"
+		this.attackSound = GameObject.Find("BossScream1Looped").GetComponent<AudioSource>();
+
+		//added by Max Schafer: 2021-12-06
+		//only attack if the fireRate has passed CURRENTLY NOT WORKING
 		if (Time.time > attackRate + lastAttack)
 		{
 			this.motor.Start_Attack();
+			this.attackSound.Play();
 			lastAttack = Time.time;
 		}
 		
@@ -33,6 +41,7 @@ public class State_Boss_Attacking : State_Boss
 
 	public override void Exit()
 	{
+		this.attackSound.Stop();
 		this.motor.End_Attack();
 	}
 }
