@@ -13,6 +13,8 @@ public class Tank : MonoBehaviour
     public bool isMoving = false; // Is the tank moving?
     public AudioSource audioSource; //reference to the audio source of the trigger.
     public AudioClip hatchSound; //reference to the audio clip of the tank hatch sound.
+    public delegate void Sequence_Done_Handler();
+	public event Sequence_Done_Handler Sequence_Done;
     #endregion
    
     #region Private Variables
@@ -53,6 +55,7 @@ public class Tank : MonoBehaviour
                 animator.SetTrigger("popUp");
                 audioSource.PlayOneShot(hatchSound);
                 //start final boss sequence here
+                this.Sequence_Done?.Invoke();
             }
         }
     }
@@ -64,6 +67,12 @@ public class Tank : MonoBehaviour
     private void MoveLeft()
     {
         transform.position += Vector3.left * Time.deltaTime;
+    }
+
+    private void OnCollisionEnter2D(Collision2D other)
+    {
+	    // TODO: Play explosion
+	    Destroy(this.gameObject);
     }
 
     #endregion
