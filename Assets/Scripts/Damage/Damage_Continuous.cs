@@ -9,7 +9,7 @@ public class Damage_Continuous : Damage
 
 	private float last_tick;
 
-	public override void OnTriggerEnter2D(Collider2D other)
+	protected override void OnTriggerEnter2D(Collider2D other)
 	{
 		base.OnTriggerEnter2D(other);
 		this.last_tick = Time.time;

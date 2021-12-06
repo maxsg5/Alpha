@@ -1,5 +1,7 @@
 // Author: Declan Simkins
 
+using System.Collections.Generic;
+using Motors;
 using UnityEngine;
 
 using States;
@@ -10,6 +12,10 @@ namespace Controllers
 	{
 		protected readonly static State_Null null_state = new State_Null();
 		protected State behaviour_state;
+
+		protected Motor motor;
+		protected Rigidbody2D rb;
+		protected Animator animator;
 
 		/// <summary>
 		/// Provides public access to the controller's state but enforces
@@ -28,6 +34,8 @@ namespace Controllers
 			}
 		}
 
+		public Rigidbody2D RB => this.rb;
+
 		/// <summary>
 		/// Defaults the controller's state to a null state
 		/// Virtual so it can be overriden in child classes
@@ -35,6 +43,11 @@ namespace Controllers
 		protected virtual void Awake()
 		{
 			this.behaviour_state = Controller.null_state;
+			this.rb = this.GetComponent<Rigidbody2D>();
+			this.animator = this.GetComponent<Animator>();
+			
+			this.Initialise_Motor();
+			this.Initialise_States();
 		}
 
 		/// <summary>
@@ -45,6 +58,9 @@ namespace Controllers
 		{
 			this.behaviour_state.Tick();
 		}
+
+		protected abstract void Initialise_Motor();
+		protected abstract void Initialise_States();
 
 		/// <summary>
 		/// A dedicated method for switching states rather than using
