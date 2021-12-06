@@ -48,7 +48,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 20
-  despawn_timer: 3
+  despawn_timer: 6
 --- !u!58 &6454153218033542175
 CircleCollider2D:
   m_ObjectHideFlags: 0

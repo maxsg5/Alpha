@@ -9,8 +9,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UIElements;
 
-
-
 // TODO: Flip the weapon sprite upside down when it rotates; flip the character based on weapon rotation
 [RequireComponent(typeof(CharacterMotor))]
 [RequireComponent(typeof(Health))]
@@ -24,9 +22,11 @@ public class CharacterController : MonoBehaviour
 	
     #region Public Variables
     public float speed = 10f; // The speed the character moves at.
-    public float jumpForce = 5f; // The force applied to the character when it jumps.
+    public float jumpForce = 10f; // The force applied to the character when it jumps.
     public int extraJumpsValue; // The amount of extra jumps the character has.
     public AudioClip PistolShootSound; // The sound the character makes when it shoots the pistol.
+    public bool disableMovement = false; // Whether or not the character can move.
+    public PauseManager pauseManager; // The pause manager.
     #endregion
 
     #region Private Variables
@@ -42,7 +42,7 @@ public class CharacterController : MonoBehaviour
     [SerializeField] private GameObject pivot;
     #endregion
 
-
+    #region Methods
     /// <summary>
     /// Initialize character controller, health and weapon.
     /// </summary>
@@ -66,6 +66,13 @@ public class CharacterController : MonoBehaviour
     /// Description: Initial Testing.
     private void FixedUpdate()
     {
+        //if movement is disabled, return
+        if(disableMovement)
+        {
+            motor.StopMoving();
+            return;
+        }
+            
         // Movement
         motor.Move(speed);
     }
@@ -78,6 +85,20 @@ public class CharacterController : MonoBehaviour
     /// Description: Initial Testing.
     private void Update()
     {
+        //Check if the game is to be paused.
+        if(Input.GetKeyDown(KeyCode.Escape))
+        {
+            pauseManager.Pause();
+        }
+
+        //if movement is disabled, return
+        if(disableMovement)
+        {
+            motor.StopMoving();
+            return;
+        }
+            
+        
         // Jumping
         // Check if the character is grounded.
 	    if(motor.IsGrounded())
@@ -181,7 +202,8 @@ public class CharacterController : MonoBehaviour
 	    Ammo_Pickup ammo_pickup = ammo_pickup_obj.GetComponent<Ammo_Pickup>();
 	    Weapon.Ammo ammo_type = ammo_pickup.Ammo_Type;
 	    foreach (Weapon weapon in this.weapons) {
-		    if (weapon.ammo_type == ammo_type) {
+		    Debug.Log("Add " + ammo_pickup.Ammo_Amount + " ammo to: " + weapon.name);
+		    if (weapon.ammo_type == ammo_type || ammo_type == Weapon.Ammo.ALL) {
 			    weapon.Add_Ammo(ammo_pickup.Ammo_Amount);
 		    }
 	    }
@@ -206,4 +228,6 @@ public class CharacterController : MonoBehaviour
 
 	    this.Weapon_Changed?.Invoke(this.active_weapon);
     }
+
+    #endregion
 }

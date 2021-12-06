@@ -8,10 +8,11 @@ public abstract class Weapon : MonoBehaviour
 	
 	public enum Ammo
 	{
-		Basic,
-		Shotgun,
-		Beam,
-		Grenade
+		BASIC,
+		SHOTGUN,
+		BEAM,
+		GRENADE,
+		ALL
 	}
 
 	public delegate void On_Ammo_Changed(int new_amount);
@@ -133,6 +134,7 @@ public abstract class Weapon : MonoBehaviour
 
 	public void Add_Ammo(int amount)
 	{
+		Debug.Log("[Weapon] Adding " + amount + " ammo to " + this.name);
 		this.ammo += amount;
 		if (this.ammo > this.max_ammo) {
 			this.ammo = this.max_ammo;

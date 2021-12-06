@@ -16,7 +16,7 @@ public class BomberMotor : MonoBehaviour
         rigidbody = GetComponent<Rigidbody2D>();
         weapon = GameObject.Find("Weapon").GetComponent<Weapon_Single_Shot>();
         animator = GetComponent<Animator>();
-        deathParticles = GameObject.Find("DeathParticles").GetComponent<ParticleSystem>();
+        //deathParticles = GameObject.Find("DeathParticles").GetComponent<ParticleSystem>();
     }
 
     public void MoveForward()

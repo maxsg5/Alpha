@@ -9,17 +9,31 @@ using UnityEngine;
 /// Description: Initial Testing.
 public class CharacterMotor : MonoBehaviour
 {
+    #region Public Variables
     public LayerMask whatIsGround; // The layer that is considered ground.
     public LayerMask whatIsLadder; // The layer that is considered ladder.
+    #endregion
+
+    #region Private Variables
     private Rigidbody2D physics; // The rigidbody of the character.
     private float boxHeight; // height of the boxCast for ground detection.
     private bool facingRight = true;  // For determining which way the player is currently facing.
     private BoxCollider2D boxCollider; // The boxCollider of the character.
     private bool isClimbingLadder = false; // Is the character currently climbing a ladder?
     private Animator animator; // The animator of the character.
-    private SpriteRenderer spriteRenderer;
+    private SpriteRenderer spriteRenderer; // The spriteRenderer of the character.
 
+    #endregion
 
+    #region Methods
+    /// <summary>
+    /// Initialize the reference variables
+    /// set the boxHeight to hight of the boxCollider
+    /// set up the intial animation state.
+    /// </summary>
+    /// Author: Max Schafer
+    /// Date: 2021-10-23
+    /// Description: Initial Testing.
     void Start()
     {
 	    spriteRenderer = this.GetComponent<SpriteRenderer>();
@@ -57,9 +71,16 @@ public class CharacterMotor : MonoBehaviour
         return raycastHit.collider != null;
     }
 
+    /// <summary>
+    /// Method to determine if the character can start climbing a ladder or not.
+    /// </summary>
+    /// Author: Max Schafer
+    /// Date: 2021-12-01
     public void LadderCheck(){
+        //Cast a ray upwards to see if there is a ladder.
         RaycastHit2D ladderCast = Physics2D.Raycast(transform.position, Vector2.up, 5f, whatIsLadder);
         Debug.DrawRay(transform.position, Vector2.up * 5f, Color.green);
+        //If there is a ladder, allow player to start climbing by pressing W and. set the animator to climbing.
         if(ladderCast.collider != null){
             if(Input.GetKeyDown(KeyCode.W)){
                 isClimbingLadder = true;
@@ -78,7 +99,12 @@ public class CharacterMotor : MonoBehaviour
         }
     }
 
-
+    /// <summary>
+    /// Called when player is climbing the ladder
+    /// moves the player up and down the ladder using Vertial input.
+    /// </summary>
+    /// Author: Max Schafer
+    /// Date: 2021-12-01
     private void Climb(){
         float inputVerticle = Input.GetAxisRaw("Vertical");
         physics.velocity = new Vector2(physics.velocity.x, inputVerticle * 5f);
@@ -110,19 +136,20 @@ public class CharacterMotor : MonoBehaviour
         float x = Input.GetAxis("Horizontal"); // Get the horizontal input
         Vector2 velocity = new Vector2(x, 0); // Create a new vector2 with the x value of the horizontal input
         physics.velocity = new Vector2(x * speed, physics.velocity.y);  // Set the velocity of the rigidbody to the velocity created above
-        
-        /*// If the input is moving the player right and the player is facing left...
-        if (x > 0 && !facingRight)
-        {
-            // flip the player.
-            Flip();
-        }
-        // Otherwise if the input is moving the player left and the player is facing right...
-        else if (x < 0 && facingRight)
-        {
-            // flip the player.
-            Flip();
-        }*/
+    }
+
+    /// <summary>
+    /// Stops the movement of the character
+    /// </summary>
+    /// Author: Max Schafer
+    /// Date: 2021-11-12
+    /// Description: Initial Testing.
+    public void StopMoving(){
+        physics.velocity = new Vector2(0, physics.velocity.y);
+        animator.SetBool("walking", false);
+        animator.SetBool("jumping", false);
+        animator.SetBool("grounded", true);
+        animator.SetBool("idle", true);
     }
 
     /// <summary>
@@ -143,18 +170,33 @@ public class CharacterMotor : MonoBehaviour
 		transform.localScale = theScale;*/
 	}
 
+    /// <summary>
+    /// Flips the character to face left
+    /// </summary>
+    /// Author: Max Schafer
+    /// Date: 2021-10-23
     public void Face_Left()
     {
 	    this.facingRight = false;
 	    this.spriteRenderer.flipX = !this.facingRight;
     }
 
+    /// <summary>
+    /// Flips the character to face right
+    /// </summary>
+    /// Author: Max Schafer
+    /// Date: 2021-10-23
     public void Face_Right()
     {
 	    this.facingRight = true;
 	    this.spriteRenderer.flipX = !this.facingRight;
     }
 
+    /// <summary>
+    /// Handles the jump animation based on the grounded state of the character.
+    /// </summary>
+    /// Author: Max Schafer
+    /// Date: 2021-11-12
     public void HandleJumpAnimation(){
         if(IsGrounded()){
             animator.SetBool("jumping", false);
@@ -178,4 +220,6 @@ public class CharacterMotor : MonoBehaviour
             animator.SetBool("idle", false);
         }
     }
+
+    #endregion
 }

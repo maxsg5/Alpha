@@ -21,8 +21,9 @@ public class Interactable : MonoBehaviour
 	[SerializeField] private TMPro.TextMeshProUGUI prompt_text_element; //Note (Max Schafer, 2021-11-17): Changed from Text to TMPro.TextMeshProUGUI. Might want to change back to Text if performance is an issue.
 	[SerializeField] private float interaction_range; // Does nothing until the sensor is turned back on
 	[SerializeField] private KeyCode interact_key = KeyCode.E;	// Should probably be a string referencing an axis or
-													// some kind of enum
-	
+																// some kind of enum
+	[SerializeField] private bool interact_on_collision = false;
+
 	private SphereSensor sensor;
 	private string prompt_suffix;
 	private bool player_in_range;
@@ -74,6 +75,11 @@ public class Interactable : MonoBehaviour
 	/// <param name="other">Other collider involved in the collision</param>
 	private void OnTriggerEnter2D(Collider2D other)
 	{
+		if (this.interact_on_collision) {
+			this.on_interact.Invoke();
+			Destroy(this.gameObject);
+		}
+		
 		this.Prompt = this.prompt;
 		this.OnTriggerStay2D(other);
 	}
