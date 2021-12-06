@@ -41,6 +41,7 @@ public class CharacterController : MonoBehaviour
     private Health health; // Reference to the health script.
     private CharacterMotor motor; // Reference to the character motor script.
     private AudioSource audioSource; // Reference to the audio source.
+    private SpriteRenderer sprite_renderer;
     [SerializeField] private GameObject holster;
     [SerializeField] private GameObject pivot;
     #endregion
@@ -56,10 +57,18 @@ public class CharacterController : MonoBehaviour
     {
         extraJumps = extraJumpsValue; // Set the number of extra jumps the character has.
         motor = GetComponent<CharacterMotor>();
+        this.sprite_renderer = this.GetComponent<SpriteRenderer>();
+        
         health = GetComponent<Health>(); // Get the health script
+        this.health.Health_Changed += this.On_Health_Changed;
+        
         audioSource = GetComponent<AudioSource>(); // Get the audio source.
     }
 
+    private void On_Health_Changed(float new_health)
+    {
+	    // TODO: flash sprite red
+    }
 
     /// <summary>
     /// FixedUpdate is used to handle character movement.
@@ -121,7 +130,6 @@ public class CharacterController : MonoBehaviour
         {
 	        if (this.active_weapon != null) {
 		        this.active_weapon.Fire(); // Shoot the weapon
-            	
 	        }
         }
         

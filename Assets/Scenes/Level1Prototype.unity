@@ -59236,6 +59236,11 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &989556438 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2563177467063524487, guid: 991599dd536696f46b8651a4d265e4e8, type: 3}
+  m_PrefabInstance: {fileID: 2058875323}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &990803175
 GameObject:
   m_ObjectHideFlags: 0
@@ -107875,6 +107880,7 @@ GameObject:
   - component: {fileID: 1527828217}
   - component: {fileID: 1527828216}
   - component: {fileID: 1527828218}
+  - component: {fileID: 1527828220}
   - component: {fileID: 1527828219}
   m_Layer: 0
   m_Name: Boss
@@ -108015,10 +108021,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tank: {fileID: 1098846079}
-  attack_range: 10
+  attack_range: 8
   speed: 5
---- !u!58 &1527828219
-CircleCollider2D:
+--- !u!61 &1527828219
+BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -108030,9 +108036,34 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.81453514}
+  m_Offset: {x: 0.47558594, y: -1.58534}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 20, y: 20}
+    newSize: {x: 20, y: 20}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
   serializedVersion: 2
-  m_Radius: 4.6399994
+  m_Size: {x: 8.109985, y: 8.585549}
+  m_EdgeRadius: 0
+--- !u!114 &1527828220
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1527828212}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0afef352202f80c43bad4bdf870d99af, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  knockback: 1
+  knockback_force: 10
+  damage: 10
 --- !u!1 &1529540837
 GameObject:
   m_ObjectHideFlags: 0
@@ -128797,6 +128828,14 @@ PrefabInstance:
       propertyPath: m_SortingOrder
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 1776748544235360429, guid: 991599dd536696f46b8651a4d265e4e8, type: 3}
+      propertyPath: m_RootOrder
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1776748544235360429, guid: 991599dd536696f46b8651a4d265e4e8, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.19
+      objectReference: {fileID: 0}
     - target: {fileID: 1885823169647732776, guid: 991599dd536696f46b8651a4d265e4e8, type: 3}
       propertyPath: m_Sprite
       value: 
@@ -128820,6 +128859,14 @@ PrefabInstance:
     - target: {fileID: 1885823169647732776, guid: 991599dd536696f46b8651a4d265e4e8, type: 3}
       propertyPath: m_SortingOrder
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1885823169647732777, guid: 991599dd536696f46b8651a4d265e4e8, type: 3}
+      propertyPath: m_BodyType
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1885823169647732777, guid: 991599dd536696f46b8651a4d265e4e8, type: 3}
+      propertyPath: m_Simulated
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1885823169647732778, guid: 991599dd536696f46b8651a4d265e4e8, type: 3}
       propertyPath: m_Size.x
@@ -128922,8 +128969,32 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6494931752060047904, guid: 991599dd536696f46b8651a4d265e4e8, type: 3}
+      propertyPath: feet
+      value: 
+      objectReference: {fileID: 989556438}
+    - target: {fileID: 6494931752060047904, guid: 991599dd536696f46b8651a4d265e4e8, type: 3}
+      propertyPath: max_speed
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 6494931752060047904, guid: 991599dd536696f46b8651a4d265e4e8, type: 3}
+      propertyPath: acceleration_rate
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 6494931752060047904, guid: 991599dd536696f46b8651a4d265e4e8, type: 3}
+      propertyPath: deceleration_rate
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6494931752060047904, guid: 991599dd536696f46b8651a4d265e4e8, type: 3}
+      propertyPath: deceleration_scale
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 6494931752060047904, guid: 991599dd536696f46b8651a4d265e4e8, type: 3}
       propertyPath: whatIsLadder.m_Bits
       value: 128
+      objectReference: {fileID: 0}
+    - target: {fileID: 6494931752060047904, guid: 991599dd536696f46b8651a4d265e4e8, type: 3}
+      propertyPath: aerial_max_acceleration
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 7224429159602502687, guid: 991599dd536696f46b8651a4d265e4e8, type: 3}
       propertyPath: m_Enabled

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,6 +10,11 @@ using UnityEngine;
 /// Description: Initial Testing.
 public class CharacterMotor : MonoBehaviour
 {
+	[SerializeField] private float acceleration_rate = 1;
+	[SerializeField] private float deceleration_rate = 0.5f;
+	[SerializeField] private float max_speed = 5;
+	[SerializeField] private float aerial_max_acceleration = 0.25f;
+	
     public LayerMask whatIsGround; // The layer that is considered ground.
     public LayerMask whatIsLadder; // The layer that is considered ladder.
     private Rigidbody2D physics; // The rigidbody of the character.
@@ -18,6 +24,9 @@ public class CharacterMotor : MonoBehaviour
     private bool isClimbingLadder = false; // Is the character currently climbing a ladder?
     private Animator animator; // The animator of the character.
     private SpriteRenderer spriteRenderer;
+
+    private bool grounded;
+    private Vector2 acceleration;
 
 
     void Start()
@@ -30,7 +39,34 @@ public class CharacterMotor : MonoBehaviour
         animator.SetBool("grounded", true);
         animator.SetBool("jumping", false);
     }
-    
+
+    private void FixedUpdate()
+    {
+	    if (!this.grounded) {
+		    this.acceleration.x = Mathf.Clamp(this.acceleration.x, -this.aerial_max_acceleration, this.aerial_max_acceleration);
+	    }
+	    this.physics.velocity += this.acceleration;
+	    
+	    bool moving_right = this.physics.velocity.x >= 0;
+	    Vector2 deceleration_vec = new Vector2(moving_right ? -this.deceleration_rate : this.deceleration_rate, 0);
+
+	    if (this.grounded) {
+		    this.physics.velocity += deceleration_vec;
+	    }
+
+	    if (moving_right && this.physics.velocity.x < 0
+	        || !moving_right && this.physics.velocity.x > 0) {
+		    this.physics.velocity = new Vector2(0, this.physics.velocity.y);
+	    }
+
+	    if (moving_right && this.physics.velocity.x > this.max_speed) {
+		    this.physics.velocity = new Vector2(this.max_speed, this.physics.velocity.y);
+	    }
+	    else if (!moving_right && this.physics.velocity.x < -this.max_speed) {
+		    this.physics.velocity = new Vector2(-this.max_speed, this.physics.velocity.y);
+	    }
+    }
+
     /// <summary>
     /// bool that determines if the character is grounded or not
     /// uses a BoxCast to cast a box under the player
@@ -40,7 +76,7 @@ public class CharacterMotor : MonoBehaviour
     /// Date: 2021-10-23
     /// Description: Initial Testing.
      public bool IsGrounded(){
-        float extraHeight = .5f;
+        float extraHeight = 0.5f;
         RaycastHit2D raycastHit = Physics2D.BoxCast(boxCollider.bounds.center, boxCollider.bounds.size, 0f, Vector2.down, extraHeight, whatIsGround);
         // draw the ray in the scene view for debugging purposes.
         Color rayColor;
@@ -55,6 +91,20 @@ public class CharacterMotor : MonoBehaviour
         animator.SetBool("grounded", raycastHit.collider != null);
         
         return raycastHit.collider != null;
+    }
+    
+    public void OnCollisionEnter2D(Collision2D other)
+    {
+	    if (other.gameObject.layer == LayerMask.NameToLayer("Ground")) {
+		    this.grounded = true;
+	    }
+    }
+
+    public void OnCollisionExit2D(Collision2D other)
+    {
+	    if (other.gameObject.layer ==  LayerMask.NameToLayer("Ground")) {
+		    this.grounded = false;
+	    }
     }
 
     /// <summary>
@@ -120,9 +170,10 @@ public class CharacterMotor : MonoBehaviour
     public void Move(float speed)
     {
         float x = Input.GetAxis("Horizontal"); // Get the horizontal input
-        Vector2 velocity = new Vector2(x, 0); // Create a new vector2 with the x value of the horizontal input
-        physics.velocity = new Vector2(x * speed, physics.velocity.y);  // Set the velocity of the rigidbody to the velocity created above
-        
+        Vector2 velocity = new Vector2(x * this.acceleration_rate, 0); // Create a new vector2 with the x value of the horizontal input
+        //physics.velocity = new Vector2(Mathf.Clamp(this.physics.velocity.x + (x * speed), -speed, speed), physics.velocity.y);  // Set the velocity of the rigidbody to the velocity created above
+        this.acceleration = velocity;
+
         /*// If the input is moving the player right and the player is facing left...
         if (x > 0 && !facingRight)
         {

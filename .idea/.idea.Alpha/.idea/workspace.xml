@@ -31,8 +31,6 @@
   </component>
   <component name="IdeDocumentHistory">
     <changedPaths>
-      <option value="$PROJECT_DIR$/Assets/Scripts/Enemy Scripts/Boomer.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Projectile.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Character.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Weapon.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Shotgun.cs" />
@@ -76,12 +74,14 @@
       <option value="$PROJECT_DIR$/Assets/Scripts/Motors/Motor.cs" />
       <option value="$PROJECT_DIR$/Assets/Tank.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Interactables/Interactable.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/CharacterScripts/CharacterMotor.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/States/Boss/State_Boss_Intro.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/CharacterScripts/CharacterController.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Controllers/Controller_Boss.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/States/Boss/State_Boss_Jumping.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Motors/Motor_Boss.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Controllers/Controller_Boss.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Damage/Damage_Continuous.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/CharacterScripts/CharacterController.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/CharacterScripts/CharacterMotor.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Damage/Damage.cs" />
     </changedPaths>
   </component>
   <component name="ProjectId" id="1z1ikSEWIAJLT9puI77EhNlOTyZ" />
@@ -159,7 +159,8 @@
       <workItem from="1638399345444" duration="1128000" />
       <workItem from="1638568094804" duration="7329000" />
       <workItem from="1638577230613" duration="958000" />
-      <workItem from="1638619302616" duration="7262000" />
+      <workItem from="1638619302616" duration="8019000" />
+      <workItem from="1638813260326" duration="7711000" />
     </task>
     <servers />
   </component>
