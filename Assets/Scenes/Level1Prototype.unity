@@ -74219,8 +74219,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   name: Laser Gun
-  max_ammo: 1000
-  ammo: 1000
+  max_ammo: 50
+  ammo: 50
   fire_rate: 1
   character_collider: {fileID: 1455321372}
   ignore_colliders:
@@ -116857,8 +116857,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 43dca942478c3b04daf915f65104fad8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  max_health: 500
-  health: 500
+  max_health: 300
+  health: 300
 --- !u!95 &1455321377
 Animator:
   serializedVersion: 3
@@ -148863,6 +148863,10 @@ PrefabInstance:
       value: Shotgun
       objectReference: {fileID: 0}
     - target: {fileID: 2657736040084993877, guid: c70813583a13a1d4d97f444e587e0db2, type: 3}
+      propertyPath: ammo
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 2657736040084993877, guid: c70813583a13a1d4d97f444e587e0db2, type: 3}
       propertyPath: name
       value: Shotgun
       objectReference: {fileID: 0}
@@ -148870,6 +148874,10 @@ PrefabInstance:
       propertyPath: pivot
       value: 
       objectReference: {fileID: 1936589593}
+    - target: {fileID: 2657736040084993877, guid: c70813583a13a1d4d97f444e587e0db2, type: 3}
+      propertyPath: max_ammo
+      value: 50
+      objectReference: {fileID: 0}
     - target: {fileID: 2657736040084993877, guid: c70813583a13a1d4d97f444e587e0db2, type: 3}
       propertyPath: character_collider
       value: 
@@ -148928,6 +148936,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 647656527}
     m_Modifications:
     - target: {fileID: 3613055590994722448, guid: ecc62116a7422d546bb0c778d33fe61f, type: 3}
+      propertyPath: ammo
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 3613055590994722448, guid: ecc62116a7422d546bb0c778d33fe61f, type: 3}
       propertyPath: name
       value: Grenade Launcher
       objectReference: {fileID: 0}
@@ -148935,6 +148947,10 @@ PrefabInstance:
       propertyPath: pivot
       value: 
       objectReference: {fileID: 1936589593}
+    - target: {fileID: 3613055590994722448, guid: ecc62116a7422d546bb0c778d33fe61f, type: 3}
+      propertyPath: max_ammo
+      value: 50
+      objectReference: {fileID: 0}
     - target: {fileID: 3613055590994722448, guid: ecc62116a7422d546bb0c778d33fe61f, type: 3}
       propertyPath: character_collider
       value: 
