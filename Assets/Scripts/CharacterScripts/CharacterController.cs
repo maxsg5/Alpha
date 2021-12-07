@@ -40,7 +40,7 @@ public class CharacterController : MonoBehaviour
     private Health health; // Reference to the health script.
     private CharacterMotor motor; // Reference to the character motor script.
     private AudioSource audioSource; // Reference to the audio source.
-    private SpriteRenderer sprite_renderer;
+    private SpriteRenderer sprite_renderer; // Reference to the sprite renderer.
     [SerializeField] private GameObject holster;
     [SerializeField] private GameObject pivot;
     #endregion
