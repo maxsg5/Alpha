@@ -55,32 +55,32 @@ public class CharacterMotor : MonoBehaviour
         animator.SetBool("jumping", false);
     }
 
-    private void FixedUpdate()
-    {
-	    if (!this.grounded) {
-		    this.acceleration.x = Mathf.Clamp(this.acceleration.x, -this.aerial_max_acceleration, this.aerial_max_acceleration);
-	    }
-	    this.physics.velocity += this.acceleration;
+    // private void FixedUpdate()
+    // {
+	//     if (!this.grounded) {
+	// 	    this.acceleration.x = Mathf.Clamp(this.acceleration.x, -this.aerial_max_acceleration, this.aerial_max_acceleration);
+	//     }
+	//     this.physics.velocity += this.acceleration;
 	    
-	    bool moving_right = this.physics.velocity.x >= 0;
-	    Vector2 deceleration_vec = new Vector2(moving_right ? -this.deceleration_rate : this.deceleration_rate, 0);
+	//     bool moving_right = this.physics.velocity.x >= 0;
+	//     Vector2 deceleration_vec = new Vector2(moving_right ? -this.deceleration_rate : this.deceleration_rate, 0);
 
-	    if (this.grounded) {
-		    this.physics.velocity += deceleration_vec;
-	    }
+	//     if (this.grounded) {
+	// 	    this.physics.velocity += deceleration_vec;
+	//     }
 
-	    if (moving_right && this.physics.velocity.x < 0
-	        || !moving_right && this.physics.velocity.x > 0) {
-		    this.physics.velocity = new Vector2(0, this.physics.velocity.y);
-	    }
+	//     if (moving_right && this.physics.velocity.x < 0
+	//         || !moving_right && this.physics.velocity.x > 0) {
+	// 	    this.physics.velocity = new Vector2(0, this.physics.velocity.y);
+	//     }
 
-	    if (moving_right && this.physics.velocity.x > this.max_speed) {
-		    this.physics.velocity = new Vector2(this.max_speed, this.physics.velocity.y);
-	    }
-	    else if (!moving_right && this.physics.velocity.x < -this.max_speed) {
-		    this.physics.velocity = new Vector2(-this.max_speed, this.physics.velocity.y);
-	    }
-    }
+	//     if (moving_right && this.physics.velocity.x > this.max_speed) {
+	// 	    this.physics.velocity = new Vector2(this.max_speed, this.physics.velocity.y);
+	//     }
+	//     else if (!moving_right && this.physics.velocity.x < -this.max_speed) {
+	// 	    this.physics.velocity = new Vector2(-this.max_speed, this.physics.velocity.y);
+	//     }
+    // }
 
     /// <summary>
     /// bool that determines if the character is grounded or not
@@ -186,7 +186,11 @@ public class CharacterMotor : MonoBehaviour
     {
         float x = Input.GetAxis("Horizontal");
         Vector2 velocity = new Vector2(x * this.acceleration_rate, 0);
-        this.acceleration = velocity;
+        physics.velocity = new Vector2(x * speed, physics.velocity.y);  // Set the velocity of the rigidbody to the velocity created above
+
+        //acceleration based controls below
+        //Vector2 velocity = new Vector2(x * this.acceleration_rate, 0);
+        //this.acceleration = velocity;
     }
 
     /// <summary>
