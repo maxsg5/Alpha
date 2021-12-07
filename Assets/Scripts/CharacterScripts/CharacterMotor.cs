@@ -55,6 +55,7 @@ public class CharacterMotor : MonoBehaviour
         animator.SetBool("jumping", false);
     }
 
+    //used for acceleration and deceleration
     // private void FixedUpdate()
     // {
 	//     if (!this.grounded) {
@@ -108,19 +109,7 @@ public class CharacterMotor : MonoBehaviour
         return raycastHit.collider != null;
     }
     
-    public void OnCollisionEnter2D(Collision2D other)
-    {
-	    if (other.gameObject.layer == LayerMask.NameToLayer("Ground")) {
-		    this.grounded = true;
-	    }
-    }
-
-    public void OnCollisionExit2D(Collision2D other)
-    {
-	    if (other.gameObject.layer ==  LayerMask.NameToLayer("Ground")) {
-		    this.grounded = false;
-	    }
-    }
+    
 
     /// <summary>
     /// Method to determine if the character can start climbing a ladder or not.
