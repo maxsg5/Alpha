@@ -78,6 +78,13 @@ namespace Controllers
 		public void Switch_States(State new_state, bool update_prev_state = true)
 		{
 			this.behaviour_state.Exit();
+			
+			// check if the state is going to be dying. If so, remove the collider so we can't trigger hit anymore. Added by Max Schafer : 2021-12-07
+			if (new_state.GetType().Name =="State_Boss_Dying")
+			{
+				this.GetComponent<Collider2D>().enabled = false;
+			}
+
 			new_state.Enter();
 			
 			if (update_prev_state) {

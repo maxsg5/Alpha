@@ -21,4 +21,6 @@ public class State_Boss_Dying : State_Boss
 	{
 		return;
 	}
+
+	
 }
