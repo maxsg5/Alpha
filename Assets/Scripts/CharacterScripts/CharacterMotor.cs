@@ -30,10 +30,9 @@ public class CharacterMotor : MonoBehaviour
     private Animator animator; // The animator of the character.
     private SpriteRenderer spriteRenderer; // The spriteRenderer of the character.
 
-    private bool grounded;
-    private Vector2 acceleration;
+    private bool grounded; // Is the character grounded?
+    private Vector2 acceleration; // The acceleration of the character.
     #endregion
-
 
     #region Methods
     /// <summary>
