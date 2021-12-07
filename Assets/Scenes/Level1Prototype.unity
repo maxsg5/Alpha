@@ -84308,7 +84308,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 897a41deb6f4e2947b10c8eb5a004f6d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 10
+  speed: 1
   isMoving: 0
   audioSource: {fileID: 443887329}
   hatchSound: {fileID: 8300000, guid: d679a661d57260b49830582b6395c4bb, type: 3}
@@ -144472,11 +144472,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1885823169647732791, guid: 991599dd536696f46b8651a4d265e4e8, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 425.65
+      value: 509.53
       objectReference: {fileID: 0}
     - target: {fileID: 1885823169647732791, guid: 991599dd536696f46b8651a4d265e4e8, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -8.99
+      value: -6.83
       objectReference: {fileID: 0}
     - target: {fileID: 1885823169647732791, guid: 991599dd536696f46b8651a4d265e4e8, type: 3}
       propertyPath: m_LocalPosition.z
