@@ -30,7 +30,7 @@ public class Tank : MonoBehaviour
     #region Methods
 
     /// <summary>
-    /// initializes the animator and particle system.
+    /// initializes the animator and particle system. turns off the box collider at start
     /// </summary>
     /// Author: Max Schafer
     /// Date: 2021-12-06
@@ -38,10 +38,12 @@ public class Tank : MonoBehaviour
 	{
 		animator = GetComponentInChildren<Animator>();
 		smokeTrail = GetComponent<ParticleSystem>();
+        GetComponent<BoxCollider2D>().enabled = false;
 	}
 
 	/// <summary>
     /// if the tank is moving, it will move the tank left until it reaches a specified position.
+    /// The box collider is also turned on.
     /// once the tank reaches the position, it will stop moving and trigger the boss sequence.
     /// </summary>
     /// Author: Max Schafer
@@ -50,7 +52,8 @@ public class Tank : MonoBehaviour
 	{
 		if(isMoving)
 		{
-			MoveLeft();
+            GetComponent<BoxCollider2D>().enabled = true;
+            MoveLeft();
 			if(transform.position.x <= 529)
 			{
 				isMoving = false;
