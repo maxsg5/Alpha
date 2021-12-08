@@ -4,6 +4,11 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
+/// <summary>
+/// This class is used for ascynchronous loading of the main scene.
+/// </summary>
+/// Author: Max Schafer
+/// Date: 2021-12-07
 public class LoadManager : MonoBehaviour
 {
     public Slider progressBar; // Progress bar
