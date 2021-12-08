@@ -1,10 +1,7 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Runtime.CompilerServices;
+// Author: Declan Simkins
+
 using UnityEngine;
 using UnityEngine.Events;
-using UnityEngine.UI;
 
 
 /// <summary>
@@ -18,17 +15,17 @@ public class Interactable : MonoBehaviour
 	[Tooltip("Message to display to the player when standing in proximity of the interactable." +
 	         "Will display as \"[prompt] (Press [interact_key])\"")]
 	[SerializeField] private string prompt;
-	[SerializeField] private TMPro.TextMeshProUGUI prompt_text_element; //Note (Max Schafer, 2021-11-17): Changed from Text to TMPro.TextMeshProUGUI. Might want to change back to Text if performance is an issue.
+	[SerializeField] private TMPro.TextMeshProUGUI prompt_text_element;
 	[SerializeField] private float interaction_range; // Does nothing until the sensor is turned back on
-	[SerializeField] private KeyCode interact_key = KeyCode.E;	// Should probably be a string referencing an axis or
-																// some kind of enum
+	[SerializeField] private KeyCode interact_key = KeyCode.E;
 	[SerializeField] private bool interact_on_collision = false;
 
 	private SphereSensor sensor;
 	private string prompt_suffix;
 	private bool player_in_range;
-
+	
 	public UnityEvent on_interact;
+	
 	public string Prompt
 	{
 		get => this.prompt;
@@ -60,10 +57,13 @@ public class Interactable : MonoBehaviour
 	/// </summary>
 	private void Update()
 	{
+		// Note (Declan Simkins): should just add a call to
+		// `Destroy_Interactable` in the editor in case we don't want
+		// to delete the interactable after interacting
 		if (this.player_in_range && Input.GetKeyDown(this.interact_key)) {
 			this.on_interact.Invoke();
 			this.prompt_text_element.gameObject.SetActive(false);
-			Destroy(GetComponent<Interactable>());
+			Destroy(this.GetComponent<Interactable>());
 		}
 	}
 
@@ -77,6 +77,9 @@ public class Interactable : MonoBehaviour
 	{
 		if (this.interact_on_collision) {
 			this.on_interact.Invoke();
+			
+			// Should just add a call to `Destroy_Object` in the editor in
+			// case we don't want the object to be destroyed
 			Destroy(this.gameObject);
 		}
 		
@@ -114,12 +117,31 @@ public class Interactable : MonoBehaviour
 		this.prompt_text_element.gameObject.SetActive(false);
 	}
 
+	/// <summary>
+	/// Destroys this interactable component
+	/// </summary>
 	public void Destroy_Interactable()
 	{
 		this.prompt_text_element.gameObject.SetActive(false);
 		Destroy(this.GetComponent<Interactable>());
 	}
 
+	/// <summary>
+	/// Destroys the specified object
+	/// </summary>
+	/// <param name="obj"></param>
+	public void Destroy_Object(GameObject obj)
+	{
+		if (this.gameObject == obj) {
+			this.prompt_text_element.gameObject.SetActive(false);
+		}
+
+		Destroy(obj);
+	}
+
+	/// <summary>
+	/// Disables this interactable
+	/// </summary>
 	public void Disable_Interactable()
 	{
 		this.prompt_text_element.gameObject.SetActive(false);

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 /// <summary>
 /// This script is used to pause the game.
 /// </summary>
@@ -56,6 +57,16 @@ public class PauseManager : MonoBehaviour
     public void QuitGame()
     {
         Application.Quit();
+    }
+
+    /// <summary>
+    /// Changes the scene to the main menu.
+    /// </summary>
+    /// Author: Max Schafer
+    /// Date: 2021-12-06
+    public void MainMenu()
+    {
+        SceneManager.LoadScene(0);
     }
     #endregion
 }

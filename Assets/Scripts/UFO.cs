@@ -12,6 +12,7 @@ using UnityEngine;
 
 public class UFO : MonoBehaviour
 {
+    public GameObject gameOverMenu; //The game over menu to be displayed
     private bool onBoard = false;
 
     ///<summary>
@@ -23,6 +24,7 @@ public class UFO : MonoBehaviour
     {
         if(onBoard){
             transform.Translate(Vector3.up * 10 * Time.deltaTime);
+            gameOverMenu.SetActive(true);
             if(transform.position.y > 40){
                 Destroy(gameObject);
             }

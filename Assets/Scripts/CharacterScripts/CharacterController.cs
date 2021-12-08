@@ -4,10 +4,13 @@
 /// Author: Max Schafer
 /// Date: 2021-10-23
 /// Description: Initial Testing.
+
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UIElements;
+using Weapons;
 
 // TODO: Flip the weapon sprite upside down when it rotates; flip the character based on weapon rotation
 [RequireComponent(typeof(CharacterMotor))]
@@ -38,6 +41,7 @@ public class CharacterController : MonoBehaviour
     private Health health; // Reference to the health script.
     private CharacterMotor motor; // Reference to the character motor script.
     private AudioSource audioSource; // Reference to the audio source.
+    private SpriteRenderer sprite_renderer; // Reference to the sprite renderer.
     [SerializeField] private GameObject holster;
     [SerializeField] private GameObject pivot;
     #endregion
@@ -53,10 +57,18 @@ public class CharacterController : MonoBehaviour
     {
         extraJumps = extraJumpsValue; // Set the number of extra jumps the character has.
         motor = GetComponent<CharacterMotor>();
+        this.sprite_renderer = this.GetComponent<SpriteRenderer>();
+        
         health = GetComponent<Health>(); // Get the health script
+        this.health.Health_Changed += this.On_Health_Changed;
+        
         audioSource = GetComponent<AudioSource>(); // Get the audio source.
     }
 
+    private void On_Health_Changed(float new_health)
+    {
+	    // TODO: flash sprite red
+    }
 
     /// <summary>
     /// FixedUpdate is used to handle character movement.
@@ -124,7 +136,6 @@ public class CharacterController : MonoBehaviour
         {
 	        if (this.active_weapon != null) {
 		        this.active_weapon.Fire(); // Shoot the weapon
-            	
 	        }
         }
         
@@ -170,6 +181,7 @@ public class CharacterController : MonoBehaviour
     /// Pre-instantiated (i.e. not a prefab) weapon to be added to the
     /// character's list of weapons
     /// </param>
+    /// Author: Declan Simkins
     public void Add_Weapon(GameObject weapon_obj)
     {
 	    Weapon weapon = weapon_obj.GetComponent<Weapon>();
@@ -196,7 +208,10 @@ public class CharacterController : MonoBehaviour
 		    weapon_obj.transform.position = this.active_weapon.transform.position;
 	    }
     }
-
+    /// <summary>
+    /// Sets the active weapon to the weapon at the given index
+    /// </summary>
+    /// Author: Declan Simkins
     public void Add_Ammo(GameObject ammo_pickup_obj)
     {
 	    Ammo_Pickup ammo_pickup = ammo_pickup_obj.GetComponent<Ammo_Pickup>();
@@ -215,6 +230,7 @@ public class CharacterController : MonoBehaviour
     /// <param name="weapon_i">
     /// Index of the weapon to be set as the active weapons
     /// </param>
+    /// Author: Declan Simkins
     private void Set_Active_Weapon(int weapon_i)
     {
 	    if (this.active_weapon != null) {
@@ -227,6 +243,17 @@ public class CharacterController : MonoBehaviour
 	    this.active_weapon.gameObject.SetActive(true);
 
 	    this.Weapon_Changed?.Invoke(this.active_weapon);
+    }
+	
+
+    /// <summary>
+    /// Turns on or off the character's movement.
+    /// </summary>
+    /// Author: Max Schafer
+    /// Date: 2021-12-05
+    public void Enable_Movement()
+    {
+	    this.disableMovement = false;
     }
 
     #endregion

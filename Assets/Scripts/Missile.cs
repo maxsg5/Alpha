@@ -19,7 +19,7 @@ public class Missile : MonoBehaviour
 {
 
     public Transform target;
-    new private Rigidbody2D rigidbody;
+    private new Rigidbody2D rigidbody;
     public float speed = 2f;
     public float rotationSpeed = 100f;
 

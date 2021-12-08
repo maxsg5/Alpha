@@ -1,69 +1,108 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-/// <summary>
-/// This script is attached to the tank at the end of the level
-/// It controls the tank's movement and animation for the cutscene at the end of the level
-/// </summary>
-/// Author: Max Schafer
-/// Date: 2021-12-05
+
 public class Tank : MonoBehaviour
 {
+    #region Delegates and Events
+	public delegate void Sequence_Done_Handler(); // Delegate for the event
+	public event Sequence_Done_Handler Sequence_Done; // Event
+	#endregion
+
     #region Public Variables
-    public bool isMoving = false; // Is the tank moving?
+	public float speed = 10f; // Speed of the tank
+	public bool isMoving = false; // Is the tank moving?
     public AudioSource audioSource; //reference to the audio source of the trigger.
-    public AudioClip hatchSound; //reference to the audio clip of the tank hatch sound.
+	public AudioClip hatchSound; //reference to the audio clip of the tank hatch sound.
+    public GameObject explosion; //reference to the explosion prefab.
+    public AudioSource tankExplosion; //reference to the tank explosion audio source.
+    public AudioSource wilhelmScream; //reference to the wilhelm scream audio source.
+    public AudioSource bossScream; //reference to the boss scream audio source.
     #endregion
-   
+
     #region Private Variables
-    private Animator animator; // Reference to the animator component that's on the child object.
-    private ParticleSystem smokeTrail; //reference to the particle system of the tank.
+	private Animator animator; // Reference to the animator component that's on the child object.
+	private ParticleSystem smokeTrail; //reference to the particle system of the tank.
+
     #endregion
-   
+
     #region Methods
+
     /// <summary>
-    /// Initialize the animator and particle system references.
+    /// initializes the animator and particle system. turns off the box collider at start
     /// </summary>
     /// Author: Max Schafer
-    /// Date: 2021-12-05
-    void Start()
+    /// Date: 2021-12-06
+	void Start()
+	{
+		animator = GetComponentInChildren<Animator>();
+		smokeTrail = GetComponent<ParticleSystem>();
+        GetComponent<BoxCollider2D>().enabled = false;
+	}
+
+	/// <summary>
+    /// if the tank is moving, it will move the tank left until it reaches a specified position.
+    /// The box collider is also turned on.
+    /// once the tank reaches the position, it will stop moving and trigger the boss sequence.
+    /// </summary>
+    /// Author: Max Schafer
+    /// Date: 2021-12-06
+	void Update()
+	{
+		if(isMoving)
+		{
+            GetComponent<BoxCollider2D>().enabled = true;
+            MoveLeft();
+			if(transform.position.x <= 529)
+			{
+				isMoving = false;
+				smokeTrail.Stop();
+				audioSource.Stop();
+				animator.SetTrigger("popUp");
+				audioSource.PlayOneShot(hatchSound);
+                //play the boss scream sound after the hatch sound has finished.
+                StartCoroutine(PlaySoundAfterDelay(hatchSound.length));
+				//start final boss sequence here
+				this.Sequence_Done?.Invoke();
+			}
+		}
+	}
+
+    /// <summary>
+    /// Moves the tank left at the speed specified.
+    /// </summary>
+    /// Author: Max Schafer
+	private void MoveLeft()
+	{
+		transform.position += Vector3.left * (Time.deltaTime * this.speed);
+	}
+
+
+    /// <summary>
+    /// Called before the object is destroyed.
+    /// Instantiate the explosion particles and play the explosion sound effect.
+    /// </summary>
+    /// Author: Max Schafer
+    /// Date: 2021-12-06
+    private void OnDestroy()
     {
-        animator = GetComponentInChildren<Animator>();
-        smokeTrail = GetComponent<ParticleSystem>();
+        Instantiate(explosion, transform.position , transform.rotation);
+        tankExplosion.Play();
+        wilhelmScream.Play();
+        
     }
 
     /// <summary>
-    /// check if the tank is supposed to be moving. if so, we move the tank to it's specified position.
-    /// Once the tank is in position, we start the animation and play the hatch sound. and stop moving the tank.
+    /// Plays the boss scream sound effect after a delay.
     /// </summary>
+    /// <param name="time">float length of delay</param>
     /// Author: Max Schafer
-    /// Date: 2021-12-05
-    void Update()
+    /// Date: 2021-12-06
+    IEnumerator PlaySoundAfterDelay(float time)
     {
-        //if the tank is supposed to be moving, we move the tank left until it's reached it's specified position.
-        if(isMoving)
-        {
-            MoveLeft();
-            // once the tank is in position, we start the animation and play the hatch sound. and stop moving the tank.
-            if(transform.position.x <= 529)
-            {
-                isMoving = false;
-                smokeTrail.Stop();
-                audioSource.Stop();
-                animator.SetTrigger("popUp");
-                audioSource.PlayOneShot(hatchSound);
-                //start final boss sequence here
-            }
-        }
-    }
-    /// <summary>
-    /// transforms the tank to the left.
-    /// </summary>
-    /// Author: Max Schafer
-    /// Date: 2021-12-05
-    private void MoveLeft()
-    {
-        transform.position += Vector3.left * Time.deltaTime;
+        yield return new WaitForSeconds(time);
+        bossScream.Play();
     }
 
     #endregion

@@ -71,7 +71,7 @@ namespace Utility.SensorSystem
         /// Date		Author	Description
         /// 2017-10-12	BRB		Initial Testing
 
-        virtual protected Vector3 Scale()
+        protected virtual Vector3 Scale()
         {
             return new Vector3(radius, radius, radius);
         }

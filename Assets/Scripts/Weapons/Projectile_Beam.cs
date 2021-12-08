@@ -1,9 +1,13 @@
-using System;
-using System.Collections;
+// Author: Declan Simkins
+
 using System.Collections.Generic;
-using System.Runtime.CompilerServices;
 using UnityEngine;
 
+
+/// <summary>
+/// Creates a line which projects outwards until it collides with something
+/// or would reach a fixed max length 
+/// </summary>
 [RequireComponent(typeof(LineRenderer))]
 [RequireComponent(typeof(EdgeCollider2D))]
 public class Projectile_Beam : MonoBehaviour
@@ -13,20 +17,37 @@ public class Projectile_Beam : MonoBehaviour
 	private GameObject origin_obj;
 	private Vector2 origin_pos;
 	private Camera main_camera;
+	private GameObject player;
 
 	[SerializeField] private float beam_width = 0.25f;
 	[SerializeField] private float max_length = 50.0f;
 
+	/// <summary>
+	/// Grabs necessary components and sets up the line renderer
+	/// </summary>
 	private void Awake()
 	{
 		this.beam_lr = this.GetComponent<LineRenderer>();
 		this.beam_collider = this.GetComponent<EdgeCollider2D>();
 		this.beam_lr.startWidth = this.beam_width;
 		this.beam_lr.endWidth = this.beam_width;
-		this.main_camera = Camera.main;
+		this.player = GameObject.FindWithTag("Player");
 	}
 
+	/// <summary>
+	/// Projects and updates the line
+	/// </summary>
 	private void LateUpdate()
+	{
+		this.Project_Line();
+	}
+
+	/// <summary>
+	/// Performs a raycast to determine the true collision point of the line
+	/// Uses this to set the points for the edge collider and the
+	/// line renderer
+	/// </summary>
+	private void Project_Line()
 	{
 		this.origin_pos = this.origin_obj.transform.position;
 		RaycastHit2D[] hits = Physics2D.RaycastAll(
@@ -34,14 +55,15 @@ public class Projectile_Beam : MonoBehaviour
 			, this.origin_obj.transform.right
 		);
 		
-		// Find collision point or create one if there is no collision point
-		Vector2 collision_point;
 		List<GameObject> ignorables = new List<GameObject>()
 		{
-			GameObject.FindWithTag("Player"),
+			this.player,
 			this.gameObject,
 			this.origin_obj
 		};
+		
+		// Find collision point or create one if there is no collision point
+		Vector2 collision_point;
 		int real_hit_i = this.Find_First_Hit_Index(hits, ignorables);
 		if (hits.Length == 0 || real_hit_i < 0) {
 			Vector2 origin_right = this.origin_obj.transform.right;
@@ -52,14 +74,33 @@ public class Projectile_Beam : MonoBehaviour
 			collision_point = hits[real_hit_i].point;
 		}
 		
-		// Set line renderer and edge collider points
+		// Set line renderer points
 		this.beam_lr.SetPosition(0, this.origin_pos);
 		this.beam_lr.SetPosition(1, collision_point);
-		Vector2 collider_local_origin_pos = this.origin_obj.transform.InverseTransformPoint(this.origin_pos);
-		Vector2 collider_local_collision_point = this.origin_obj.transform.InverseTransformPoint(collision_point);
-		this.beam_collider.points = new[] {collider_local_origin_pos , collider_local_collision_point};
+		
+		// Set edge collider points
+		Vector2 collider_local_origin_pos = this.origin_obj.transform
+			.InverseTransformPoint(this.origin_pos);
+		Vector2 collider_local_collision_point = this.origin_obj.transform
+			.InverseTransformPoint(collision_point);
+		this.beam_collider.points = new[]
+		{
+			collider_local_origin_pos,
+			collider_local_collision_point
+		};
 	}
 
+	/// <summary>
+	/// Finds the first "real" hit from a given list of raycast hits; this
+	/// ignores anything in the `ignorable_objs` list and any triggers
+	/// </summary>
+	/// 
+	/// <param name="hits">Raycast hits to be examined</param>
+	/// <param name="ignorable_objs">
+	/// Objects to be removed from consideration as "real" hits
+	/// </param>
+	/// 
+	/// <returns>The index of the first "real" hit</returns>
 	private int Find_First_Hit_Index(RaycastHit2D[] hits, List<GameObject> ignorable_objs)
 	{
 		int hit_i;
@@ -75,6 +116,20 @@ public class Projectile_Beam : MonoBehaviour
 		return hit_i - 1; // -1 because it increments before checking the condition on the last iteration of the loop
 	}
 	
+	/// <summary>
+	/// Used to instantiate a beam.
+	/// </summary>
+	/// 
+	/// <param name="prefab">Prefab of the beam projectile</param>
+	/// <param name="origin_obj">
+	/// Transform which is instantiating the beam; this transform will be ignored
+	/// when raycasting to find the beam's collision point
+	/// </param>
+	/// 
+	/// <returns>
+	/// GameObject with the `Projectile_Beam` script attached as well
+	/// as any other necessary scripts
+	/// </returns>
 	public static GameObject Create_Beam(GameObject prefab, Transform origin_obj)
 	{
 		Vector2 origin_pos = origin_obj.position; 
@@ -88,7 +143,7 @@ public class Projectile_Beam : MonoBehaviour
 		}
 		
 		// TODO: Check for required components and add them if necessary
-		//   this is necessary because i the Projectile_Beam script is already
+		//   this is necessary because if the Projectile_Beam script is already
 		//   present, but the other required components are not, they will not
 		//   be added but will be assumed to exist
 

@@ -52,7 +52,7 @@ public class SectorSensor : SphereSensor
     /// Date        Author      Description
     /// 2021-10-13  JC          Initial Testing
     /// 2021-10-14  JC          Updated for 2D
-    override public bool CanSee(Transform target) {
+    public override bool CanSee(Transform target) {
         Vector3 heading = target.position - gameObject.transform.position;
 
         if (heading.sqrMagnitude <= Radius2 && Vector3.Dot(heading.normalized, transform.forward) >= minCosine)

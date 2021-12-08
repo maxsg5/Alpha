@@ -83,7 +83,7 @@ namespace Utility.SensorSystem
         /// 2017-10-08	BRB		Converted to add position offset and LOS Check
         /// 2021-10-25  JC      Added a check to make sure the target is not null
         /// 
-        override public bool CanSee(Transform target)
+        public override bool CanSee(Transform target)
         {
             
             if (target != null) {
@@ -114,7 +114,7 @@ namespace Utility.SensorSystem
         /// 2017-10-06	BRB		Initial Testing
         /// 2017-10-08	BRB		Converted to add position offset and LOS Check
         ///
-        override public bool CanSee(GameObject target)
+        public override bool CanSee(GameObject target)
         {
             return CanSee(target.transform);
         }
@@ -126,7 +126,7 @@ namespace Utility.SensorSystem
         /// 
         /// 2017-10-17	BRB		Initial Testing
         ///
-        override public Mesh CreateMesh()
+        public override Mesh CreateMesh()
         {
             Vector2[] ring = new Vector2[SIZE];
             for (int i = 0; i < SIZE; i++)

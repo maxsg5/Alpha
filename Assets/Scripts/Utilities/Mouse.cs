@@ -1,11 +1,29 @@
+// Author: Declan Simkins
+
 using UnityEngine;
 
 namespace Utilities
 {
-	public class Mouse
+	/// <summary>
+	/// Mouse related utility functions
+	/// </summary>
+	public static class Mouse
 	{
 		static Camera main_camera = Camera.main;
 	
+		/// <summary>
+		/// Gets the angle from a position to the mouse's
+		/// world space coordinates
+		/// </summary>
+		/// 
+		/// <param name="from">
+		/// Position to calculate the angle from
+		/// </param>
+		/// 
+		/// <returns>
+		/// The angle from the `from` position to the mouse's world
+		/// space coordinates
+		/// </returns>
 		public static float Angle_To_Mouse(Vector3 from)
 		{
 			Vector3 mouse_pos = Input.mousePosition;
