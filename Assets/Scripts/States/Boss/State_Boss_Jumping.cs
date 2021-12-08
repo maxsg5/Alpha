@@ -1,30 +1,42 @@
-using System.Collections;
-using System.Collections.Generic;
+// Author: Declan Simkins
+
 using Controllers;
 using Motors;
-using States;
-using UnityEngine;
 
-public class State_Boss_Jumping : State_Boss
+namespace States
 {
-	public State_Boss_Jumping(State prev_state, Controller_Boss controller, Motor_Boss motor) : base(prev_state, controller, motor) { }
-	
-	public override void Tick()
+	/// <summary>
+	/// Behaviour state for when the boss is jumping
+	/// </summary>
+	public class State_Boss_Jumping : State_Boss
 	{
-		if (this.controller.Grounded) {
-			this.controller.Switch_States(this.controller.State_Following);
+		public State_Boss_Jumping(State prev_state, Controller_Boss controller, Motor_Boss motor)
+			: base(prev_state, controller, motor) { }
+
+		/// <summary>
+		/// Switch to following state if the boss is touching the  ground
+		/// </summary>
+		public override void Tick()
+		{
+			if (this.controller.Grounded) {
+				this.controller.Switch_States(this.controller.State_Following);
+			}
 		}
-	}
 
-	public override void Enter()
-	{
-		Debug.Log("Start Jump");
-		this.motor.Start_Jump();
-	}
+		/// <summary>
+		/// Start jump animation 
+		/// </summary>
+		public override void Enter()
+		{
+			this.motor.Start_Jump();
+		}
 
-	public override void Exit()
-	{
-		Debug.Log("End Jump");
-		this.motor.End_Jump();
+		/// <summary>
+		/// End jump animation
+		/// </summary>
+		public override void Exit()
+		{
+			this.motor.End_Jump();
+		}
 	}
 }

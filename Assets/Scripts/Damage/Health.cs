@@ -1,9 +1,11 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Runtime.CompilerServices;
+// Author: Declan Simkins
+
 using UnityEngine;
 
+/// <summary>
+/// Tracks health and invokes events to reflect changes
+/// in the health value
+/// </summary>
 public class Health : MonoBehaviour
 {
 	public float max_health = 100.0f;
@@ -15,11 +17,19 @@ public class Health : MonoBehaviour
 	public delegate void On_Death(GameObject obj);
 	public event On_Death Death;
 
+	/// <summary>
+	/// Invoke health changed event
+	/// </summary>
 	private void Start()
 	{
 		this.Health_Changed?.Invoke(this.max_health);
 	}
 
+	/// <summary>
+	/// Add health, not passing max health
+	/// Invokes Health_Changed event with the new current health value
+	/// </summary>
+	/// <param name="amount">Amount of health to add</param>
     public void Add_Health(float amount)
     {
         this.health += amount;
@@ -30,6 +40,11 @@ public class Health : MonoBehaviour
 		this.Health_Changed?.Invoke(this.health);
     }
 
+	/// <summary>
+	/// Reduces current health
+	/// Invokes Health_Changed event
+	/// </summary>
+	/// <param name="damage">Amount of health to remove</param>
     public virtual void Take_Damage(float damage)
 	{
 		this.health -= damage;
@@ -44,6 +59,10 @@ public class Health : MonoBehaviour
 		}
 	}
 
+	/// <summary>
+	/// Invokes death event if this game object is the player
+	/// Otherwise simply destroys the game object
+	/// </summary>
     protected virtual void No_Health()
     {
 		if (this.gameObject.tag == "Player") {
@@ -53,9 +72,5 @@ public class Health : MonoBehaviour
         {
 			Destroy(this.gameObject);
         }
-        //else if (this.gameObject.tag == "Enemy") {
-        // 	this.Death?.Invoke(this.gameObject);
-        // 	Destroy(this.gameObject, 1.0f);
-        // }
     } 
 }

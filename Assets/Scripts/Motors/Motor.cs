@@ -1,9 +1,13 @@
-// Author: Brian Brookwell, with modifications by Declan Simkins
+// Author: Declan Simkins
 
 using UnityEngine;
 
 namespace Motors
 {
+	/// <summary>
+	/// Base class for a motor which is responsible for animation and movement
+	/// of a given transform
+	/// </summary>
 	public abstract class Motor
 	{
 		protected readonly Transform transform;
@@ -12,12 +16,11 @@ namespace Motors
 		protected readonly SpriteRenderer sprite_renderer;
 
 		/// <summary>
-		/// Grabs data from the Data struct and initializes values.
+		/// Grabs necessary components
 		/// </summary>
-		/// <param name="transform">Transform of the game object.</param>
-		/// <param name="rigidbody">Rigidbody of the game object.</param>
-		/// <param name="animator">Animator of the game object.</param>
-		/// <param name="motorData">Data struct containing necessary data for the motor.</param>
+		/// <param name="transform">Transform of the game object</param>
+		/// <param name="rigidbody">Rigidbody of the game object</param>
+		/// <param name="animator">Animator of the game object</param>
 		public Motor(Transform transform
 			, Rigidbody2D rigidbody
 			, Animator animator)
@@ -31,8 +34,8 @@ namespace Motors
 		/// <summary>
 		/// Moves the transform towards `target_pos` at a specified speed
 		/// </summary>
-		/// <param name="target_pos">Position to move transform towards.</param>
-		/// <param name="speed">Speed at which to move the transform.</param>
+		/// <param name="target_pos">Position to move transform towards</param>
+		/// <param name="speed">Speed at which to move the transform</param>
 		public abstract void Move(Vector3 target_pos, float speed);
 	}
 }

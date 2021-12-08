@@ -21,40 +21,19 @@
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Weapons/Weapon.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/States/Boss/State_Boss_Dying.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/UI/UI_Health_Tracker.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$USER_HOME$/Desktop/CMPT 330/Projects/CMPT 330 Assignment 4/Assets/Scripts/Motors/Motor.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Weapons/Weapon_Single_Shot.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Utilities/Mouse.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Weapons/Ammo_Pickup.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Health.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Weapons/Weapon_Beam.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <changedPaths>
-      <option value="$PROJECT_DIR$/Assets/Scripts/Character.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Weapon.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Shotgun.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Weapons/Multi_Shot_Weapon.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Weapons/Single_Shot_Weapon.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Damage.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Weapons/Beam_Weapon.cs" />
-      <option value="$PROJECT_DIR$/Assets/Projectile_Beam.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Weapons/Weapon_Single_Shot.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Weapons/Weapon_Multi_Shot.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Damage_Continuous.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Camera_Follow.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Fill_Bar.cs" />
-      <option value="$PROJECT_DIR$/Assets/Environment_Collider_2D.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Health_Tracker.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/UI_Health_Tracker.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Weapons/Weapon_Beam.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Utilities/Mouse_Utilities.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Utilities/Mouse.cs" />
       <option value="$PROJECT_DIR$/Assets/UI_Ammo_Tracker.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Enemy Scripts/BomberMotor.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Weapons/Projectile.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Weapons/Projectile_Beam.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Weapons/Ammo_Pickup.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Weapons/Weapon.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Assignment 4 Scripts/Controllers/Controller_SQ.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Assignment 4 Scripts/Motors/Motor.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Assignment 4 Scripts/Controllers/Controller.cs" />
@@ -67,20 +46,41 @@
       <option value="$PROJECT_DIR$/Assets/Scripts/Assignment 4 Scripts/Motors/Motor_Boss.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Assignment 4 Scripts/States/Boss/State_Boss_Following.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Assignment 4 Scripts/Controllers/Controller_Boss.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/States/Boss/State_Boss_Dying.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Controllers/Controller.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/States/Boss/State_Boss_Attacking.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Motors/Motor.cs" />
       <option value="$PROJECT_DIR$/Assets/Tank.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Interactables/Interactable.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/States/Boss/State_Boss_Intro.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/States/Boss/State_Boss_Jumping.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Motors/Motor_Boss.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Controllers/Controller_Boss.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Damage/Damage_Continuous.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/CharacterScripts/CharacterController.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Damage/Damage.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/CharacterScripts/CharacterMotor.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Tank.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/States/State.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/States/Boss/State_Boss_Taking_Damage.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/States/Boss/State_Boss_Jumping.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/States/Boss/State_Boss_Intro.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/States/Boss/State_Boss_Following.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/States/Boss/State_Boss_Dying.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/States/Boss/State_Boss_Attacking.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/States/Boss/State_Boss.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Utilities/Mouse.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Weapons/Ammo_Pickup.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Weapons/Projectile.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Weapons/Projectile_Beam.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Weapons/Weapon_Beam.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Weapons/Weapon.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Weapons/Weapon_Multi_Shot.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Weapons/Weapon_Single_Shot.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Motors/Motor.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Motors/Motor_Boss.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Interactables/Interactable.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Interactables/Toggle.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Interactables/Door.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Interactables/Colour_Switcher.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Damage/Damage.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Damage/Damage_Continuous.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Controllers/Controller.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Controllers/Controller_Boss.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Camera/Camera_Follow.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/UI_Ammo_Tracker.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/UI/UI_Ammo_Tracker.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/UI/UI_Health_Tracker.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Damage/Health.cs" />
     </changedPaths>
   </component>
   <component name="ProjectId" id="1z1ikSEWIAJLT9puI77EhNlOTyZ" />
@@ -161,6 +161,8 @@
       <workItem from="1638619302616" duration="8019000" />
       <workItem from="1638813260326" duration="8305000" />
       <workItem from="1638826930083" duration="26000" />
+      <workItem from="1638827059876" duration="112000" />
+      <workItem from="1638950887803" duration="6265000" />
     </task>
     <servers />
   </component>

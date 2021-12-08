@@ -10,6 +10,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UIElements;
+using Weapons;
 
 // TODO: Flip the weapon sprite upside down when it rotates; flip the character based on weapon rotation
 [RequireComponent(typeof(CharacterMotor))]

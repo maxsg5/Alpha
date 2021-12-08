@@ -1,39 +1,42 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
+// Author: Declan Simkins
+
 using UnityEngine;
 
+/// <summary>
+/// Moves designated camera such that it follows the designated target
+/// object; also stops on the specified edges
+/// </summary>
 public class Camera_Follow : MonoBehaviour
 {
 	[SerializeField] private GameObject follow_cam_obj;
-	private Camera follow_cam;
 	[SerializeField] private GameObject target;
-	
-	[Header("Edges")]
-	[SerializeField] private Transform right_edge;
-	[SerializeField] private Transform left_edge;
 
 	[Header("Bounding Box")]
-	[SerializeField] private bool use_bounding_box;
 	[Tooltip("A box surrounding what should be the visible the play space.")]
 	[SerializeField] private BoxCollider2D bounding_box;
 
+	private Camera follow_cam;
+
+	/// <summary>
+	/// Acquires the camera component
+	/// </summary>
 	private void Awake()
 	{
 		this.follow_cam = this.follow_cam_obj.GetComponent<Camera>();
 	}
 
+	/// <summary>
+	/// Follows the target object and stops on specified edges / bounding box
+	/// </summary>
 	private void LateUpdate()
 	{
 		this.Follow();
-		if (this.use_bounding_box) {
-			this.Stop_On_Bounding_Box();
-		}
-		else {
-			this.Stop_On_Edge();
-		}
+		this.Stop_On_Bounding_Box();
 	}
 
+	/// <summary>
+	/// Matches the specified target's position
+	/// </summary>
 	private void Follow()
 	{
 		Vector3 target_pos = this.target.transform.position;
@@ -47,6 +50,10 @@ public class Camera_Follow : MonoBehaviour
 		this.follow_cam_obj.transform.position = new_pos;
 	}
 
+	/// <summary>
+	/// Stops the camera from displaying anything outside
+	/// the specified bounding box
+	/// </summary>
 	private void Stop_On_Bounding_Box()
 	{
 		Vector3 box_center = this.bounding_box.transform.TransformVector(this.bounding_box.offset);
@@ -80,10 +87,5 @@ public class Camera_Follow : MonoBehaviour
 		}
 
 		this.follow_cam_obj.transform.position = new_pos;
-	}
-
-	private void Stop_On_Edge()
-	{
-		return;
 	}
 }

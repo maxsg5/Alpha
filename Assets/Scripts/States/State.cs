@@ -2,6 +2,10 @@
 
 namespace States
 {
+	/// <summary>
+	/// Represents a state within a state machine. Defines behaviour within
+	/// that state.
+	/// </summary>
 	public abstract class State
 	{
 		public State prev_state;

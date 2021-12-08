@@ -1,7 +1,11 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+// Author: Declan Simkins
 
+using UnityEngine;
+using Weapons;
+
+/// <summary>
+/// Specifies an amount and type of ammo to be used as a pickup
+/// </summary>
 public class Ammo_Pickup : MonoBehaviour
 {
 	[SerializeField] private Weapon.Ammo ammo_type;

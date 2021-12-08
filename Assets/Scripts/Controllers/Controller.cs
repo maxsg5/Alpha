@@ -1,6 +1,5 @@
 // Author: Declan Simkins
 
-using System.Collections.Generic;
 using Motors;
 using UnityEngine;
 
@@ -8,9 +7,14 @@ using States;
 
 namespace Controllers
 {
+	/// <summary>
+	/// Controls behaviour of an object using States and thus an implicit
+	/// finite state machine
+	/// </summary>
+	[RequireComponent(typeof(Rigidbody2D), typeof(Animator))]
 	public abstract class Controller : MonoBehaviour
 	{
-		protected readonly static State_Null null_state = new State_Null();
+		protected static readonly State_Null null_state = new State_Null();
 		protected State behaviour_state;
 
 		protected Motor motor;
@@ -35,6 +39,15 @@ namespace Controllers
 		}
 
 		public Rigidbody2D RB => this.rb;
+		
+		/// <summary>
+		/// Create and initialise the desired motor
+		/// </summary>
+		protected abstract void Initialise_Motor();
+		/// <summary>
+		/// Create and initialise all states necessary for the controller
+		/// </summary>
+		protected abstract void Initialise_States();
 
 		/// <summary>
 		/// Defaults the controller's state to a null state
@@ -58,9 +71,6 @@ namespace Controllers
 		{
 			this.behaviour_state.Tick();
 		}
-
-		protected abstract void Initialise_Motor();
-		protected abstract void Initialise_States();
 
 		/// <summary>
 		/// A dedicated method for switching states rather than using

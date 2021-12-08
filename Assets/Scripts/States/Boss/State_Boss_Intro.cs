@@ -1,22 +1,28 @@
+// Author: Declan Simkins
+
 using System.Collections;
-using System.Collections.Generic;
 using Controllers;
 using Motors;
-using States;
 using UnityEngine;
 
 namespace States
 {
+	/// <summary>
+	/// Behaviour state to play the boss's intro sequence
+	/// </summary>
 	public class State_Boss_Intro : State_Boss
 	{
-		public State_Boss_Intro(State prev_state, Controller_Boss controller, Motor_Boss motor) : base(prev_state, controller, motor)
-		{ }
+		public State_Boss_Intro(State prev_state, Controller_Boss controller, Motor_Boss motor)
+			: base(prev_state, controller, motor) { }
 		
 		public override void Tick()
 		{
 			return;
 		}
 
+		/// <summary>
+		/// Play boss's intro sequence and then switch to jumping / falling state
+		/// </summary>
 		public override void Enter()
 		{
 			this.controller.StartCoroutine(this.Delayed_Intro());

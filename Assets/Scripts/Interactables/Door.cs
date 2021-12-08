@@ -1,17 +1,20 @@
-using System;
-using System.Collections;
+// Author: Declan Simkins
+
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
 /// <summary>
 /// Triggers a UnityEvent in response to all toggles becoming active
+/// 'Door' is a poor name really, it's much more general use than that
 /// </summary>
 public class Door : MonoBehaviour
 {
 	[SerializeField] private List<Toggle> toggles;
-	public UnityEvent on_all_toggles_active;
+	
     private Interactable interactable;
+    
+    public UnityEvent on_all_toggles_active;
 
     /// <summary>
     /// Subscribes to Toggled events
@@ -62,6 +65,4 @@ public class Door : MonoBehaviour
 
 		return all_active;
 	}
-
-	
 }

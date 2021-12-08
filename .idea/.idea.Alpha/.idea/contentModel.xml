@@ -19,7 +19,10 @@
             <e p="Zombie_Normal.atlas.txt" t="Include" />
           </e>
         </e>
+        <e p="FinalDoor.cs" t="Include" />
+        <e p="LoadManager.cs" t="Include" />
         <e p="PauseManager.cs" t="Include" />
+        <e p="Reload.cs" t="Include" />
         <e p="Sci-Fi UI" t="Include">
           <e p="Demo_Assets" t="Include">
             <e p="Scripts" t="Include">
@@ -49,6 +52,7 @@
           <e p="Damage" t="Include">
             <e p="Damage.cs" t="Include" />
             <e p="Damage_Continuous.cs" t="Include" />
+            <e p="Health.cs" t="Include" />
           </e>
           <e p="DoorSlideUp.cs" t="Include" />
           <e p="DoorSwitch.cs" t="Include" />
@@ -62,7 +66,6 @@
             <e p="GroundTrooperController.cs" t="Include" />
             <e p="GroundTrooperMotor.cs" t="Include" />
           </e>
-          <e p="Health.cs" t="Include" />
           <e p="HealthPack.cs" t="Include" />
           <e p="HiddenWall.cs" t="Include" />
           <e p="Interactables" t="Include">
@@ -108,8 +111,10 @@
           <e p="TankTrigger.cs" t="Include" />
           <e p="TurretDamage.cs" t="Include" />
           <e p="UFO.cs" t="Include" />
-          <e p="UI_Ammo_Tracker.cs" t="Include" />
-          <e p="UI_Health_Tracker.cs" t="Include" />
+          <e p="UI" t="Include">
+            <e p="UI_Ammo_Tracker.cs" t="Include" />
+            <e p="UI_Health_Tracker.cs" t="Include" />
+          </e>
           <e p="Utilities" t="Include">
             <e p="Mouse.cs" t="Include" />
           </e>
@@ -117,7 +122,6 @@
             <e p="Ammo_Pickup.cs" t="Include" />
             <e p="Projectile.cs" t="Include" />
             <e p="Projectile_Beam.cs" t="Include" />
-            <e p="Projectile_Pass_Through.cs" t="Include" />
             <e p="Weapon.cs" t="Include" />
             <e p="Weapon_Beam.cs" t="Include" />
             <e p="Weapon_Multi_Shot.cs" t="Include" />
