@@ -28,6 +28,7 @@ public class Interactable : MonoBehaviour
 	private string prompt_suffix;
 	private bool player_in_range;
 
+	
 	public UnityEvent on_interact;
 	public string Prompt
 	{

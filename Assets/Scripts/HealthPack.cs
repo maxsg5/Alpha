@@ -8,6 +8,8 @@ using UnityEngine;
 /// Date: 2021-12-01
 public class HealthPack : MonoBehaviour
 {
+    public AudioSource healSound; // Sound to play when health pack is picked up.
+
     /// <summary>
     /// When the player collides with the health pack, the player's health is restored.
     /// </summary>
@@ -19,6 +21,7 @@ public class HealthPack : MonoBehaviour
         if (collision.gameObject.tag == "Player")
         {
             collision.gameObject.GetComponent<Health>().Add_Health(100);
+            healSound.Play();
             Destroy(gameObject);
         }
     }

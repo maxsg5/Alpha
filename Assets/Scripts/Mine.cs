@@ -26,6 +26,7 @@ public class Mine : MonoBehaviour
     public float strength = 2f;
     public bool detonated = false;
     public GameObject explosion;
+    public AudioSource explosionSound;
 
     ///<summary>
     ///Initialize the sensor
@@ -52,6 +53,7 @@ public class Mine : MonoBehaviour
             Instantiate(explosion, transform.position + new Vector3(0.0f, 0.25f, 0.0f), transform.rotation);
             player.Take_Damage(strength);
             Destroy(gameObject);
+            explosionSound.Play();
         } 
     }
 }
