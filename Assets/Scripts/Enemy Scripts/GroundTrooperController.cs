@@ -12,7 +12,14 @@ using Utility.SensorSystem;
 /// Author: Josh Coss       (JC)
 /// 
 /// Variables
+/// STATE           enum of enemy states
+/// sensor          _SNSSensor attached to this object
+/// target          The object that the enemy is currently targeting
 /// moveSpeed       Speed at which the enemy moves
+/// motor           GroundTrooperMotor attached to this object
+/// state           The current state of the enemy
+/// health          The health of the enemy
+/// prevHealth      The previous health of the enemy before it was damaged
 [RequireComponent(typeof(GroundTrooperMotor))]
 public class GroundTrooperController : MonoBehaviour
 {
@@ -36,8 +43,8 @@ public class GroundTrooperController : MonoBehaviour
 
 
     /// <summary>
-    /// Gets the movement, sensor, and rigidbody components of the enemy, as
-    /// well as sets the turn and move speed
+    /// Gets the sensor and health components of the enemy, as
+    /// well as sets the prevHealth, initial state, and move speed.
     /// </summary>
     ///  
     /// Date        Author      Description
@@ -45,6 +52,7 @@ public class GroundTrooperController : MonoBehaviour
     /// 2021-10-14  JC          Changed Rigidbody to Rigidbody2D
     /// 2021-10-25  JC          Added movement, weapon, and health, as well as
     ///                         implemented a motor script
+    /// 2021-12-08  JC          Refactored after motor script was reworked
     private void Start()
     {
         // This class uses a sector sensor
@@ -59,11 +67,12 @@ public class GroundTrooperController : MonoBehaviour
     }
 
     /// <summary>
-    /// Prints a test message to the console if the sensor can see the target
+    /// Switches the state of the enemy based on the current state
     /// </summary>
     /// 
     /// Date        Author      Description
     /// 2021-10-13  JC          Initial Testing
+    /// 2021-12-08  JC          Refactored after states were implemented
     private void Update()
     {
         switch (state) {
@@ -82,6 +91,14 @@ public class GroundTrooperController : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Calls the motor to move the enemy, and changes the state to attack if
+    /// the enemy can see the target, or to hurt if prevHealth does not equal
+    /// current health
+    /// </summary>
+    /// 
+    /// Date        Author      Description
+    /// 2021-12-08  JC          Initial Testing
     private void handleMove() {
         motor.MoveForward();
         if (sensor.CanSee(target)) 
@@ -90,6 +107,14 @@ public class GroundTrooperController : MonoBehaviour
             state = STATE.Hurt;
     }
 
+    /// <summary>
+    /// Calls the motor to attack the enemy, and changes the state to move if 
+    /// the enemy can no longer see the target, or to hurt if prevHealth does not 
+    /// equal current health
+    /// </summary>
+    /// 
+    /// Date        Author      Description
+    /// 2021-12-08  JC          Initial Testing
     private void handleAttack() {
         motor.Attack();
         if (!sensor.CanSee(target))
@@ -98,6 +123,13 @@ public class GroundTrooperController : MonoBehaviour
             state = STATE.Hurt;
     }
 
+    /// <summary>
+    /// Starts the hurt timeout coroutine, and changes state to attack if the sensor
+    /// can still see the target, or to move if the sensor can no longer see the target
+    /// </summary>
+    /// 
+    /// Date        Author      Description
+    /// 2021-12-08  JC          Initial Testing
     private void handleGetHurt() {
         StartCoroutine(HurtTimeout());
 
@@ -107,10 +139,25 @@ public class GroundTrooperController : MonoBehaviour
             state = STATE.Move;
     }
 
+    /// <summary>
+    /// Calls the motor to die
+    /// </summary>
+    /// 
+    /// Date        Author      Description
+    /// 2021-12-08  JC          Initial Testing
     private void handleDeath() {
         motor.Death();
     }
 
+    /// <summary>
+    /// Calls the motor to get hurt, waits for .2 seconds, and changes prevHealth
+    /// to current health. If current health is less than or equal to zero, changes
+    /// to the dead state.
+    /// </summary>
+    /// <returns></returns>
+    /// 
+    /// Date        Author      Description
+    /// 2021-12-08  JC          Initial Testing
     private IEnumerator HurtTimeout() {
         motor.GetHurt();
         yield return new WaitForSeconds(0.2f);

@@ -3,6 +3,20 @@ using System.Collections.Generic;
 using UnityEngine;
 using Weapons;
 
+/// <summary>
+/// Motor script for the ground trooper enemy. Controls the movement of the enemy.
+/// 
+/// **CURRENTLY INCOMPLETE**
+/// </summary>
+/// 
+/// Author: Josh Coss (JC)
+/// 
+/// Variables:
+/// rigidbody       Rigidbody2D of the enemy
+/// movement        PathMove script of the enemy
+/// weapon          Weapon script of the enemy
+/// animator        Animator controller
+/// deathEffect     Particle effect to play when the enemy dies
 public class BomberMotor : MonoBehaviour
 {
 
@@ -10,46 +24,41 @@ public class BomberMotor : MonoBehaviour
     private PathMove movement;
     private Weapon weapon;
     private Animator animator;
-    private ParticleSystem deathParticles;
+    public GameObject deathEffect;
 
+    /// <summary>
+    /// Gets the movement, rigidbody, weapon, and animator components of the enemy.
+    /// </summary>
+    /// 
+    /// Date        Author      Description
+    /// 2021-12-08  JC          Initial Testing
     void Awake() {
         movement = GetComponent<PathMove>();
         rigidbody = GetComponent<Rigidbody2D>();
-        weapon = GameObject.Find("Weapon").GetComponent<Weapon_Single_Shot>();
+        weapon = GetComponentInChildren<Weapon>();
         animator = GetComponent<Animator>();
-        //deathParticles = GameObject.Find("DeathParticles").GetComponent<ParticleSystem>();
     }
 
+    /// <summary>
+    /// Calls the movement script to move the enemy.
+    /// </summary>
+    /// 
+    /// Date        Author      Description
+    /// 2021-12-08  JC          Initial Testing
     public void MoveForward()
     {
         movement.Move(rigidbody);
     }
 
+    /// <summary>
+    /// Calls the weapon script to fire the enemy's weapon. 
+    /// </summary>
+    /// 
+    /// Date        Author      Description
+    /// 2021-12-08  JC          Initial Testing
     public void Attack()
     {
         weapon.Fire();
     }
 
-    public void Idle()
-    {
-        throw new System.NotImplementedException();
-    }
-
-    public void GetHurt()
-    {
-        throw new System.NotImplementedException();
-    }
-    
-    public void knockback(Vector2 force) {
-        rigidbody.AddForce(force, ForceMode2D.Impulse);
-    }
-
-    public void Death()
-    {
-        throw new System.NotImplementedException();
-    }
-
-    public void setMoveSpeed(float speed) {
-        movement.setMoveSpeed(speed);
-    }
 }
